@@ -1,127 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://simsimpools.pages.dev/</loc>
+    <loc>https://simsimpools.co.kr/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/tests</loc>
+    <loc>https://simsimpools.co.kr/tests</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/tests/animal-personality</loc>
+    <loc>https://simsimpools.co.kr/tests/animal-personality</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/tests/love-style</loc>
+    <loc>https://simsimpools.co.kr/tests/love-style</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/tests/stress-response</loc>
+    <loc>https://simsimpools.co.kr/tests/stress-response</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/tests/social-distance</loc>
+    <loc>https://simsimpools.co.kr/tests/social-distance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/tests/emotional-recovery</loc>
+    <loc>https://simsimpools.co.kr/tests/emotional-recovery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog</loc>
+    <loc>https://simsimpools.co.kr/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/introvert-strengths</loc>
+    <loc>https://simsimpools.co.kr/blog/introvert-strengths</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/emotional-drain-patterns</loc>
+    <loc>https://simsimpools.co.kr/blog/emotional-drain-patterns</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/mbti-relationships</loc>
+    <loc>https://simsimpools.co.kr/blog/mbti-relationships</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/solitude-recovery</loc>
+    <loc>https://simsimpools.co.kr/blog/solitude-recovery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/stress-types</loc>
+    <loc>https://simsimpools.co.kr/blog/stress-types</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/perfectionism</loc>
+    <loc>https://simsimpools.co.kr/blog/perfectionism</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/high-empathy</loc>
+    <loc>https://simsimpools.co.kr/blog/high-empathy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/attachment-styles</loc>
+    <loc>https://simsimpools.co.kr/blog/attachment-styles</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/boundaries-setting</loc>
+    <loc>https://simsimpools.co.kr/blog/boundaries-setting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/anger-recovery</loc>
+    <loc>https://simsimpools.co.kr/blog/anger-recovery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/intuitive-vs-sensing</loc>
+    <loc>https://simsimpools.co.kr/blog/intuitive-vs-sensing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/self-efficacy-habits</loc>
+    <loc>https://simsimpools.co.kr/blog/self-efficacy-habits</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/blog/mindfulness-habits</loc>
+    <loc>https://simsimpools.co.kr/blog/mindfulness-habits</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/about</loc>
+    <loc>https://simsimpools.co.kr/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/contact</loc>
+    <loc>https://simsimpools.co.kr/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/privacy</loc>
+    <loc>https://simsimpools.co.kr/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://simsimpools.pages.dev/terms</loc>
+    <loc>https://simsimpools.co.kr/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>

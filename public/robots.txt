@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://simsimpools.pages.dev/sitemap.xml
+Sitemap: https://simsimpools.co.kr/sitemap.xml

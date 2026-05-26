@@ -2,7 +2,7 @@ import { SEOMeta } from '../components/seo/SEOMeta';
 
 const EFFECTIVE_DATE = '2025년 11월 1일';
 const SITE_NAME = '심심풀이';
-const CONTACT_EMAIL = 'privacy@simsimpools.com';
+const CONTACT_EMAIL = 'privacy@simsimpools.co.kr';
 
 export function Privacy() {
   return (
