@@ -5,13 +5,13 @@ export function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(form),
-    });
+    const subject = encodeURIComponent(`[심심풀이 문의] ${form.subject} - ${form.name}`);
+    const body = encodeURIComponent(
+      `이름: ${form.name}\n이메일: ${form.email}\n문의 유형: ${form.subject}\n\n${form.message}`
+    );
+    window.location.href = `mailto:kmwppp@daum.net?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -34,7 +34,7 @@ export function Contact() {
         {/* Contact info */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
           {[
-            { icon: '📧', title: '이메일', desc: 'contact@simsimpools.co.kr' },
+            { icon: '📧', title: '이메일', desc: 'kmwppp@daum.net' },
             { icon: '⏰', title: '응답 시간', desc: '영업일 기준 1~3일 이내' },
             { icon: '💬', title: '문의 유형', desc: '콘텐츠, 오류, 제휴 등' },
           ].map(({ icon, title, desc }) => (
