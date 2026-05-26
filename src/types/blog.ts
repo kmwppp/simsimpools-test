@@ -3,6 +3,12 @@ export interface BlogSection {
   content: string;
 }
 
+export interface BlogAuthor {
+  name: string;
+  role: string;
+  bio: string;
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -15,5 +21,7 @@ export interface BlogPost {
   thumbnail: string;
   excerpt: string;
   sections: BlogSection[];
+  author?: BlogAuthor;
+  references?: string[];
   relatedPosts?: string[];
 }

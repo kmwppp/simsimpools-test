@@ -63,6 +63,20 @@ export function BlogDetail() {
             </div>
           </header>
 
+          {/* Author */}
+          {post.author && (
+            <div className="flex items-start gap-4 bg-slate-50 rounded-2xl p-4 mb-8">
+              <div className="w-11 h-11 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-lg flex-shrink-0">
+                {post.author.name[0]}
+              </div>
+              <div>
+                <p className="font-semibold text-slate-800 text-sm">{post.author.name}</p>
+                <p className="text-xs text-brand-600 mb-1">{post.author.role}</p>
+                <p className="text-xs text-slate-500 leading-relaxed">{post.author.bio}</p>
+              </div>
+            </div>
+          )}
+
           {/* Intro excerpt */}
           <div className="bg-brand-50 border-l-4 border-brand-400 p-4 rounded-r-xl mb-8 text-slate-600 leading-relaxed">
             {post.excerpt}
@@ -77,6 +91,20 @@ export function BlogDetail() {
               </div>
             ))}
           </div>
+
+          {/* References */}
+          {post.references && post.references.length > 0 && (
+            <div className="mt-10 border-t border-slate-100 pt-8">
+              <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">참고문헌</h3>
+              <ul className="space-y-1.5">
+                {post.references.map((ref, i) => (
+                  <li key={i} className="text-xs text-slate-400 leading-relaxed pl-3 border-l-2 border-slate-200">
+                    {ref}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </article>
 
         {/* Tags */}

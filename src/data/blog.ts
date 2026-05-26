@@ -59,6 +59,16 @@ export const blogPosts: BlogPost[] = [
           '내향적이라는 것은 결점이 아닙니다. 단지 세상과 연결되는 방식이 다를 뿐입니다. 외향적인 세상에서 내향인으로 살아가는 것이 때로는 힘들 수 있지만, 자신의 내향성을 억누르기보다 강점으로 받아들이고 활용할 때 진정한 자신다움이 빛을 발합니다. 당신의 조용함은 약점이 아니라 깊이입니다.',
       },
     ],
+    author: {
+      name: '이수현',
+      role: '성격 심리 전문 에디터',
+      bio: '성격 심리학과 자기이해를 주제로 10년간 콘텐츠를 연구해온 에디터입니다. 내향성과 외향성의 스펙트럼, 인간관계 패턴을 쉬운 언어로 풀어냅니다.',
+    },
+    references: [
+      'Cain, S. (2012). Quiet: The Power of Introverts in a World That Can\'t Stop Talking. Crown Publishers.',
+      'Grant, A. M., Gino, F., & Hofmann, D. A. (2011). Reversing the Extraverted Leadership Advantage. Academy of Management Journal, 54(3), 528-550.',
+      'Helgoe, L. (2008). Introvert Power: Why Your Inner Life Is Your Hidden Strength. Sourcebooks.',
+    ],
     relatedPosts: ['emotional-drain-patterns', 'solitude-recovery', 'mbti-relationships'],
   },
   {
@@ -103,6 +113,16 @@ export const blogPosts: BlogPost[] = [
         content:
           '중요한 것은 우리도 모르게 타인의 감정 에너지를 소모시키고 있을 수 있다는 것입니다. 지나친 불평, 반복적인 같은 고민, 과도한 의존은 주변 사람들의 감정 에너지를 消耗시킬 수 있습니다. 서로의 감정 에너지를 존중하고 균형 있게 주고받는 관계가 진정으로 건강한 관계입니다.',
       },
+    ],
+    author: {
+      name: '이수현',
+      role: '성격 심리 전문 에디터',
+      bio: '성격 심리학과 자기이해를 주제로 10년간 콘텐츠를 연구해온 에디터입니다. 내향성과 외향성의 스펙트럼, 인간관계 패턴을 쉬운 언어로 풀어냅니다.',
+    },
+    references: [
+      'Aron, E. N. (1996). The Highly Sensitive Person. Broadway Books.',
+      'Figley, C. R. (1995). Compassion Fatigue: Coping with Secondary Traumatic Stress Disorder. Brunner/Mazel.',
+      'Maslach, C., & Leiter, M. P. (1997). The Truth About Burnout. Jossey-Bass.',
     ],
     relatedPosts: ['introvert-strengths', 'boundaries-setting', 'stress-types'],
   },
@@ -149,6 +169,16 @@ export const blogPosts: BlogPost[] = [
           'MBTI 상성으로 보면 잘 맞는 유형이 있다고 하지만, 실제 관계에서는 서로를 이해하려는 노력이 더 중요합니다. 성격 유형이 완전히 반대인 커플도 서로의 차이를 존중하고 이해하면 더욱 풍요로운 관계가 될 수 있습니다. MBTI는 타인을 판단하는 도구가 아니라, 서로를 이해하는 출발점으로 활용하세요.',
       },
     ],
+    author: {
+      name: '박지민',
+      role: '심리학 전공 콘텐츠 큐레이터',
+      bio: '심리학을 전공하고 MBTI 기반의 성격·관계 콘텐츠를 연구합니다. 이론을 일상에 적용하는 실용적인 글쓰기를 지향합니다.',
+    },
+    references: [
+      'Myers, I. B., & Myers, P. B. (1980). Gifts Differing: Understanding Personality Type. Davies-Black Publishing.',
+      'Keirsey, D. (1998). Please Understand Me II: Temperament, Character, Intelligence. Prometheus Nemesis.',
+      'Jung, C. G. (1921). Psychological Types. Princeton University Press.',
+    ],
     relatedPosts: ['introvert-strengths', 'intuitive-vs-sensing', 'emotional-drain-patterns'],
   },
   {
@@ -188,6 +218,16 @@ export const blogPosts: BlogPost[] = [
         content:
           '고독을 건강하게 활용하려면 의식적으로 실천해야 합니다. 하루 중 짧더라도 혼자만의 시간을 정기적으로 확보하세요. 그 시간에 스마트폰이나 미디어 없이 자신의 생각과 감정에 집중해보세요. 명상, 일기 쓰기, 산책 등의 활동이 이 시간을 더욱 풍요롭게 만들어줍니다. 고독의 시간이 길수록 좋은 것이 아닙니다. 적절한 균형을 찾는 것이 중요합니다.',
       },
+    ],
+    author: {
+      name: '김민서',
+      role: '자기계발·인간관계 칼럼니스트',
+      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
+    },
+    references: [
+      'Buchholz, E. S. (1997). The Call of Solitude: Alonetime in a World of Attachment. Simon & Schuster.',
+      'Raichle, M. E. et al. (2001). A Default Mode of Brain Function. Proceedings of the National Academy of Sciences, 98(2), 676-682.',
+      'Long, C. R., & Averill, J. R. (2003). Solitude: An Exploration of Benefits of Being Alone. Journal for the Theory of Social Behaviour, 33(1), 21-44.',
     ],
     relatedPosts: ['introvert-strengths', 'emotional-recovery-types', 'mindfulness-habits'],
   },
@@ -234,6 +274,16 @@ export const blogPosts: BlogPost[] = [
           '중요한 것은 자신에게 맞는 해소 방법을 찾는 것입니다. 타인의 방법이 효과적으로 보인다고 억지로 따라 할 필요는 없습니다. 다만 스트레스 해소 방법이 한 가지뿐이라면, 그 방법을 쓸 수 없는 상황에서는 더 힘들어질 수 있습니다. 평소에 다양한 방법을 시도해보고 자신만의 스트레스 해소 레퍼토리를 만들어두는 것이 좋습니다.',
       },
     ],
+    author: {
+      name: '김민서',
+      role: '자기계발·인간관계 칼럼니스트',
+      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
+    },
+    references: [
+      'Selye, H. (1974). Stress Without Distress. J.B. Lippincott.',
+      'McEwen, B. S. (1998). Stress, Adaptation, and Disease: Allostasis and Allostatic Load. Annals of the New York Academy of Sciences, 840, 33-44.',
+      'Lazarus, R. S., & Folkman, S. (1984). Stress, Appraisal, and Coping. Springer.',
+    ],
     relatedPosts: ['emotional-drain-patterns', 'solitude-recovery', 'emotional-recovery-types'],
   },
   {
@@ -279,6 +329,16 @@ export const blogPosts: BlogPost[] = [
           '심리학자 크리스틴 네프의 연구에 따르면, 자기 자비 — 자신을 친구 대하듯 따뜻하게 대하는 능력 — 가 높은 사람들이 오히려 더 높은 성취를 이룬다고 합니다. 자기 비판이 동기를 높인다는 믿음과 달리, 자기 자비가 더 지속 가능한 성장의 원동력이 됩니다.',
       },
     ],
+    author: {
+      name: '김민서',
+      role: '자기계발·인간관계 칼럼니스트',
+      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
+    },
+    references: [
+      'Brown, B. (2010). The Gifts of Imperfection: Let Go of Who You Think You\'re Supposed to Be. Hazelden Publishing.',
+      'Neff, K. (2011). Self-Compassion: The Proven Power of Being Kind to Yourself. William Morrow.',
+      'Hewitt, P. L., & Flett, G. L. (1991). Perfectionism in the Self and Social Contexts. Journal of Personality and Social Psychology, 60(3), 456-470.',
+    ],
     relatedPosts: ['stress-types', 'self-efficacy-habits', 'boundaries-setting'],
   },
   {
@@ -318,6 +378,16 @@ export const blogPosts: BlogPost[] = [
         content:
           '심리학자들은 공감(empathy)과 동정심(sympathy)을 구분합니다. 공감은 상대방의 감정 속으로 들어가 함께 느끼는 것이고, 동정심은 상대방의 상황을 이해하면서도 자신의 위치를 유지하는 것입니다. 지속 가능한 돌봄을 위해서는 공감과 함께 경계를 유지하는 동정심의 균형이 필요합니다.',
       },
+    ],
+    author: {
+      name: '이수현',
+      role: '성격 심리 전문 에디터',
+      bio: '성격 심리학과 자기이해를 주제로 10년간 콘텐츠를 연구해온 에디터입니다. 내향성과 외향성의 스펙트럼, 인간관계 패턴을 쉬운 언어로 풀어냅니다.',
+    },
+    references: [
+      'Aron, E. N. (1996). The Highly Sensitive Person. Broadway Books.',
+      'Figley, C. R. (1995). Compassion Fatigue: Coping with Secondary Traumatic Stress Disorder. Brunner/Mazel.',
+      'Singer, T., & Klimecki, O. M. (2014). Empathy and Compassion. Current Biology, 24(18), R875-R878.',
     ],
     relatedPosts: ['emotional-drain-patterns', 'boundaries-setting', 'solitude-recovery'],
   },
@@ -364,6 +434,16 @@ export const blogPosts: BlogPost[] = [
           '중요한 것은 애착 유형이 운명이 아니라는 것입니다. 어린 시절 형성된 패턴이라도 성인이 되어 자기 인식과 노력을 통해 변화할 수 있습니다. 안정 애착 파트너와의 관계, 심리 상담, 자기 인식 훈련 등을 통해 불안정한 애착 패턴을 건강하게 변화시키는 것이 가능합니다.',
       },
     ],
+    author: {
+      name: '박지민',
+      role: '심리학 전공 콘텐츠 큐레이터',
+      bio: '심리학을 전공하고 MBTI 기반의 성격·관계 콘텐츠를 연구합니다. 이론을 일상에 적용하는 실용적인 글쓰기를 지향합니다.',
+    },
+    references: [
+      'Bowlby, J. (1969). Attachment and Loss, Vol. 1: Attachment. Basic Books.',
+      'Ainsworth, M. D. S., Blehar, M. C., Waters, E., & Wall, S. (1978). Patterns of Attachment. Lawrence Erlbaum.',
+      'Levine, A., & Heller, R. (2010). Attached: The New Science of Adult Attachment. Penguin.',
+    ],
     relatedPosts: ['mbti-relationships', 'boundaries-setting', 'emotional-drain-patterns'],
   },
   {
@@ -409,6 +489,16 @@ export const blogPosts: BlogPost[] = [
           '건강한 관계는 서로의 경계선을 존중합니다. 당신의 "No"를 받아들이지 못하고 화를 내거나 관계를 위협하는 사람은, 사실 당신의 경계선이 아니라 당신의 복종을 원하는 것입니다. 자신의 경계선을 존중해주는 사람들이 당신 곁에 있을 자격이 있는 사람들입니다.',
       },
     ],
+    author: {
+      name: '이수현',
+      role: '성격 심리 전문 에디터',
+      bio: '성격 심리학과 자기이해를 주제로 10년간 콘텐츠를 연구해온 에디터입니다. 내향성과 외향성의 스펙트럼, 인간관계 패턴을 쉬운 언어로 풀어냅니다.',
+    },
+    references: [
+      'Cloud, H., & Townsend, J. (1992). Boundaries: When to Say Yes, How to Say No. Zondervan.',
+      'Lerner, H. G. (1985). The Dance of Anger. Harper & Row.',
+      'Katherine, A. (1993). Boundaries: Where You End and I Begin. MJF Books.',
+    ],
     relatedPosts: ['high-empathy', 'emotional-drain-patterns', 'self-efficacy-habits'],
   },
   {
@@ -449,6 +539,16 @@ export const blogPosts: BlogPost[] = [
           '관계 회복만큼 중요한 것은 같은 패턴이 반복되지 않도록 하는 것입니다. 내가 언제, 어떤 상황에서 분노가 폭발하는지 패턴을 파악하세요. 특정 주제, 피로감, 좌절감 등이 방아쇠 역할을 하는지 확인하고, 이 방아쇠 상황에서 대처하는 방법을 미리 준비해두세요.',
       },
     ],
+    author: {
+      name: '박지민',
+      role: '심리학 전공 콘텐츠 큐레이터',
+      bio: '심리학을 전공하고 MBTI 기반의 성격·관계 콘텐츠를 연구합니다. 이론을 일상에 적용하는 실용적인 글쓰기를 지향합니다.',
+    },
+    references: [
+      'Lerner, H. G. (1985). The Dance of Anger. Harper & Row.',
+      'Goleman, D. (1995). Emotional Intelligence. Bantam Books.',
+      'Tavris, C. (1989). Anger: The Misunderstood Emotion. Touchstone.',
+    ],
     relatedPosts: ['stress-types', 'boundaries-setting', 'mbti-relationships'],
   },
   {
@@ -488,6 +588,16 @@ export const blogPosts: BlogPost[] = [
         content:
           'N형의 강점은 창의적 사고와 미래 비전 제시입니다. 약점은 세부 사항을 놓치거나 비현실적일 수 있다는 것입니다. S형의 강점은 실용성과 구체적인 문제 해결 능력입니다. 약점은 큰 그림을 보는 것이나 변화에 적응하는 것이 어려울 수 있다는 것입니다. 두 유형이 협력하면 서로의 약점을 보완하는 최고의 팀이 됩니다.',
       },
+    ],
+    author: {
+      name: '박지민',
+      role: '심리학 전공 콘텐츠 큐레이터',
+      bio: '심리학을 전공하고 MBTI 기반의 성격·관계 콘텐츠를 연구합니다. 이론을 일상에 적용하는 실용적인 글쓰기를 지향합니다.',
+    },
+    references: [
+      'Keirsey, D. (1998). Please Understand Me II: Temperament, Character, Intelligence. Prometheus Nemesis.',
+      'Myers, I. B. (1980). Gifts Differing: Understanding Personality Type. Davies-Black Publishing.',
+      'McCrae, R. R., & Costa, P. T. (1989). Reinterpreting the Myers-Briggs Type Indicator. Journal of Personality, 57(1), 17-40.',
     ],
     relatedPosts: ['mbti-relationships', 'perfectionism', 'introvert-strengths'],
   },
@@ -534,6 +644,16 @@ export const blogPosts: BlogPost[] = [
           '충분한 수면, 규칙적인 운동, 건강한 식단은 자기 효능감과 직접적인 관련이 있습니다. 신체가 건강하고 에너지가 충분할 때 도전에 맞설 의지가 더 강해집니다. 피로하고 지쳤을 때 "나는 할 수 있어"라고 믿기 어렵습니다. 자기 효능감은 결국 자신을 잘 돌보는 것에서 시작됩니다.',
       },
     ],
+    author: {
+      name: '김민서',
+      role: '자기계발·인간관계 칼럼니스트',
+      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
+    },
+    references: [
+      'Bandura, A. (1997). Self-Efficacy: The Exercise of Control. W.H. Freeman.',
+      'Clear, J. (2018). Atomic Habits: An Easy & Proven Way to Build Good Habits. Avery.',
+      'Dweck, C. S. (2006). Mindset: The New Psychology of Success. Random House.',
+    ],
     relatedPosts: ['perfectionism', 'boundaries-setting', 'stress-types'],
   },
   {
@@ -578,6 +698,16 @@ export const blogPosts: BlogPost[] = [
         content:
           '마음챙김은 반드시 명상 쿠션에 앉아서 해야 하는 것이 아닙니다. 설거지를 할 때 물의 온도를, 걸을 때 발바닥의 감각을, 밥을 먹을 때 음식의 맛을 의식적으로 느끼는 것도 마음챙김입니다. 일상의 모든 순간을 현재에 머무는 연습의 기회로 삼을 수 있습니다.',
       },
+    ],
+    author: {
+      name: '김민서',
+      role: '자기계발·인간관계 칼럼니스트',
+      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
+    },
+    references: [
+      'Kabat-Zinn, J. (1990). Full Catastrophe Living: Using the Wisdom of Your Body and Mind. Delacorte Press.',
+      'Williams, M., & Penman, D. (2011). Mindfulness: An Eight-Week Plan for Finding Peace in a Frantic World. Rodale Press.',
+      'Hölzel, B. K. et al. (2011). Mindfulness Practice Leads to Increases in Regional Brain Gray Matter Density. Psychiatry Research, 191(1), 36-43.',
     ],
     relatedPosts: ['solitude-recovery', 'stress-types', 'self-efficacy-habits'],
   },
