@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://simsimpools.pages.dev/sitemap.xml
