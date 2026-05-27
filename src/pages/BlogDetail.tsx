@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { getBlogPostById, getRelatedPosts } from '../data/blog';
 import { SEOMeta } from '../components/seo/SEOMeta';
+import { Breadcrumb } from '../components/seo/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
 import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 import { ReadingProgress } from '../components/blog/ReadingProgress';
@@ -9,6 +10,15 @@ import { BlogMarkdown } from '../components/blog/BlogMarkdown';
 import { BlogCard } from '../components/blog/BlogCard';
 import { TextWithLinks } from '../components/blog/InternalLinks';
 import { AuthorBox } from '../components/shared/AuthorBox';
+
+/** 본문 글자 수 기준으로 단어 수 추정 (한국어 기준 약 2자/단어) */
+function estimateWordCount(post: ReturnType<typeof getBlogPostById>): number {
+  if (!post) return 0;
+  if (post.body) return Math.round(post.body.length / 2);
+  return Math.round(
+    post.sections.reduce((sum, s) => sum + (s.content?.length ?? 0) + (s.heading?.length ?? 0), 0) / 2
+  );
+}
 
 const DEFAULT_BLOG_AUTHOR = {
   name: '심심풀이 편집팀',
@@ -45,12 +55,17 @@ export function BlogDetail() {
         description={post.excerpt}
         canonical={`/blog/${post.id}`}
         ogType="article"
+        publishedAt={post.publishedAt}
+        modifiedAt={post.lastModified ?? post.publishedAt}
+        articleAuthor={post.author?.name ?? '심심풀이 편집팀'}
+        keywords={post.tags}
       />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'BlogPosting',
+            '@id': `${BASE_URL}/blog/${post.id}#article`,
             headline: post.title,
             description: post.excerpt,
             datePublished: post.publishedAt,
@@ -61,17 +76,34 @@ export function BlogDetail() {
               '@id': `${BASE_URL}/blog/${post.id}`,
             },
             author: post.author
-              ? { '@type': 'Person', name: post.author.name, jobTitle: post.author.role }
+              ? {
+                  '@type': 'Person',
+                  name: post.author.name,
+                  jobTitle: post.author.role,
+                }
               : { '@type': 'Organization', name: '심심풀이 편집팀' },
             publisher: {
               '@type': 'Organization',
+              '@id': `${BASE_URL}/#organization`,
               name: '심심풀이',
               url: BASE_URL,
-              logo: { '@type': 'ImageObject', url: `${BASE_URL}/favicon.ico` },
+              logo: {
+                '@type': 'ImageObject',
+                url: `${BASE_URL}/og-image.png`,
+                width: 1200,
+                height: 630,
+              },
+            },
+            image: {
+              '@type': 'ImageObject',
+              url: `${BASE_URL}/og-image.png`,
+              width: 1200,
+              height: 630,
             },
             keywords: post.tags.join(', '),
+            articleSection: post.category,
+            wordCount: estimateWordCount(post),
             inLanguage: 'ko-KR',
-            image: `${BASE_URL}/og-image.png`,
           })}
         </script>
       </Helmet>
@@ -81,17 +113,14 @@ export function BlogDetail() {
 
       <div className="section-container py-10 max-w-3xl mx-auto">
 
-        {/* ── 브레드크럼 ── */}
-        <nav
-          aria-label="breadcrumb"
-          className="flex items-center gap-1.5 text-xs text-slate-400 mb-8"
-        >
-          <Link to="/" className="hover:text-slate-600 transition-colors">홈</Link>
-          <span>/</span>
-          <Link to="/blog" className="hover:text-slate-600 transition-colors">칼럼</Link>
-          <span>/</span>
-          <span className="text-slate-500 line-clamp-1">{post.title}</span>
-        </nav>
+        {/* ── 브레드크럼 + BreadcrumbList schema ── */}
+        <Breadcrumb
+          items={[
+            { label: '홈', href: '/' },
+            { label: '칼럼', href: '/blog' },
+            { label: post.title },
+          ]}
+        />
 
         {/* ── 아티클 헤더 ── */}
         <article>

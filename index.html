@@ -3,26 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── 기본 메타 ──────────────────────────────────────────────────── -->
     <meta name="theme-color" content="#7c3aed" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="author" content="심심풀이 편집팀" />
     <meta name="language" content="ko" />
+    <meta name="geo.region" content="KR" />
+
+    <!-- ── 기본 타이틀 / 설명 (react-helmet-async가 페이지별로 덮어씀) ── -->
+    <title>심심풀이 — 심리 테스트 &amp; 성격 분석 플랫폼</title>
+    <meta
+      name="description"
+      content="나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠. 동물 유형, 연애 성향, 스트레스 반응 등 다양한 심리 테스트를 무료로 즐겨보세요."
+    />
+
+    <!-- ── Open Graph (사이트 기본값) ───────────────────────────────────── -->
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:site_name" content="심심풀이" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="심심풀이 — 심리 테스트 &amp; 성격 분석 플랫폼" />
+    <meta property="og:description" content="나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠. 다양한 심리 테스트를 무료로 즐겨보세요." />
+    <meta property="og:url" content="https://simsimpools.co.kr/" />
+    <meta property="og:image" content="https://simsimpools.co.kr/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="심심풀이 — 심리 테스트 &amp; 성격 분석 플랫폼" />
+
+    <!-- ── Twitter Card (사이트 기본값) ─────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="심심풀이 — 심리 테스트 &amp; 성격 분석 플랫폼" />
+    <meta name="twitter:description" content="나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠. 다양한 심리 테스트를 무료로 즐겨보세요." />
+    <meta name="twitter:image" content="https://simsimpools.co.kr/og-image.png" />
+    <meta name="twitter:image:alt" content="심심풀이 — 심리 테스트 &amp; 성격 분석 플랫폼" />
+
+    <!-- ── 전역 구조화 데이터 (WebSite + Organization) ────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://simsimpools.co.kr/#website",
+          "name": "심심풀이",
+          "alternateName": "심심풀이 심리 테스트",
+          "url": "https://simsimpools.co.kr",
+          "description": "심리학을 일상으로. 자기이해를 즐겁게. 무료 심리 테스트와 심리학 칼럼을 제공합니다.",
+          "inLanguage": "ko-KR",
+          "publisher": { "@id": "https://simsimpools.co.kr/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://simsimpools.co.kr/blog?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://simsimpools.co.kr/#organization",
+          "name": "심심풀이",
+          "url": "https://simsimpools.co.kr",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://simsimpools.co.kr/#logo",
+            "url": "https://simsimpools.co.kr/og-image.png",
+            "width": 1200,
+            "height": 630,
+            "caption": "심심풀이 로고"
+          },
+          "image": { "@id": "https://simsimpools.co.kr/#logo" },
+          "description": "심리학을 일상의 언어로 풀어내는 무료 심리 테스트 & 칼럼 플랫폼",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "kmwppp@daum.net",
+            "contactType": "customer service",
+            "availableLanguage": "Korean"
+          },
+          "areaServed": "KR",
+          "sameAs": []
+        }
+      ]
+    }
+    </script>
+
+    <!-- ── 파비콘 ─────────────────────────────────────────────────────── -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>"
+    />
+
+    <!-- ── 웹폰트 ─────────────────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>심심풀이 - 심리 테스트 & 성격 분석 플랫폼</title>
-    <meta
-      name="description"
-      content="나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠. 동물 유형, 연애 성향, 스트레스 반응 등 다양한 심리 테스트를 무료로 즐겨보세요."
-    />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- ── Google Analytics ───────────────────────────────────────────── -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQJ13C34WZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

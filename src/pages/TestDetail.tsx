@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getTestById } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
+import { Breadcrumb } from '../components/seo/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
 import { useTestState } from '../hooks/useTestState';
 import { TestSEOSection } from '../components/test/TestSEOSection';
@@ -55,8 +56,20 @@ export function TestDetail() {
           description={test.description}
           canonical={`/tests/${test.id}`}
           ogType="article"
+          publishedAt={test.publishedAt}
+          modifiedAt={test.lastModified ?? test.publishedAt}
+          articleAuthor={test.author?.name}
+          keywords={test.tags}
         />
         <div className="section-container py-16 max-w-2xl mx-auto">
+          {/* 브레드크럼 + BreadcrumbList schema */}
+          <Breadcrumb
+            items={[
+              { label: '홈', href: '/' },
+              { label: '심리 테스트', href: '/tests' },
+              { label: test.title },
+            ]}
+          />
           <div className="text-center">
             <div className="text-7xl mb-6">{test.thumbnail}</div>
             <div className="mb-3">

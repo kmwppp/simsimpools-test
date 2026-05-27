@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { getTestById } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
+import { Breadcrumb } from '../components/seo/Breadcrumb';
 import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 import { Badge } from '../components/ui/Badge';
 
@@ -52,6 +53,16 @@ export function ResultPage() {
       />
 
       <div className="section-container py-10 max-w-2xl mx-auto">
+        {/* 브레드크럼 + BreadcrumbList schema */}
+        <Breadcrumb
+          items={[
+            { label: '홈', href: '/' },
+            { label: '심리 테스트', href: '/tests' },
+            { label: test.title, href: `/tests/${testId}` },
+            { label: `${result.emoji} ${result.title}` },
+          ]}
+        />
+
         {/* Result hero */}
         <div className="card overflow-hidden mb-6">
           <div className="bg-gradient-to-br from-brand-600 to-indigo-700 text-white p-8 text-center">

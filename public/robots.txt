@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# 중복/noindex 페이지 크롤 제외
+Disallow: /results/
+
 Sitemap: https://simsimpools.co.kr/sitemap.xml
