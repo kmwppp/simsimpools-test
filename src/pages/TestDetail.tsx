@@ -4,6 +4,7 @@ import { getTestById } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Badge } from '../components/ui/Badge';
 import { useTestState } from '../hooks/useTestState';
+import { TestSEOSection } from '../components/test/TestSEOSection';
 
 export function TestDetail() {
   const { testId = '' } = useParams<{ testId: string }>();
@@ -91,6 +92,9 @@ export function TestDetail() {
               테스트 시작하기
             </button>
           </div>
+
+          {/* SEO 설명 섹션 */}
+          <TestSEOSection testId={testId} />
         </div>
       </>
     );
