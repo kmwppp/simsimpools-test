@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NAV = {
   service: [
-    { label: '심리 테스트', to: '/tests' },
+    { label: '짧은 문답', to: '/tests' },
     { label: '에세이', to: '/blog' },
     { label: '소개 (About)', to: '/about' },
     { label: '문의하기 (Contact)', to: '/contact' },
@@ -33,7 +33,7 @@ export function Footer() {
 
             <p className="text-sm leading-relaxed max-w-xs mb-3 text-slate-400">
               왜 이렇게 되는 건지 설명하기 어려운 날들을 위한 사이트.<br />
-              심리 테스트 5가지, 관찰 에세이 18편 — 모두 무료입니다.
+              짧은 문답 5가지, 관찰 에세이 19편을 조용히 엮고 있습니다.
             </p>
 
             {/* 운영 정보 */}
@@ -126,8 +126,8 @@ export function Footer() {
               © 2025–{year} 심심풀이. All rights reserved.
             </p>
             <p className="text-xs text-slate-600 max-w-sm text-left sm:text-right leading-relaxed">
-              본 사이트의 심리 테스트는 오락·자기탐색 목적으로 제작되었으며,
-              전문적인 심리 진단을 대체하지 않습니다.{' '}
+              이곳의 문답과 글은 개인적인 관찰을 돕기 위한 콘텐츠이며,
+              전문적인 심리 진단을 대신하지 않습니다.{' '}
               <Link to="/disclaimer" className="underline hover:text-slate-400">
                 면책고지
               </Link>

@@ -2,28 +2,28 @@ import { Test } from '../../types/test';
 
 export const animalPersonalityTest: Test = {
   id: 'animal-personality',
-  title: '나는 어떤 동물 유형일까?',
-  subtitle: '행동 패턴으로 알아보는 나의 동물 성격 유형',
+  title: '내 반응은 어떤 동물과 닮았을까?',
+  subtitle: '일상에서 자주 나오는 반응을 동물 이미지로 가볍게 떠올려보기',
   description:
-    '고양이, 강아지, 여우, 올빼미 중 내 성격과 가장 닮은 동물은 무엇일까요? 10가지 질문으로 알아보는 나의 동물 성격 유형 테스트입니다.',
-  category: '성격 유형',
+    '고양이, 강아지, 여우, 올빼미 중 내가 자주 보이는 반응과 가까운 이미지를 10가지 질문으로 살펴봅니다.',
+  category: '반응 관찰',
   categoryColor: 'violet',
   duration: '3~5분',
   questionCount: 10,
-  tags: ['성격', '유형', '동물', '자기이해'],
+  tags: ['반응', '관계', '에너지', '관찰'],
   thumbnail: '🦊',
   popular: true,
   author: {
     name: '이수현',
     role: '심리 콘텐츠 기획자',
-    bio: '심리학을 일상의 언어로 풀어내는 콘텐츠를 기획합니다. 성격 유형과 자기이해에 깊은 관심을 갖고 있습니다.',
+    bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다.',
   },
   publishedAt: '2025-08-01',
   lastModified: '2026-03-10',
   references: [
     'Carl Jung (1921). Psychological Types. Princeton University Press.',
     'McCrae, R. R., & Costa, P. T. (1987). Validation of the five-factor model of personality. Journal of Personality and Social Psychology.',
-    '한국심리학회 (2018). 성격심리학 — 자기이해와 타인 이해의 심리학적 접근.',
+    '한국심리학회 (2018). 성격심리학.',
   ],
   questions: [
     {

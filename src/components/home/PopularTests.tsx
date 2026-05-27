@@ -10,8 +10,8 @@ export function PopularTests() {
       <div className="section-container">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="section-title">인기 테스트</h2>
-            <p className="section-subtitle">지금 많이 하고 있는 심리 테스트</p>
+            <h2 className="section-title">많이 열어본 문답</h2>
+            <p className="section-subtitle">짧은 질문으로 내 반응을 떠올려봅니다</p>
           </div>
           <Link to="/tests" className="text-brand-600 text-sm font-medium hover:underline hidden sm:block">
             전체 보기 →
@@ -47,7 +47,7 @@ export function PopularTests() {
 
         <div className="mt-6 text-center sm:hidden">
           <Link to="/tests" className="btn-outline text-sm">
-            전체 테스트 보기
+            전체 보기
           </Link>
         </div>
       </div>

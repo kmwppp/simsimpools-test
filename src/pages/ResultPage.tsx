@@ -57,7 +57,7 @@ export function ResultPage() {
         <Breadcrumb
           items={[
             { label: '홈', href: '/' },
-            { label: '심리 테스트', href: '/tests' },
+            { label: '짧은 문답', href: '/tests' },
             { label: test.title, href: `/tests/${testId}` },
             { label: `${result.emoji} ${result.title}` },
           ]}
@@ -154,7 +154,7 @@ export function ResultPage() {
 
         {/* Self Guide */}
         <div className="card p-6 bg-gradient-to-br from-brand-50 to-indigo-50 border-brand-100 mb-6">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">💌 자기이해 가이드</h2>
+          <h2 className="text-lg font-bold text-slate-800 mb-3">💌 돌아볼 장면</h2>
           <p className="text-slate-600 leading-relaxed text-sm">{result.selfGuide}</p>
         </div>
 
@@ -164,17 +164,17 @@ export function ResultPage() {
             결과 공유하기 📤
           </button>
           <Link to={`/tests/${testId}`} className="btn-secondary flex-1 sm:flex-none">
-            다시 테스트하기
+            다시 해보기
           </Link>
           <Link to="/tests" className="btn-outline flex-1 sm:flex-none">
-            다른 테스트
+            다른 문답
           </Link>
         </div>
 
         {/* Related Tests */}
         {relatedTests.length > 0 && (
           <div className="mb-10">
-            <h2 className="text-lg font-bold text-slate-800 mb-4">관련 테스트도 해보세요</h2>
+            <h2 className="text-lg font-bold text-slate-800 mb-4">비슷한 문답도 있어요</h2>
             <div className="space-y-3">
               {relatedTests.map(t => t && (
                 <Link

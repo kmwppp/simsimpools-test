@@ -5,9 +5,9 @@ import { SEOMeta } from '../components/seo/SEOMeta';
 const BASE_URL = 'https://simsimpools.co.kr';
 
 const CHANGELOG = [
-  { date: '2026년 5월', note: '에세이 18편 관찰 중심 문체 개편, 독자 피드백 기능 추가, 수정일 표시 적용' },
+  { date: '2026년 5월', note: '에세이 19편 관찰 중심 문체 개편, 독자 피드백 기능 추가, 수정일 표시 적용' },
   { date: '2026년 3월', note: '사이트 전체 UI 개편 및 에세이 카테고리 재편' },
-  { date: '2026년 1월', note: '심리 테스트 5종 추가 (성격·연애·스트레스·회복·감정)' },
+  { date: '2026년 1월', note: '짧은 문답 5종 추가 (관계·연애·스트레스·회복·감정)' },
   { date: '2025년 11월', note: '심심풀이 서비스 오픈, 에세이 1차 게시 (11편)' },
 ];
 
@@ -38,7 +38,7 @@ export function About() {
               url: BASE_URL,
               email: 'kmwppp@daum.net',
               foundingDate: '2025',
-              description: '설명하기 어려운 나의 반응들을 관찰하는 심리 테스트 & 에세이 사이트',
+              description: '말로 잘 정리되지 않는 피로와 서운함, 관계의 어긋남을 생활 가까이에서 관찰해 적는 독립 콘텐츠 사이트',
               inLanguage: 'ko-KR',
               sameAs: [
                 'https://github.com/kmwppp/simsimpools-test',
@@ -75,7 +75,7 @@ export function About() {
             심심풀이는 사람들이 자신의 반응을 관찰하는 데 도움을 주는 독립 콘텐츠 사이트입니다.
             재밌게 놀고 왔는데 집에 오자마자 혼자 있고 싶은 이유, 거절하고 나서 왜 내가 더 불편한지,
             어떤 사람을 만나고 오면 유난히 지치는 이유처럼 —
-            설명하기 어려운 내 반응들을 조금 더 선명하게 들여다보기 위한 테스트와 에세이를 만들고 있습니다.
+            설명하기 어려운 내 반응들을 조금 더 선명하게 들여다보기 위한 짧은 문답과 에세이를 만들고 있습니다.
           </p>
           <p>
             심리학 이론을 배우는 것이 목적이 아닙니다.
@@ -85,9 +85,9 @@ export function About() {
 
           <h2>콘텐츠에 대해</h2>
           <p>
-            테스트 결과는 "당신은 이런 사람입니다"라는 선언이 아닙니다.
+            문답 결과는 "당신은 이런 사람입니다"라는 선언이 아닙니다.
             지금의 나를 관찰하는 출발점에 가깝습니다.
-            같은 테스트를 1년 뒤에 다시 하면 달라질 수 있고, 컨디션에 따라 다르게 나올 수도 있어요.
+            같은 문답을 1년 뒤에 다시 하면 달라질 수 있고, 컨디션에 따라 다르게 나올 수도 있어요.
             그 변화 자체가 나에 대한 정보입니다.
           </p>
           <p>
@@ -140,11 +140,11 @@ export function About() {
             {[
               {
                 title: '콘텐츠 기준',
-                desc: '모든 글은 심리학 관련 학술 자료, 단행본, 연구 논문을 참고하여 작성됩니다. 각 칼럼 하단에는 참고문헌을 명시합니다.',
+                desc: '모든 글은 실제 생활에서 반복되는 감정의 장면을 중심에 두고 작성합니다. 필요한 경우 관련 자료를 참고하되, 이론 설명보다 경험의 결을 우선합니다.',
               },
               {
                 title: '전문성 고지',
-                desc: '심심풀이의 테스트와 칼럼은 심리학 이론을 바탕으로 한 교육·오락 목적의 콘텐츠입니다. 임상 심리 진단이나 정신건강 의학적 판단을 대체하지 않습니다.',
+                desc: '심심풀이의 문답과 에세이는 개인적인 관찰을 돕기 위한 콘텐츠입니다. 임상 심리 진단이나 정신건강 의학적 판단을 대체하지 않습니다.',
               },
               {
                 title: '광고 정책',
@@ -193,12 +193,12 @@ export function About() {
 
         {/* ── CTA ── */}
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">지금 시작해보세요</h2>
+          <h2 className="text-2xl font-bold text-slate-800 mb-4">천천히 둘러보세요</h2>
           <p className="text-slate-500 mb-6 leading-relaxed">
-            심리 테스트와 에세이로 나를 조금 더 선명하게 들여다보세요.
+            글을 읽다가 마음에 남는 장면이 있다면, 짧은 질문으로 내 경우도 함께 떠올려볼 수 있습니다.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/tests" className="btn-primary">심리 테스트 시작</Link>
+            <Link to="/tests" className="btn-primary">질문 살펴보기</Link>
             <Link to="/blog" className="btn-secondary">에세이 읽기</Link>
           </div>
         </div>

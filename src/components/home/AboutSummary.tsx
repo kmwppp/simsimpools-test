@@ -15,15 +15,15 @@ export function AboutSummary() {
             어떤 사람을 만나고 나면 유독 기운이 빠지는 이유.
           </p>
           <p className="text-slate-600 leading-relaxed mb-8 max-w-xl mx-auto">
-            그 이유를 딱 꼬집어 말하기 어려운 날들을 위한 테스트와 에세이를 만들고 있습니다.
+            그 이유를 딱 꼬집어 말하기 어려운 날들을 위한 기록과 짧은 질문들을 만들고 있습니다.
             2025년부터 개인이 운영하는 독립 콘텐츠 사이트입니다.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
             {[
-              { icon: '🎯', title: '테스트 5가지', desc: '성격·연애·스트레스·감정·회복' },
-              { icon: '✍️', title: '에세이 18편', desc: '관찰 중심 심리 에세이, 계속 업데이트' },
-              { icon: '🎁', title: '완전 무료', desc: '회원 가입 없이 모든 콘텐츠 이용 가능' },
+              { icon: '🎯', title: '질문 5가지', desc: '일상의 반응을 가볍게 살피는 문답' },
+              { icon: '✍️', title: '에세이 19편', desc: '관계와 감정의 장면을 기록' },
+              { icon: '🎁', title: '회원 가입 없음', desc: '바로 읽고 조용히 돌아볼 수 있습니다' },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-5 shadow-sm">
                 <div className="text-2xl mb-2">{icon}</div>

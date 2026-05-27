@@ -11,8 +11,8 @@ export function Home() {
   return (
     <>
       <SEOMeta
-        title="심심풀이 — 심리 테스트 & 관찰 에세이"
-        description="왜 이렇게 되는 건지 설명하기 어려운 날들을 위한 사이트. 심리 테스트 5가지와 관찰 에세이 18편을 무료로 제공합니다."
+        title="심심풀이 — 설명하기 어려운 마음의 장면들"
+        description="재밌게 놀고 돌아온 뒤의 피로, 거절하고 난 뒤의 불편함, 가까운 사람과 자꾸 엇갈리는 순간을 조용히 관찰해 적습니다."
         canonical="/"
       />
       <Helmet>
@@ -24,7 +24,7 @@ export function Home() {
               '@id': 'https://simsimpools.co.kr/#website',
               name: '심심풀이',
               url: 'https://simsimpools.co.kr',
-              description: '설명하기 어려운 나의 반응들을 관찰하는 심리 테스트 & 에세이 사이트',
+              description: '말로 잘 정리되지 않는 피로와 서운함, 관계의 어긋남을 생활 가까이에서 관찰해 적는 독립 콘텐츠 사이트',
               inLanguage: 'ko-KR',
               publisher: { '@id': 'https://simsimpools.co.kr/#organization' },
             },
@@ -35,7 +35,7 @@ export function Home() {
               url: 'https://simsimpools.co.kr',
               email: 'kmwppp@daum.net',
               foundingDate: '2025',
-              description: '설명하기 어려운 나의 반응들을 관찰하는 독립 콘텐츠 사이트',
+              description: '사람들이 자주 겪지만 쉽게 설명하지 못하는 감정의 장면을 담백하게 기록하는 독립 콘텐츠 사이트',
               inLanguage: 'ko-KR',
               sameAs: [
                 'https://github.com/kmwppp/simsimpools-test',

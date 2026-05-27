@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 /** 섹션 본문 내 키워드 → 내부 링크 자동 변환 */
 const LINK_MAP: [RegExp, string][] = [
-  [/동물 성격 유형 테스트/g, '/tests/animal-personality'],
-  [/연애 성향 테스트/g, '/tests/love-style'],
-  [/스트레스 반응 유형 테스트/g, '/tests/stress-response'],
-  [/인간관계 거리감 테스트/g, '/tests/social-distance'],
-  [/감정 회복 스타일 테스트/g, '/tests/emotional-recovery'],
+  [/동물 이미지 문답/g, '/tests/animal-personality'],
+  [/연애 장면 문답/g, '/tests/love-style'],
+  [/스트레스 반응 문답/g, '/tests/stress-response'],
+  [/인간관계 거리감 문답/g, '/tests/social-distance'],
+  [/감정 회복 문답/g, '/tests/emotional-recovery'],
   [/감정 회복 스타일/g, '/tests/emotional-recovery'],
   // 블로그 포스트 내부 링크
   [/감정 소비 패턴/g, '/blog/emotional-drain-patterns'],

@@ -2,10 +2,10 @@ import { Test } from '../../types/test';
 
 export const stressResponseTest: Test = {
   id: 'stress-response',
-  title: '나의 스트레스 반응 유형은?',
+  title: '스트레스가 올라올 때 나는 어떻게 반응할까?',
   subtitle: '스트레스 상황에서 드러나는 나의 대처 방식',
   description:
-    '같은 스트레스를 받아도 사람마다 반응하는 방식이 다릅니다. 8가지 질문으로 알아보는 나의 스트레스 반응 유형과 효과적인 해소 방법을 확인해보세요.',
+    '같은 스트레스를 받아도 사람마다 먼저 나오는 반응은 다릅니다. 8가지 질문으로 내게 자주 나타나는 장면을 살펴봅니다.',
   category: '심리 성향',
   categoryColor: 'amber',
   duration: '3~4분',
@@ -16,7 +16,7 @@ export const stressResponseTest: Test = {
   author: {
     name: '이수현',
     role: '심리 콘텐츠 기획자',
-    bio: '심리학을 일상의 언어로 풀어내는 콘텐츠를 기획합니다. 스트레스 심리와 감정 조절에 깊은 관심을 갖고 있습니다.',
+    bio: '일상에서 반복되는 반응과 회복의 장면을 쉬운 언어로 기록합니다.',
   },
   publishedAt: '2025-08-10',
   lastModified: '2026-02-28',

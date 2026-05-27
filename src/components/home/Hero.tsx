@@ -13,7 +13,7 @@ export function Hero() {
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 bg-white/15 rounded-full px-4 py-1.5 text-sm mb-6">
             <span>🌙</span>
-            <span>심리 테스트 & 관찰 에세이</span>
+            <span>마음의 장면을 적는 작은 기록</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-5">
@@ -31,7 +31,7 @@ export function Hero() {
 
           <div className="flex flex-wrap gap-3">
             <Link to="/tests" className="btn-primary bg-white text-brand-700 hover:bg-brand-50 shadow-lg">
-              지금 테스트 시작하기
+              내 반응 살펴보기
             </Link>
             <Link to="/blog" className="btn-outline border-white/40 text-white hover:bg-white/10">
               에세이 읽기
@@ -41,9 +41,9 @@ export function Hero() {
           {/* Stats */}
           <div className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/20">
             {[
-              { value: '5가지', label: '심리 테스트' },
-              { value: '18편', label: '관찰 에세이' },
-              { value: '무료', label: '100% 무료' },
+              { value: '5가지', label: '짧은 문답' },
+              { value: '19편', label: '관찰 에세이' },
+              { value: '개인 운영', label: '2025년부터' },
             ].map(({ value, label }) => (
               <div key={label}>
                 <div className="text-2xl font-bold">{value}</div>

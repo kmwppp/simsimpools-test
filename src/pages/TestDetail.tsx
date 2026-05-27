@@ -66,7 +66,7 @@ export function TestDetail() {
           <Breadcrumb
             items={[
               { label: '홈', href: '/' },
-              { label: '심리 테스트', href: '/tests' },
+              { label: '짧은 문답', href: '/tests' },
               { label: test.title },
             ]}
           />
@@ -82,7 +82,7 @@ export function TestDetail() {
             <div className="flex justify-center gap-6 text-sm text-slate-500 mb-8">
               <span>⏱ {test.duration}</span>
               <span>📝 {test.questionCount}문항</span>
-              <span>🆓 무료</span>
+              <span>회원 가입 없음</span>
             </div>
 
             <div className="flex flex-wrap gap-2 justify-center mb-8">
@@ -94,16 +94,16 @@ export function TestDetail() {
             </div>
 
             <div className="bg-brand-50 rounded-2xl p-5 text-sm text-slate-600 text-left mb-8 border border-brand-100">
-              <p className="font-medium text-slate-700 mb-2">📌 테스트 안내</p>
+              <p className="font-medium text-slate-700 mb-2">📌 문답 안내</p>
               <ul className="space-y-1.5 list-disc list-inside">
                 <li>정답은 없습니다. 가장 직관적으로 느껴지는 답을 선택하세요.</li>
                 <li>너무 깊이 생각하지 말고 첫 번째 반응을 따라주세요.</li>
-                <li>결과는 오락 목적으로 제작되었습니다.</li>
+                <li>결과는 지금의 반응을 돌아보는 참고로만 읽어주세요.</li>
               </ul>
             </div>
 
             <button onClick={() => answerQuestion({})} className="btn-primary text-lg px-10 py-4 w-full sm:w-auto">
-              테스트 시작하기
+              질문 시작하기
             </button>
           </div>
 

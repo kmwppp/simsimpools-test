@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SITE_NAME = '심심풀이';
 const BASE_URL  = 'https://simsimpools.co.kr';
 const DEFAULT_DESC =
-  '나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠. 동물 유형, 연애 성향, 스트레스 반응 등 다양한 심리 테스트를 무료로 즐겨보세요.';
+  '말로 잘 정리되지 않는 피로와 서운함, 관계의 어긋남을 생활 가까이에서 관찰해 적습니다.';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 /* ── Props ───────────────────────────────────────────────────────────── */
@@ -33,7 +33,7 @@ export interface SEOMetaProps {
   articleAuthor?: string;
 
   /* ── 추가 메타 ───────────────────────────────────────── */
-  /** 키워드 배열 → meta name="keywords" */
+  /** 내부 호환용 키워드 배열. 검색용 meta keywords는 출력하지 않습니다. */
   keywords?: string[];
 }
 
@@ -74,9 +74,6 @@ export function SEOMeta({
       <title>{fullTitle}</title>
       <meta name="description" content={desc} />
       <meta name="robots" content={robotsContent} />
-      {keywords && keywords.length > 0 && (
-        <meta name="keywords" content={keywords.join(', ')} />
-      )}
       {articleAuthor && <meta name="author" content={articleAuthor} />}
 
       {/* ── Canonical ──────────────────────────────────────── */}

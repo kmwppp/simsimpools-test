@@ -10,7 +10,7 @@ export const emotionalRecoveryTest: Test = {
   categoryColor: 'emerald',
   duration: '3~4분',
   questionCount: 8,
-  tags: ['감정', '회복', '자기이해', '힐링'],
+  tags: ['감정', '회복', '관찰', '쉼'],
   thumbnail: '🌱',
   author: {
     name: '김민서',

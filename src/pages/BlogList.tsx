@@ -29,17 +29,16 @@ export function BlogList() {
   return (
     <>
       <SEOMeta
-        title="심리 에세이 — 감정·관계·자기이해를 관찰하는 글들"
-        description="재밌게 놀고 왔는데 왜 혼자 있고 싶은지, 거절했는데 왜 내가 더 불편한지. 설명하기 어려운 내 반응들을 관찰하는 에세이 18편."
+        title="관찰 에세이 — 설명하기 어려운 마음의 장면들"
+        description="재밌게 놀고 왔는데 왜 혼자 있고 싶은지, 거절했는데 왜 내가 더 불편한지. 말로 잘 정리되지 않는 반응을 관찰하는 에세이 19편."
         canonical="/blog"
-        keywords={['심리에세이', '자기이해', '감정회복', '인간관계심리', 'MBTI', '애착유형']}
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Blog',
-          name: '심심풀이 칼럼',
-          description: '심리학과 자기이해를 주제로 한 깊이 있는 칼럼',
+          name: '심심풀이 관찰 에세이',
+          description: '일상에서 반복되는 피로와 서운함, 관계의 어긋남을 관찰해 적은 글',
           url: `${BASE_URL}/blog`,
           inLanguage: 'ko-KR',
           publisher: {
@@ -76,8 +75,7 @@ export function BlogList() {
               이 글들은 그런 순간들 주변을 맴돕니다.
             </p>
             <p className="text-slate-500 leading-[1.92] text-[0.975rem]">
-              성격 심리, MBTI, 애착 이론, 감정 회복, 인간관계 경계선까지 —
-              심리학 이론을 설명하기 위한 글이 아니라,
+              이론을 먼저 설명하기보다, 실제로 마음이 걸렸던 장면에서 출발합니다.
               "나는 왜 이런 상황에서 이렇게 되는 걸까"를 같이 들여다보기 위한 글들입니다.
             </p>
           </div>

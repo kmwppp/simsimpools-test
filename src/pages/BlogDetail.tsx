@@ -281,13 +281,13 @@ export function BlogDetail() {
         {/* ── 테스트 CTA ── */}
         <div className="mt-10 card p-7 text-center bg-gradient-to-br from-slate-50 to-indigo-50 border-slate-100">
           <p className="font-bold text-slate-800 mb-2 text-lg">
-            직접 확인해보고 싶으신가요?
+            내 경우에는 어땠는지 떠올려보고 싶다면
           </p>
           <p className="text-sm text-slate-500 mb-5">
-            다양한 심리 테스트로 나를 더 깊이 이해해보세요.
+            몇 가지 짧은 질문으로 비슷한 장면을 천천히 되짚어볼 수 있습니다.
           </p>
           <Link to="/tests" className="btn-primary text-sm">
-            심리 테스트 보기 →
+            질문 살펴보기 →
           </Link>
         </div>
       </div>
