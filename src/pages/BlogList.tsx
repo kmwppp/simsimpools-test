@@ -29,9 +29,10 @@ export function BlogList() {
   return (
     <>
       <SEOMeta
-        title="심리 칼럼"
-        description="내향성, 감정 소비, MBTI, 애착 유형, 경계선 설정 등 심리와 자기이해에 관한 깊이 있는 칼럼을 읽어보세요."
+        title="심리 에세이 — 감정·관계·자기이해를 관찰하는 글들"
+        description="재밌게 놀고 왔는데 왜 혼자 있고 싶은지, 거절했는데 왜 내가 더 불편한지. 설명하기 어려운 내 반응들을 관찰하는 에세이 18편."
         canonical="/blog"
+        keywords={['심리에세이', '자기이해', '감정회복', '인간관계심리', 'MBTI', '애착유형']}
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify({
@@ -60,15 +61,26 @@ export function BlogList() {
       <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
         <div className="section-container py-14">
           <p className="text-xs font-bold tracking-[0.2em] text-brand-600 uppercase mb-3">
-            Column
+            Essay
           </p>
           <h1 className="text-4xl font-bold text-slate-900 mb-3 tracking-tight">
-            심리 칼럼
+            관찰 에세이
           </h1>
-          <p className="text-slate-500 max-w-lg leading-relaxed">
-            자기이해, 감정 회복, 인간관계—우리가 살면서 한 번쯤 마주하는 심리적 주제들을
-            편안한 언어로 풀어냅니다.
+          <p className="text-slate-500 max-w-lg leading-relaxed mb-6">
+            설명하기 어려운 내 반응들을 조금 더 선명하게 들여다봅니다.
           </p>
+          <div className="max-w-2xl">
+            <p className="text-slate-600 leading-[1.92] text-[0.975rem] mb-4">
+              왜 어떤 사람을 만나고 오면 유난히 지치는지, 거절하고 나서 오히려 내가 더 불편해지는 이유가 뭔지,
+              분명히 화가 난 건데 그 감정을 어디에 두어야 할지 모를 때가 있어요.
+              이 글들은 그런 순간들 주변을 맴돕니다.
+            </p>
+            <p className="text-slate-500 leading-[1.92] text-[0.975rem]">
+              성격 심리, MBTI, 애착 이론, 감정 회복, 인간관계 경계선까지 —
+              심리학 이론을 설명하기 위한 글이 아니라,
+              "나는 왜 이런 상황에서 이렇게 되는 걸까"를 같이 들여다보기 위한 글들입니다.
+            </p>
+          </div>
         </div>
       </div>
 
