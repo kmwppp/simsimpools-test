@@ -27,6 +27,12 @@ export interface TestResult {
   shareText: string;
 }
 
+export interface TestAuthor {
+  name: string;
+  role: string;
+  bio: string;
+}
+
 export interface TestMeta {
   id: string;
   title: string;
@@ -40,6 +46,14 @@ export interface TestMeta {
   thumbnail: string;
   popular?: boolean;
   isNew?: boolean;
+  /** 작성자 정보 */
+  author?: TestAuthor;
+  /** 최초 게시일 (YYYY-MM-DD) */
+  publishedAt?: string;
+  /** 마지막 수정일 (YYYY-MM-DD) */
+  lastModified?: string;
+  /** 데이터 출처 */
+  references?: string[];
 }
 
 export interface Test extends TestMeta {

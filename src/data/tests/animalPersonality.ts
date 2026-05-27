@@ -13,6 +13,18 @@ export const animalPersonalityTest: Test = {
   tags: ['성격', '유형', '동물', '자기이해'],
   thumbnail: '🦊',
   popular: true,
+  author: {
+    name: '이수현',
+    role: '심리 콘텐츠 기획자',
+    bio: '심리학을 일상의 언어로 풀어내는 콘텐츠를 기획합니다. 성격 유형과 자기이해에 깊은 관심을 갖고 있습니다.',
+  },
+  publishedAt: '2025-08-01',
+  lastModified: '2026-03-10',
+  references: [
+    'Carl Jung (1921). Psychological Types. Princeton University Press.',
+    'McCrae, R. R., & Costa, P. T. (1987). Validation of the five-factor model of personality. Journal of Personality and Social Psychology.',
+    '한국심리학회 (2018). 성격심리학 — 자기이해와 타인 이해의 심리학적 접근.',
+  ],
   questions: [
     {
       id: 1,

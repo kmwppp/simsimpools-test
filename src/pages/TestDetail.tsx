@@ -5,6 +5,7 @@ import { SEOMeta } from '../components/seo/SEOMeta';
 import { Badge } from '../components/ui/Badge';
 import { useTestState } from '../hooks/useTestState';
 import { TestSEOSection } from '../components/test/TestSEOSection';
+import { AuthorBox } from '../components/shared/AuthorBox';
 
 export function TestDetail() {
   const { testId = '' } = useParams<{ testId: string }>();
@@ -92,6 +93,20 @@ export function TestDetail() {
               테스트 시작하기
             </button>
           </div>
+
+          {/* 작성자 정보 */}
+          {test.author && test.publishedAt && (
+            <div className="mt-10">
+              <AuthorBox
+                author={test.author}
+                publishedAt={test.publishedAt}
+                lastModified={test.lastModified}
+                sources={test.references}
+                pageUrl={`/tests/${test.id}`}
+                pageTitle={test.title}
+              />
+            </div>
+          )}
 
           {/* SEO 설명 섹션 */}
           <TestSEOSection testId={testId} />

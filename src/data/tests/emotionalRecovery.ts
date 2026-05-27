@@ -12,6 +12,18 @@ export const emotionalRecoveryTest: Test = {
   questionCount: 8,
   tags: ['감정', '회복', '자기이해', '힐링'],
   thumbnail: '🌱',
+  author: {
+    name: '김민서',
+    role: '심리 콘텐츠 에디터',
+    bio: '심리학 이론을 실생활에 접목한 콘텐츠를 편집합니다. 감정 회복과 심리적 탄력성 연구에 관심이 많습니다.',
+  },
+  publishedAt: '2025-08-20',
+  lastModified: '2026-04-15',
+  references: [
+    'Seligman, M. E. P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-Being. Free Press.',
+    'Gross, J. J. (1998). The emerging field of emotion regulation. Review of General Psychology.',
+    '권석만 (2015). 긍정심리학 — 행복의 과학적 탐구. 학지사.',
+  ],
   questions: [
     {
       id: 1,

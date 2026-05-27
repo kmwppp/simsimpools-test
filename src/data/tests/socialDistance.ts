@@ -12,6 +12,18 @@ export const socialDistanceTest: Test = {
   questionCount: 8,
   tags: ['인간관계', '거리감', '소통', '성향'],
   thumbnail: '🌿',
+  author: {
+    name: '김민서',
+    role: '심리 콘텐츠 에디터',
+    bio: '심리학 이론을 실생활에 접목한 콘텐츠를 편집합니다. 사람들의 다양한 관계 패턴과 경계 설정에 관심이 많습니다.',
+  },
+  publishedAt: '2025-08-15',
+  lastModified: '2026-04-05',
+  references: [
+    'Hall, E. T. (1966). The Hidden Dimension. Anchor Books.',
+    'Eysenck, H. J. (1967). The Biological Basis of Personality. Thomas.',
+    '이훈진 (2019). 대인관계 심리학. 학지사.',
+  ],
   questions: [
     {
       id: 1,

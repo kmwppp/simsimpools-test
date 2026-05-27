@@ -8,6 +8,13 @@ import { ReadingProgress } from '../components/blog/ReadingProgress';
 import { BlogMarkdown } from '../components/blog/BlogMarkdown';
 import { BlogCard } from '../components/blog/BlogCard';
 import { TextWithLinks } from '../components/blog/InternalLinks';
+import { AuthorBox } from '../components/shared/AuthorBox';
+
+const DEFAULT_BLOG_AUTHOR = {
+  name: '심심풀이 편집팀',
+  role: '콘텐츠 에디터',
+  bio: '심리학을 일상의 언어로 풀어내는 콘텐츠를 기획하고 편집합니다.',
+};
 
 const BASE_URL = 'https://simsimpools.co.kr';
 
@@ -47,7 +54,7 @@ export function BlogDetail() {
             headline: post.title,
             description: post.excerpt,
             datePublished: post.publishedAt,
-            dateModified: post.publishedAt,
+            dateModified: post.lastModified ?? post.publishedAt,
             url: `${BASE_URL}/blog/${post.id}`,
             mainEntityOfPage: {
               '@type': 'WebPage',
@@ -125,19 +132,18 @@ export function BlogDetail() {
             </div>
           </header>
 
-          {/* ── 저자 카드 ── */}
-          {post.author && (
-            <div className="flex items-start gap-4 bg-slate-50 border border-slate-100 rounded-2xl p-5 mb-8">
-              <div className="w-11 h-11 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-lg flex-shrink-0">
-                {post.author.name[0]}
-              </div>
-              <div>
-                <p className="font-semibold text-slate-800 text-sm">{post.author.name}</p>
-                <p className="text-xs text-brand-600 mb-1">{post.author.role}</p>
-                <p className="text-xs text-slate-500 leading-relaxed">{post.author.bio}</p>
-              </div>
-            </div>
-          )}
+          {/* ── 저자 정보 (AuthorBox) ── */}
+          <AuthorBox
+            author={post.author ?? DEFAULT_BLOG_AUTHOR}
+            publishedAt={post.publishedAt}
+            lastModified={post.lastModified}
+            sources={post.references}
+            purpose="심리학 지식의 대중화와 독자의 자기이해를 돕기 위한 교육·정보 목적의 칼럼입니다."
+            updatePolicy="최신 연구 동향 및 독자 피드백을 반영하여 필요 시 내용을 보완합니다."
+            injectJsonLd={false}
+            pageUrl={`/blog/${post.id}`}
+            pageTitle={post.title}
+          />
 
           {/* ── 아티클 상단 광고 ── */}
           <AdPlaceholder position="article-top" className="mb-8" />

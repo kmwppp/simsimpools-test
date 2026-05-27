@@ -13,6 +13,18 @@ export const loveStyleTest: Test = {
   tags: ['연애', '사랑', '관계', '성향'],
   thumbnail: '💕',
   popular: true,
+  author: {
+    name: '박지민',
+    role: '상담심리 연구자',
+    bio: '상담심리학을 연구하며 관계와 애착 패턴을 다루는 콘텐츠를 작성합니다. 연애 심리와 대인관계에 관심이 많습니다.',
+  },
+  publishedAt: '2025-08-05',
+  lastModified: '2026-03-20',
+  references: [
+    'Sternberg, R. J. (1986). A triangular theory of love. Psychological Review.',
+    'Bowlby, J. (1969). Attachment and Loss, Vol. 1. Basic Books.',
+    'Lee, J. A. (1973). The Colors of Love: An Exploration of the Ways of Loving. New Press.',
+  ],
   questions: [
     {
       id: 1,

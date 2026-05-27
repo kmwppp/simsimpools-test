@@ -13,6 +13,18 @@ export const stressResponseTest: Test = {
   tags: ['스트레스', '심리', '감정', '건강'],
   thumbnail: '🌊',
   isNew: true,
+  author: {
+    name: '이수현',
+    role: '심리 콘텐츠 기획자',
+    bio: '심리학을 일상의 언어로 풀어내는 콘텐츠를 기획합니다. 스트레스 심리와 감정 조절에 깊은 관심을 갖고 있습니다.',
+  },
+  publishedAt: '2025-08-10',
+  lastModified: '2026-02-28',
+  references: [
+    'Lazarus, R. S., & Folkman, S. (1984). Stress, Appraisal, and Coping. Springer.',
+    'Selye, H. (1956). The Stress of Life. McGraw-Hill.',
+    '홍창의 외 (2017). 스트레스와 정신건강. 학지사.',
+  ],
   questions: [
     {
       id: 1,
