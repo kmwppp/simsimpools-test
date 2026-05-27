@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const NAV = {
   service: [
     { label: '심리 테스트', to: '/tests' },
-    { label: '칼럼', to: '/blog' },
+    { label: '에세이', to: '/blog' },
     { label: '소개 (About)', to: '/about' },
     { label: '문의하기 (Contact)', to: '/contact' },
   ],
@@ -30,10 +30,32 @@ export function Footer() {
                 심심풀이
               </span>
             </Link>
-            <p className="text-sm leading-relaxed max-w-xs mb-5 text-slate-400">
-              심리학을 일상으로. 자기이해를 즐겁게.<br />
-              나를 더 잘 이해하는 심리 테스트와 칼럼을 무료로 제공합니다.
+
+            <p className="text-sm leading-relaxed max-w-xs mb-3 text-slate-400">
+              왜 이렇게 되는 건지 설명하기 어려운 날들을 위한 사이트.<br />
+              심리 테스트 5가지, 관찰 에세이 18편 — 모두 무료입니다.
             </p>
+
+            {/* 운영 정보 */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600 mb-5">
+              <span>2025년 시작 · 개인 운영</span>
+              <span>·</span>
+              <a
+                href="mailto:kmwppp@daum.net"
+                className="text-slate-500 hover:text-brand-400 transition-colors"
+              >
+                kmwppp@daum.net
+              </a>
+              <span>·</span>
+              <a
+                href="https://github.com/kmwppp/simsimpools-test"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-500 hover:text-brand-400 transition-colors"
+              >
+                GitHub
+              </a>
+            </div>
 
             {/* AdSense 고지 */}
             <div className="bg-slate-800 rounded-xl px-4 py-3 text-xs text-slate-500 leading-relaxed max-w-xs">
@@ -101,7 +123,7 @@ export function Footer() {
         <div className="border-t border-slate-800 mt-10 pt-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p className="text-xs text-slate-500">
-              © {year} 심심풀이. All rights reserved.
+              © 2025–{year} 심심풀이. All rights reserved.
             </p>
             <p className="text-xs text-slate-600 max-w-sm text-left sm:text-right leading-relaxed">
               본 사이트의 심리 테스트는 오락·자기탐색 목적으로 제작되었으며,

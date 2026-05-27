@@ -74,15 +74,13 @@ export function BlogCard({ post, variant = 'default' }: Props) {
             <p className="text-slate-500 text-sm mb-3">{post.subtitle}</p>
             <p className="text-slate-600 leading-relaxed line-clamp-3 text-sm">{post.excerpt}</p>
             <div className="flex items-center gap-3 mt-5">
-              {post.author && (
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-xs">
-                    {post.author.name[0]}
-                  </div>
-                  <span className="text-xs text-slate-500">{post.author.name}</span>
-                </div>
-              )}
-              <span className="text-xs text-slate-400">{post.publishedAt}</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-slate-400">심심풀이 편집팀</span>
+              </div>
+              <span className="text-xs text-slate-300">·</span>
+              <span className="text-xs text-slate-400">
+                {recentlyUpdated ? `수정 ${post.lastModified}` : post.publishedAt}
+              </span>
               <span className="ml-auto text-sm font-medium text-brand-600 group-hover:underline">
                 읽기 →
               </span>

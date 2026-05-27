@@ -108,15 +108,11 @@ export function TestDetail() {
           </div>
 
           {/* 작성자 정보 */}
-          {test.author && test.publishedAt && (
+          {test.publishedAt && (
             <div className="mt-10">
               <AuthorBox
-                author={test.author}
                 publishedAt={test.publishedAt}
                 lastModified={test.lastModified}
-                sources={test.references}
-                pageUrl={`/tests/${test.id}`}
-                pageTitle={test.title}
               />
             </div>
           )}

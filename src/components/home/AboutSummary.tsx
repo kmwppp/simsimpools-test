@@ -5,24 +5,25 @@ export function AboutSummary() {
     <section className="py-16 bg-gradient-to-br from-brand-50 to-indigo-50">
       <div className="section-container">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="text-4xl mb-5">🧠</div>
+          <div className="text-4xl mb-5">🌙</div>
           <h2 className="text-3xl font-bold text-slate-800 mb-4">
-            심심풀이는 어떤 곳인가요?
+            심심풀이는 어떤 사이트인가요?
           </h2>
-          <p className="text-slate-600 leading-relaxed mb-4">
-            심심풀이는 단순한 테스트 사이트가 아닙니다. 심리학적 이론과 자기 이해 콘텐츠를 바탕으로,
-            누구나 쉽고 재미있게 자신을 탐색할 수 있는 플랫폼입니다.
+          <p className="text-slate-600 leading-relaxed mb-4 max-w-xl mx-auto">
+            재밌게 놀고 왔는데 아무 말도 하기 싫을 때,
+            거절했는데 왜 내가 더 불편한지,
+            어떤 사람을 만나고 나면 유독 기운이 빠지는 이유.
           </p>
-          <p className="text-slate-600 leading-relaxed mb-8">
-            각 테스트의 결과는 성격 특징, 장단점, 인간관계 스타일, 스트레스 패턴 등 풍부한 설명을 담고 있습니다.
-            정답은 없습니다. 오직 당신만의 고유한 이야기가 있을 뿐입니다.
+          <p className="text-slate-600 leading-relaxed mb-8 max-w-xl mx-auto">
+            그 이유를 딱 꼬집어 말하기 어려운 날들을 위한 테스트와 에세이를 만들고 있습니다.
+            2025년부터 개인이 운영하는 독립 콘텐츠 사이트입니다.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
             {[
-              { icon: '🔬', title: '심리학 기반', desc: '학문적 이론을 쉽게 풀어낸 콘텐츠' },
-              { icon: '💡', title: '깊이 있는 결과', desc: '결과 한 줄이 아닌, 나를 이해하는 설명' },
-              { icon: '🎁', title: '완전 무료', desc: '비용 없이 모든 콘텐츠를 즐길 수 있음' },
+              { icon: '🎯', title: '테스트 5가지', desc: '성격·연애·스트레스·감정·회복' },
+              { icon: '✍️', title: '에세이 18편', desc: '관찰 중심 심리 에세이, 계속 업데이트' },
+              { icon: '🎁', title: '완전 무료', desc: '회원 가입 없이 모든 콘텐츠 이용 가능' },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-5 shadow-sm">
                 <div className="text-2xl mb-2">{icon}</div>
@@ -33,7 +34,7 @@ export function AboutSummary() {
           </div>
 
           <Link to="/about" className="btn-primary">
-            더 알아보기
+            사이트 소개 보기
           </Link>
         </div>
       </div>

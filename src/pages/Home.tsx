@@ -11,28 +11,43 @@ export function Home() {
   return (
     <>
       <SEOMeta
-        title="심심풀이 - 심리 테스트 & 성격 분석 플랫폼"
-        description="나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠. 동물 유형, 연애 성향, 스트레스 반응 등 다양한 심리 테스트를 무료로 즐겨보세요."
+        title="심심풀이 — 심리 테스트 & 관찰 에세이"
+        description="왜 이렇게 되는 건지 설명하기 어려운 날들을 위한 사이트. 심리 테스트 5가지와 관찰 에세이 18편을 무료로 제공합니다."
         canonical="/"
       />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: '심심풀이',
-          url: 'https://simsimpools.co.kr',
-          description: '나를 더 잘 이해하는 심리 테스트와 성격 분석 콘텐츠 플랫폼',
-          inLanguage: 'ko-KR',
-          publisher: {
-            '@type': 'Organization',
-            name: '심심풀이',
-            url: 'https://simsimpools.co.kr',
-          },
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: 'https://simsimpools.co.kr/blog',
-            'query-input': '심리 테스트 칼럼',
-          },
+          '@graph': [
+            {
+              '@type': 'WebSite',
+              '@id': 'https://simsimpools.co.kr/#website',
+              name: '심심풀이',
+              url: 'https://simsimpools.co.kr',
+              description: '설명하기 어려운 나의 반응들을 관찰하는 심리 테스트 & 에세이 사이트',
+              inLanguage: 'ko-KR',
+              publisher: { '@id': 'https://simsimpools.co.kr/#organization' },
+            },
+            {
+              '@type': 'Organization',
+              '@id': 'https://simsimpools.co.kr/#organization',
+              name: '심심풀이',
+              url: 'https://simsimpools.co.kr',
+              email: 'kmwppp@daum.net',
+              foundingDate: '2025',
+              description: '설명하기 어려운 나의 반응들을 관찰하는 독립 콘텐츠 사이트',
+              inLanguage: 'ko-KR',
+              sameAs: [
+                'https://github.com/kmwppp/simsimpools-test',
+              ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                email: 'kmwppp@daum.net',
+                contactType: 'customer support',
+                availableLanguage: 'Korean',
+              },
+            },
+          ],
         })}</script>
       </Helmet>
       <Hero />

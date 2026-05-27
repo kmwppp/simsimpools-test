@@ -18,6 +18,13 @@ function daysSince(dateStr: string): number {
   return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
 
+const BASE_ORG = {
+  '@type': 'Organization',
+  '@id': 'https://simsimpools.co.kr/#organization',
+  name: '심심풀이',
+  url: 'https://simsimpools.co.kr',
+} as const;
+
 /** 본문 글자 수 기준으로 단어 수 추정 (한국어 기준 약 2자/단어) */
 function estimateWordCount(post: ReturnType<typeof getBlogPostById>): number {
   if (!post) return 0;
@@ -26,12 +33,6 @@ function estimateWordCount(post: ReturnType<typeof getBlogPostById>): number {
     post.sections.reduce((sum, s) => sum + (s.content?.length ?? 0) + (s.heading?.length ?? 0), 0) / 2
   );
 }
-
-const DEFAULT_BLOG_AUTHOR = {
-  name: '심심풀이 편집팀',
-  role: '콘텐츠 에디터',
-  bio: '심리학을 일상의 언어로 풀어내는 콘텐츠를 기획하고 편집합니다.',
-};
 
 const BASE_URL = 'https://simsimpools.co.kr';
 
@@ -64,7 +65,7 @@ export function BlogDetail() {
         ogType="article"
         publishedAt={post.publishedAt}
         modifiedAt={post.lastModified ?? post.publishedAt}
-        articleAuthor={post.author?.name ?? '심심풀이 편집팀'}
+        articleAuthor="심심풀이"
         keywords={post.tags}
       />
       <Helmet>
@@ -82,18 +83,9 @@ export function BlogDetail() {
               '@type': 'WebPage',
               '@id': `${BASE_URL}/blog/${post.id}`,
             },
-            author: post.author
-              ? {
-                  '@type': 'Person',
-                  name: post.author.name,
-                  jobTitle: post.author.role,
-                }
-              : { '@type': 'Organization', name: '심심풀이 편집팀' },
+            author: BASE_ORG,
             publisher: {
-              '@type': 'Organization',
-              '@id': `${BASE_URL}/#organization`,
-              name: '심심풀이',
-              url: BASE_URL,
+              ...BASE_ORG,
               logo: {
                 '@type': 'ImageObject',
                 url: `${BASE_URL}/og-image.png`,
@@ -179,15 +171,8 @@ export function BlogDetail() {
 
           {/* ── 저자 정보 (AuthorBox) ── */}
           <AuthorBox
-            author={post.author ?? DEFAULT_BLOG_AUTHOR}
             publishedAt={post.publishedAt}
             lastModified={post.lastModified}
-            sources={post.references}
-            purpose="심리학 지식의 대중화와 독자의 자기이해를 돕기 위한 교육·정보 목적의 칼럼입니다."
-            updatePolicy="최신 연구 동향 및 독자 피드백을 반영하여 필요 시 내용을 보완합니다."
-            injectJsonLd={false}
-            pageUrl={`/blog/${post.id}`}
-            pageTitle={post.title}
           />
 
           {/* ── 아티클 상단 광고 ── */}
