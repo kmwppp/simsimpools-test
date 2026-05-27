@@ -7,7 +7,15 @@ interface Props {
   variant?: 'default' | 'horizontal' | 'featured';
 }
 
+/** lastModified 기준 최근 수정 여부 (60일 이내) */
+function isRecentlyUpdated(post: BlogPost): boolean {
+  if (!post.lastModified || post.lastModified === post.publishedAt) return false;
+  const diff = Date.now() - new Date(post.lastModified).getTime();
+  return diff < 60 * 24 * 60 * 60 * 1000;
+}
+
 export function BlogCard({ post, variant = 'default' }: Props) {
+  const recentlyUpdated = isRecentlyUpdated(post);
   /* ── 가로형 (related posts 등) ── */
   if (variant === 'horizontal') {
     return (
@@ -21,6 +29,11 @@ export function BlogCard({ post, variant = 'default' }: Props) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <Badge color={post.categoryColor as 'violet'}>{post.category}</Badge>
+            {recentlyUpdated && (
+              <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                업데이트
+              </span>
+            )}
           </div>
           <p className="font-semibold text-slate-800 text-sm leading-snug line-clamp-2 group-hover:text-brand-600 transition-colors">
             {post.title}
@@ -49,6 +62,11 @@ export function BlogCard({ post, variant = 'default' }: Props) {
               <span className="text-xs text-slate-400 font-medium">추천 글</span>
               <span className="text-xs text-slate-400">·</span>
               <span className="text-xs text-slate-400">{post.readTime} 읽기</span>
+              {recentlyUpdated && (
+                <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                  업데이트
+                </span>
+              )}
             </div>
             <h2 className="text-2xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors leading-snug mb-2">
               {post.title}
@@ -86,6 +104,11 @@ export function BlogCard({ post, variant = 'default' }: Props) {
         <div className="flex items-center gap-2 mb-2">
           <Badge color={post.categoryColor as 'violet'}>{post.category}</Badge>
           <span className="text-xs text-slate-400">{post.readTime}</span>
+          {recentlyUpdated && (
+            <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+              업데이트
+            </span>
+          )}
         </div>
         <h2 className="font-bold text-slate-800 group-hover:text-brand-600 transition-colors leading-snug mb-2 line-clamp-2 text-base">
           {post.title}
@@ -105,7 +128,11 @@ export function BlogCard({ post, variant = 'default' }: Props) {
             </span>
           ))}
         </div>
-        <span className="text-xs text-slate-400">{post.publishedAt}</span>
+        <span className="text-xs text-slate-400">
+          {recentlyUpdated
+            ? `수정 ${post.lastModified}`
+            : post.publishedAt}
+        </span>
       </div>
     </Link>
   );

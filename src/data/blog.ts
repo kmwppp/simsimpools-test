@@ -9,6 +9,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'emerald',
     tags: ['회복', '감정', '자기돌봄', '심리'],
     publishedAt: '2025-11-28',
+    lastModified: '2026-05-12',
     readTime: '5분',
     thumbnail: '🫧',
     excerpt:
@@ -64,6 +65,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'teal',
     tags: ['눈치', '관계', '경계선', '자기보호'],
     publishedAt: '2025-11-24',
+    lastModified: '2026-05-12',
     readTime: '6분',
     thumbnail: '🤍',
     excerpt:
@@ -118,6 +120,7 @@ export const blogPosts: BlogPost[] = [
     category: '관계',
     categoryColor: 'orange',
     tags: ['대화', '소통', '관계', '오해'],
+    lastModified: '2026-05-10',
     publishedAt: '2025-11-20',
     readTime: '6분',
     thumbnail: '💬',
@@ -174,6 +177,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'cyan',
     tags: ['자기돌봄', '루틴', '회복', '습관'],
     publishedAt: '2025-11-16',
+    lastModified: '2026-05-08',
     readTime: '5분',
     thumbnail: '☕',
     excerpt:
@@ -229,6 +233,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'rose',
     tags: ['관계', '연애', '경계선', '자기보호'],
     publishedAt: '2025-11-12',
+    lastModified: '2026-05-08',
     readTime: '6분',
     thumbnail: '🚩',
     excerpt:
@@ -284,6 +289,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'violet',
     tags: ['내향', '사회적 피로', '에너지', '성격'],
     publishedAt: '2025-11-10',
+    lastModified: '2026-05-20',
     readTime: '5분',
     thumbnail: '🌙',
     excerpt:
@@ -344,6 +350,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'rose',
     tags: ['감정', '에너지', '관계', '심리'],
     publishedAt: '2025-11-05',
+    lastModified: '2026-05-27',
     readTime: '6분',
     thumbnail: '🌊',
     excerpt:
@@ -399,6 +406,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'indigo',
     tags: ['MBTI', '인간관계', '성격', '소통'],
     publishedAt: '2025-10-28',
+    lastModified: '2026-05-20',
     readTime: '7분',
     thumbnail: '🧩',
     excerpt:
@@ -459,6 +467,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'slate',
     tags: ['고독', '회복', '내향', '심리'],
     publishedAt: '2025-10-20',
+    lastModified: '2026-05-15',
     readTime: '5분',
     thumbnail: '🌿',
     excerpt:
@@ -509,6 +518,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'amber',
     tags: ['스트레스', '해소', '성향', '심리'],
     publishedAt: '2025-10-15',
+    lastModified: '2026-05-15',
     readTime: '5분',
     thumbnail: '🌋',
     excerpt:
@@ -564,6 +574,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'blue',
     tags: ['완벽주의', '심리', '성격', '성장'],
     publishedAt: '2025-10-08',
+    lastModified: '2026-05-27',
     readTime: '6분',
     thumbnail: '🎯',
     excerpt:
@@ -619,6 +630,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'rose',
     tags: ['공감', '에너지', '심리', '자기보호'],
     publishedAt: '2025-09-30',
+    lastModified: '2026-05-27',
     readTime: '6분',
     thumbnail: '💞',
     excerpt:
@@ -669,6 +681,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'pink',
     tags: ['연애', '애착', '심리', '관계'],
     publishedAt: '2025-09-22',
+    lastModified: '2026-05-27',
     readTime: '7분',
     thumbnail: '💑',
     excerpt:
@@ -724,6 +737,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'teal',
     tags: ['경계선', '관계', '자기보호', '성장'],
     publishedAt: '2025-09-15',
+    lastModified: '2026-05-27',
     readTime: '6분',
     thumbnail: '🌊',
     excerpt:
@@ -779,6 +793,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'orange',
     tags: ['분노', '관계', '화해', '소통'],
     publishedAt: '2025-09-08',
+    lastModified: '2026-05-18',
     readTime: '5분',
     thumbnail: '🔥',
     excerpt:
@@ -829,6 +844,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'indigo',
     tags: ['MBTI', 'N형', 'S형', '성격'],
     publishedAt: '2025-08-30',
+    lastModified: '2026-05-18',
     readTime: '5분',
     thumbnail: '🔭',
     excerpt:
@@ -879,6 +895,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'emerald',
     tags: ['자기효능감', '습관', '성장', '자신감'],
     publishedAt: '2025-08-20',
+    lastModified: '2026-05-27',
     readTime: '5분',
     thumbnail: '🌱',
     excerpt:
@@ -934,6 +951,7 @@ export const blogPosts: BlogPost[] = [
     categoryColor: 'cyan',
     tags: ['마음챙김', '명상', '감정', '습관'],
     publishedAt: '2025-08-12',
+    lastModified: '2026-05-27',
     readTime: '5분',
     thumbnail: '🍃',
     excerpt:
@@ -989,6 +1007,17 @@ export function getBlogPostById(id: string): BlogPost | undefined {
 
 export function getRecentPosts(count = 4): BlogPost[] {
   return blogPosts.slice(0, count);
+}
+
+/** lastModified (없으면 publishedAt) 내림차순으로 최근 업데이트된 글 반환 */
+export function getRecentlyModifiedPosts(count = 4): BlogPost[] {
+  return [...blogPosts]
+    .sort((a, b) => {
+      const aDate = a.lastModified ?? a.publishedAt;
+      const bDate = b.lastModified ?? b.publishedAt;
+      return bDate.localeCompare(aDate);
+    })
+    .slice(0, count);
 }
 
 export function getRelatedPosts(postId: string, count = 3): BlogPost[] {

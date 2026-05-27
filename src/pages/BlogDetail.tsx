@@ -10,6 +10,13 @@ import { BlogMarkdown } from '../components/blog/BlogMarkdown';
 import { BlogCard } from '../components/blog/BlogCard';
 import { TextWithLinks } from '../components/blog/InternalLinks';
 import { AuthorBox } from '../components/shared/AuthorBox';
+import { PostFeedback } from '../components/blog/PostFeedback';
+
+/** lastModified(또는 publishedAt)으로부터 지난 일수 */
+function daysSince(dateStr: string): number {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
 
 /** 본문 글자 수 기준으로 단어 수 추정 (한국어 기준 약 2자/단어) */
 function estimateWordCount(post: ReturnType<typeof getBlogPostById>): number {
@@ -133,6 +140,15 @@ export function BlogDetail() {
               <time dateTime={post.publishedAt} className="text-sm text-slate-400">
                 {post.publishedAt}
               </time>
+              {post.lastModified && post.lastModified !== post.publishedAt && (
+                <>
+                  <span className="text-slate-300">·</span>
+                  <span className="text-sm text-slate-400">
+                    수정{' '}
+                    <time dateTime={post.lastModified}>{post.lastModified}</time>
+                  </span>
+                </>
+              )}
             </div>
 
             {/* 썸네일 이모지 */}
@@ -176,6 +192,18 @@ export function BlogDetail() {
 
           {/* ── 아티클 상단 광고 ── */}
           <AdPlaceholder position="article-top" className="mb-8" />
+
+          {/* ── 오래된 글 안내 (lastModified 기준 12개월 초과 시) ── */}
+          {daysSince(post.lastModified ?? post.publishedAt) > 365 && (
+            <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-6 text-sm text-amber-800">
+              <span className="flex-shrink-0 mt-0.5">🕐</span>
+              <span>
+                이 글은 마지막으로 수정된 지{' '}
+                <strong>{Math.floor(daysSince(post.lastModified ?? post.publishedAt) / 30)}개월</strong>이 지났습니다.
+                일부 내용이 현재와 다를 수 있습니다.
+              </span>
+            </div>
+          )}
 
           {/* ── 인트로 발췌 ── */}
           <div className="bg-brand-50 border-l-4 border-brand-400 px-5 py-4 rounded-r-2xl mb-10 text-slate-600 leading-relaxed text-[0.95rem] sm:text-base">
@@ -243,32 +271,12 @@ export function BlogDetail() {
           </div>
         </div>
 
-        {/* ── 공유 CTA ── */}
-        <div className="bg-gradient-to-br from-brand-50 to-indigo-50 rounded-2xl p-7 mt-10 text-center border border-brand-100">
-          <p className="text-slate-700 font-semibold mb-1">
-            이 글이 도움이 됐나요?
-          </p>
-          <p className="text-sm text-slate-500 mb-4">
-            공감하는 분께 공유해보세요.
-          </p>
-          <button
-            onClick={() => {
-              if (navigator.share) {
-                navigator.share({
-                  title: post.title,
-                  text: post.excerpt,
-                  url: window.location.href,
-                });
-              } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('링크가 복사됐습니다!');
-              }
-            }}
-            className="btn-primary text-sm"
-          >
-            공유하기 📤
-          </button>
-        </div>
+        {/* ── 피드백 + 공유 ── */}
+        <PostFeedback
+          postId={post.id}
+          postTitle={post.title}
+          postExcerpt={post.excerpt}
+        />
 
         {/* ── 아티클 하단 광고 ── */}
         <AdPlaceholder position="article-bottom" className="my-10" />
