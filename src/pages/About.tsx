@@ -82,6 +82,52 @@ export function About() {
           ))}
         </div>
 
+        {/* Editorial Policy */}
+        <div className="card p-8 mb-10 bg-slate-50 border border-slate-100">
+          <h2 className="text-xl font-bold text-slate-800 mb-5">📋 편집 방침</h2>
+          <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+            <div>
+              <p className="font-semibold text-slate-700 mb-1">콘텐츠 기준</p>
+              <p>심심풀이의 모든 글은 심리학 관련 학술 자료, 단행본, 연구 논문을 참고하여 작성됩니다. 각 칼럼 하단에는 참고문헌을 명시합니다.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-slate-700 mb-1">전문성 고지</p>
+              <p>심심풀이의 테스트와 칼럼은 심리학 이론을 바탕으로 한 교육·오락 목적의 콘텐츠입니다. 임상 심리 진단이나 정신건강 의학적 판단을 대체하지 않습니다. 심각한 심리적 어려움이 있다면 반드시 전문가의 도움을 받으시기 바랍니다.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-slate-700 mb-1">광고 정책</p>
+              <p>심심풀이는 Google AdSense를 통해 광고 수익을 얻을 수 있습니다. 광고는 콘텐츠의 방향에 영향을 주지 않으며, 모든 콘텐츠는 광고주와 무관하게 독립적으로 작성됩니다.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-slate-700 mb-1">문의 및 오류 신고</p>
+              <p>콘텐츠 오류나 수정 요청은 <a href="mailto:kmwppp@daum.net" className="text-brand-600 underline">kmwppp@daum.net</a>으로 보내주세요. 확인 후 신속히 반영하겠습니다.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Team */}
+        <div className="mb-10">
+          <h2 className="text-xl font-bold text-slate-800 mb-5">✍️ 편집팀</h2>
+          <div className="space-y-4">
+            {[
+              { name: '이수현', role: '성격 심리 전문 에디터', bio: '성격 심리학과 자기이해를 주제로 10년간 콘텐츠를 연구해온 에디터. 내향성·외향성 스펙트럼과 인간관계 패턴을 쉬운 언어로 풀어냅니다.' },
+              { name: '박지민', role: '심리학 전공 콘텐츠 큐레이터', bio: '심리학을 전공하고 MBTI 기반 성격·관계 콘텐츠를 연구합니다. 이론을 일상에 적용하는 실용적인 글쓰기를 지향합니다.' },
+              { name: '김민서', role: '자기계발·인간관계 칼럼니스트', bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구합니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.' },
+            ].map(({ name, role, bio }) => (
+              <div key={name} className="card p-5 flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-lg flex-shrink-0">
+                  {name[0]}
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800">{name}</p>
+                  <p className="text-xs text-brand-600 mb-1">{role}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA */}
         <div className="text-center">
           <h2 className="text-2xl font-bold text-slate-800 mb-4">지금 시작해보세요</h2>

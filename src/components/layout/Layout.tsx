@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { CookieBanner } from '../ui/CookieBanner';
 
 export function Layout() {
   const { pathname } = useLocation();
@@ -16,6 +17,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }
