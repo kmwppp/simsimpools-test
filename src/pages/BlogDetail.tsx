@@ -1,8 +1,11 @@
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getBlogPostById, getRelatedPosts } from '../data/blog';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Badge } from '../components/ui/Badge';
 import { AdPlaceholder } from '../components/ui/AdPlaceholder';
+
+const BASE_URL = 'https://simsimpools.co.kr';
 
 export function BlogDetail() {
   const { postId = '' } = useParams<{ postId: string }>();
@@ -26,6 +29,30 @@ export function BlogDetail() {
         canonical={`/blog/${post.id}`}
         ogType="article"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.publishedAt,
+          dateModified: post.publishedAt,
+          url: `${BASE_URL}/blog/${post.id}`,
+          mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/${post.id}` },
+          author: post.author
+            ? { '@type': 'Person', name: post.author.name, jobTitle: post.author.role }
+            : { '@type': 'Organization', name: '심심풀이 편집팀' },
+          publisher: {
+            '@type': 'Organization',
+            name: '심심풀이',
+            url: BASE_URL,
+            logo: { '@type': 'ImageObject', url: `${BASE_URL}/favicon.ico` },
+          },
+          keywords: post.tags.join(', '),
+          inLanguage: 'ko-KR',
+          image: `${BASE_URL}/og-image.png`,
+        })}</script>
+      </Helmet>
 
       <div className="section-container py-10 max-w-3xl mx-auto">
         {/* Breadcrumb */}
