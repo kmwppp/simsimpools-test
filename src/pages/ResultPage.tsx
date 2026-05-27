@@ -37,11 +37,18 @@ export function ResultPage() {
 
   return (
     <>
+      {/* ──────────────────────────────────────────────────────────────
+          결과 페이지 SEO 정책
+          - noindex: 15개+ 유사 구조 중복, 자연 검색 유입 없음
+          - canonical: 테스트 인트로 페이지로 귀속 (검색 신호 집중)
+          - 사이트맵 미포함 (유지)
+      ────────────────────────────────────────────────────────────── */}
       <SEOMeta
         title={`${result.emoji} 나는 ${result.title}!`}
         description={`${test.title} 결과: ${result.subtitle}. ${result.description[0]}`}
-        canonical={`/results/${testId}/${resultId}`}
+        canonical={`/tests/${testId}`}
         ogType="article"
+        noindex
       />
 
       <div className="section-container py-10 max-w-2xl mx-auto">
