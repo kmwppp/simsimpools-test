@@ -1,12 +1,16 @@
 interface AdPlaceholderProps {
   /** 광고 삽입 위치 — 심사 승인 후 AdSense 코드로 교체 */
-  position?: 'home-mid' | 'result-mid' | 'content-bottom';
+  position?: 'home-mid' | 'result-mid' | 'content-bottom' | 'article-top' | 'article-mid' | 'article-bottom';
   className?: string;
 }
 
 export function AdPlaceholder({ position = 'content-bottom', className = '' }: AdPlaceholderProps) {
   const heightClass =
-    position === 'home-mid' || position === 'content-bottom'
+    position === 'article-mid'
+      ? 'h-28'
+      : position === 'article-top' || position === 'article-bottom'
+      ? 'h-20'
+      : position === 'home-mid' || position === 'content-bottom'
       ? 'h-20'
       : 'h-32';
 

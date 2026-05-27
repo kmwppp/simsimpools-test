@@ -65,6 +65,22 @@
   .prose-content ul {
     @apply list-disc list-inside space-y-1 text-slate-600 mb-4 pl-2;
   }
+
+  /* ── 블로그 아티클 본문 공통 스타일 ── */
+  .article-body {
+    /* 첫 단락 드롭캡 효과 */
+  }
+
+  .article-body > div:first-child > p:first-child::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    margin-right: 0.15em;
+    margin-top: 0.08em;
+    font-weight: 700;
+    color: #7c3aed;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
 }
 
 /* Scrollbar */

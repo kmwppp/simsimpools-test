@@ -20,6 +20,9 @@ export interface BlogPost {
   readTime: string;
   thumbnail: string;
   excerpt: string;
+  /** Markdown body (새 포맷). 있으면 sections 대신 사용됨 */
+  body?: string;
+  /** 레거시 섹션 포맷 — body 없을 때 fallback */
   sections: BlogSection[];
   author?: BlogAuthor;
   references?: string[];
