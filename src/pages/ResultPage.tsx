@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { getTestById } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Breadcrumb } from '../components/seo/Breadcrumb';
-import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 import { Badge } from '../components/ui/Badge';
 
 export function ResultPage() {
@@ -134,11 +133,6 @@ export function ResultPage() {
           <p className="text-slate-600 leading-relaxed text-sm">{result.stressPattern}</p>
         </div>
 
-        {/* 결과 중간 광고 영역 */}
-        <div className="mb-5">
-          <AdPlaceholder position="result-mid" />
-        </div>
-
         {/* Recommended Activities */}
         <div className="card p-6 mb-5">
           <h2 className="text-lg font-bold text-slate-800 mb-4">✨ 추천 활동</h2>
@@ -195,8 +189,6 @@ export function ResultPage() {
           </div>
         )}
 
-        {/* 하단 광고 영역 */}
-        <AdPlaceholder position="content-bottom" />
       </div>
     </>
   );

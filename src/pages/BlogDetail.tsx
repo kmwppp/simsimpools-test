@@ -4,7 +4,6 @@ import { getBlogPostById, getRelatedPosts } from '../data/blog';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Breadcrumb } from '../components/seo/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
-import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 import { ReadingProgress } from '../components/blog/ReadingProgress';
 import { BlogMarkdown } from '../components/blog/BlogMarkdown';
 import { BlogCard } from '../components/blog/BlogCard';
@@ -36,8 +35,6 @@ function estimateWordCount(post: ReturnType<typeof getBlogPostById>): number {
 
 const BASE_URL = 'https://simsimpools.co.kr';
 
-/* 섹션이 몇 번째 이상일 때 중간 광고를 삽입할지 결정 */
-const MID_AD_AFTER = 3;
 
 export function BlogDetail() {
   const { postId = '' } = useParams<{ postId: string }>();
@@ -175,9 +172,6 @@ export function BlogDetail() {
             lastModified={post.lastModified}
           />
 
-          {/* ── 아티클 상단 광고 ── */}
-          <AdPlaceholder position="article-top" className="mb-8" />
-
           {/* ── 오래된 글 안내 (lastModified 기준 12개월 초과 시) ── */}
           {daysSince(post.lastModified ?? post.publishedAt) > 365 && (
             <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-6 text-sm text-amber-800">
@@ -204,11 +198,6 @@ export function BlogDetail() {
             <div className="article-body">
               {post.sections.map((section, i) => (
                 <div key={i}>
-                  {/* 중간 광고: MID_AD_AFTER번째 섹션 뒤 */}
-                  {i === MID_AD_AFTER && (
-                    <AdPlaceholder position="article-mid" className="my-10" />
-                  )}
-
                   {section.heading && (
                     <h2 className="text-[1.35rem] font-bold text-slate-800 mt-12 mb-4 leading-snug tracking-tight">
                       {section.heading}
@@ -262,9 +251,6 @@ export function BlogDetail() {
           postTitle={post.title}
           postExcerpt={post.excerpt}
         />
-
-        {/* ── 아티클 하단 광고 ── */}
-        <AdPlaceholder position="article-bottom" className="my-10" />
 
         {/* ── 관련 글 ── */}
         {related.length > 0 && (
