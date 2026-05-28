@@ -57,20 +57,6 @@ export function Footer() {
               </a>
             </div>
 
-            {/* AdSense 고지 */}
-            <div className="bg-slate-800 rounded-xl px-4 py-3 text-xs text-slate-500 leading-relaxed max-w-xs">
-              본 사이트는 Google AdSense를 통한 광고가 표시될 수 있습니다.
-              광고 맞춤화 설정은{' '}
-              <a
-                href="https://adssettings.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-400 hover:underline"
-              >
-                Google 광고 설정
-              </a>
-              에서 변경 가능합니다.
-            </div>
           </div>
 
           {/* ── 서비스 링크 ── */}

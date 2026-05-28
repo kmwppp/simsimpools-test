@@ -28,8 +28,7 @@ export function CookieBanner() {
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div className="flex-1 text-sm leading-relaxed text-slate-200">
           <p>
-            심심풀이는 서비스 개선과 맞춤형 광고 제공을 위해 쿠키를 사용합니다.
-            광고 쿠키는 Google AdSense를 통해 운영됩니다.{' '}
+            심심풀이는 서비스 개선을 위해 Google Analytics 분석 쿠키를 사용합니다.{' '}
             <Link to="/privacy" className="underline text-brand-300 hover:text-brand-200">
               개인정보처리방침
             </Link>
