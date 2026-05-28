@@ -15,13 +15,17 @@ export function BlogList() {
     []
   );
 
-  const filtered = useMemo(
-    () =>
+  const filtered = useMemo(() => {
+    const list =
       activeCategory === '전체'
-        ? blogPosts
-        : blogPosts.filter((p) => p.category === activeCategory),
-    [activeCategory]
-  );
+        ? [...blogPosts]
+        : blogPosts.filter((p) => p.category === activeCategory);
+    return list.sort(
+      (a, b) =>
+        new Date(b.lastModified ?? b.publishedAt).getTime() -
+        new Date(a.lastModified ?? a.publishedAt).getTime()
+    );
+  }, [activeCategory]);
 
   const [featured, ...rest] = filtered;
 
