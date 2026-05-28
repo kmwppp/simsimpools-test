@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ESSAY_COUNT, TEST_COUNT } from '../../data/siteConfig';
 
 export function AboutSummary() {
   return (
@@ -21,8 +22,8 @@ export function AboutSummary() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
             {[
-              { icon: '🎯', title: '질문 5가지', desc: '일상의 반응을 가볍게 살피는 문답' },
-              { icon: '✍️', title: '에세이 21편', desc: '관계와 감정의 장면을 기록' },
+              { icon: '🎯', title: `질문 ${TEST_COUNT}가지`, desc: '일상의 반응을 가볍게 살피는 문답' },
+              { icon: '✍️', title: `에세이 ${ESSAY_COUNT}편`, desc: '관계와 감정의 장면을 기록' },
               { icon: '🎁', title: '회원 가입 없음', desc: '바로 읽고 조용히 돌아볼 수 있습니다' },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-5 shadow-sm">

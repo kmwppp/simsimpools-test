@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ESSAY_COUNT, TEST_COUNT } from '../../data/siteConfig';
 
 const NAV = {
   service: [
@@ -33,7 +34,7 @@ export function Footer() {
 
             <p className="text-sm leading-relaxed max-w-xs mb-3 text-slate-400">
               왜 이렇게 되는 건지 설명하기 어려운 날들을 위한 사이트.<br />
-              짧은 문답 5가지, 관찰 에세이 21편을 조용히 엮고 있습니다.
+              짧은 문답 {TEST_COUNT}가지, 관찰 에세이 {ESSAY_COUNT}편을 조용히 엮고 있습니다.
             </p>
 
             {/* 운영 정보 */}

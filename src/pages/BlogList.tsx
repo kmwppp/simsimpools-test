@@ -29,7 +29,7 @@ export function BlogList() {
     <>
       <SEOMeta
         title="관찰 에세이 — 설명하기 어려운 마음의 장면들"
-        description="재밌게 놀고 왔는데 왜 혼자 있고 싶은지, 거절했는데 왜 내가 더 불편한지. 말로 잘 정리되지 않는 반응을 관찰하는 에세이 21편."
+        description={`재밌게 놀고 왔는데 왜 혼자 있고 싶은지, 거절했는데 왜 내가 더 불편한지. 말로 잘 정리되지 않는 반응을 관찰하는 에세이 ${blogPosts.length}편.`}
         canonical="/blog"
       />
       <Helmet>
