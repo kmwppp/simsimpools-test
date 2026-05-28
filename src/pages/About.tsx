@@ -5,7 +5,7 @@ import { SEOMeta } from '../components/seo/SEOMeta';
 const BASE_URL = 'https://simsimpools.co.kr';
 
 const CHANGELOG = [
-  { date: '2026년 5월', note: '에세이 19편 관찰 중심 문체 개편, 독자 피드백 기능 추가, 수정일 표시 적용' },
+  { date: '2026년 5월', note: '에세이 21편 관찰 중심 문체 개편, 독자 피드백 기능 추가, 수정일 표시 적용' },
   { date: '2026년 3월', note: '사이트 전체 UI 개편 및 에세이 카테고리 재편' },
   { date: '2026년 1월', note: '짧은 문답 5종 추가 (관계·연애·스트레스·회복·감정)' },
   { date: '2025년 11월', note: '심심풀이 서비스 오픈, 에세이 1차 게시 (11편)' },

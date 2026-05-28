@@ -42,7 +42,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/20">
             {[
               { value: '5가지', label: '짧은 문답' },
-              { value: '19편', label: '관찰 에세이' },
+              { value: '21편', label: '관찰 에세이' },
               { value: '개인 운영', label: '2025년부터' },
             ].map(({ value, label }) => (
               <div key={label}>
