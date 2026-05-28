@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { blogPosts } from '../data/blog';
 import { SEOMeta } from '../components/seo/SEOMeta';
-import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 import { BlogCard } from '../components/blog/BlogCard';
 import { CategoryFilter } from '../components/blog/CategoryFilter';
 
@@ -93,28 +92,14 @@ export function BlogList() {
         {/* ── 피처드 포스트 ── */}
         {featured && <BlogCard post={featured} variant="featured" />}
 
-        {/* ── 피처드 하단 광고 ── */}
-        <AdPlaceholder position="article-top" className="mb-10" />
-
         {/* ── 포스트 그리드 ── */}
         {rest.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {rest.map((post, idx) => (
-              <>
-                <BlogCard key={post.id} post={post} />
-                {/* 6번째 카드 뒤에 광고 삽입 (그리드 깨지지 않게 col-span) */}
-                {idx === 5 && (
-                  <div key="ad-mid" className="col-span-full my-2">
-                    <AdPlaceholder position="article-mid" />
-                  </div>
-                )}
-              </>
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {rest.map((post) => (
+              <BlogCard key={post.id} post={post} />
             ))}
           </div>
         )}
-
-        {/* ── 하단 광고 ── */}
-        <AdPlaceholder position="content-bottom" className="mt-12" />
       </div>
     </>
   );

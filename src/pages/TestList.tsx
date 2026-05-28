@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { testsMeta } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Badge } from '../components/ui/Badge';
-import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 
 export function TestList() {
   return (
@@ -95,9 +94,6 @@ export function TestList() {
           ))}
         </div>
 
-        <div className="mt-12">
-          <AdPlaceholder position="content-bottom" />
-        </div>
       </div>
     </>
   );

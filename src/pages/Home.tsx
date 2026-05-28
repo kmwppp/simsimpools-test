@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet-async';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Hero } from '../components/home/Hero';
 import { PopularTests } from '../components/home/PopularTests';
-import { AdPlaceholder } from '../components/ui/AdPlaceholder';
 import { LatestPosts } from '../components/home/LatestPosts';
 import { CategorySection } from '../components/home/CategorySection';
 import { AboutSummary } from '../components/home/AboutSummary';
@@ -52,20 +51,9 @@ export function Home() {
       </Helmet>
       <Hero />
       <PopularTests />
-
-      {/* 홈 중간 광고 영역 */}
-      <div className="section-container py-6">
-        <AdPlaceholder position="home-mid" />
-      </div>
-
       <LatestPosts />
       <CategorySection />
       <AboutSummary />
-
-      {/* 하단 광고 영역 */}
-      <div className="section-container py-8">
-        <AdPlaceholder position="content-bottom" />
-      </div>
     </>
   );
 }
