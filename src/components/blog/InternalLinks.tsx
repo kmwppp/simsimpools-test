@@ -10,6 +10,7 @@ const LINK_MAP: [RegExp, string][] = [
   [/감정 회복 문답/g, '/tests/emotional-recovery'],
   [/감정 회복 스타일/g, '/tests/emotional-recovery'],
   // 블로그 포스트 내부 링크
+  [/연락이 버거운 날/g, '/blog/contact-fatigue'],
   [/감정 소비 패턴/g, '/blog/emotional-drain-patterns'],
   [/애착 유형/g, '/blog/attachment-styles'],
   [/경계선 설정/g, '/blog/boundaries-setting'],
