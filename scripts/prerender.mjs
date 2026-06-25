@@ -52,6 +52,7 @@ for (const route of routes) {
     helmet.title.toString(),
     helmet.meta.toString(),
     helmet.link.toString(),
+    helmet.script.toString(), // 페이지별 JSON-LD 구조화 데이터
   ]
     .filter(Boolean)
     .join('\n    ');

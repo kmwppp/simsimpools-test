@@ -50,6 +50,17 @@ export function About() {
                 contactType: 'customer support',
                 availableLanguage: 'Korean',
               },
+              founder: { '@id': `${BASE_URL}/#author` },
+            },
+            {
+              '@type': 'Person',
+              '@id': `${BASE_URL}/#author`,
+              name: '심심풀이 운영자',
+              description:
+                '심리학 전문가나 임상가가 아니라, 자신의 감정 반응을 오래 관찰하고 기록해 온 개인 운영자입니다. 직접 겪고 관찰한 경험을 바탕으로 글을 씁니다.',
+              url: `${BASE_URL}/about`,
+              email: 'kmwppp@daum.net',
+              knowsAbout: ['감정 관찰', '관계 심리', '자기 이해', '에세이 글쓰기'],
             },
           ],
         })}</script>
@@ -81,6 +92,28 @@ export function About() {
             심리학 이론을 배우는 것이 목적이 아닙니다.
             성격 심리학, 애착 이론, 감정 심리학의 개념들을 빌려 오지만,
             그 이론보다 먼저 있었던 실제 경험에 더 가까이 다가가려고 합니다.
+          </p>
+
+          <h2>이 글을 쓰는 사람</h2>
+          <p>
+            글 끝에는 "심심풀이 편집팀"이라고 적혀 있지만, 사실 이곳은 한 사람이 혼자
+            기획하고, 쓰고, 다듬는 작은 사이트입니다. 심리학을 전공했거나 임상 자격이 있는
+            사람은 아닙니다. 다만 "왜 나는 이런 순간에 이렇게 반응할까"를 그냥 흘려보내지 않고
+            오래 문장으로 남겨온 사람입니다.
+          </p>
+          <p>
+            처음에는 저 자신을 위해 적었습니다. 사람들 사이에서 돌아온 날의 피로, 별것 아닌
+            말에 며칠을 걸려 있던 마음 같은 걸 메모해두다 보니, 같은 장면을 겪는 사람이
+            저만은 아니겠다는 생각이 들었어요. 그래서 2025년부터 그 기록을 조금 다듬어 이곳에
+            하나씩 공개하기 시작했습니다.
+          </p>
+          <p>
+            그래서 이 사이트의 글은 "이것이 정답"이라고 단정하지 않습니다. 제가 직접 겪고
+            관찰한 범위 안에서, 필요하면 성격·애착·감정 심리학의 개념을 참고해 풀어 쓸
+            뿐입니다. 전문적인 진단이 필요한 부분은 분명히 선을 긋고, 그건 전문가의 영역이라고
+            말합니다. 콘텐츠의 한계는{' '}
+            <Link to="/disclaimer" className="text-brand-600 underline">면책 고지</Link>에 더
+            자세히 적어두었습니다.
           </p>
 
           <h2>콘텐츠에 대해</h2>
@@ -198,8 +231,8 @@ export function About() {
             글을 읽다가 마음에 남는 장면이 있다면, 짧은 질문으로 내 경우도 함께 떠올려볼 수 있습니다.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/tests" className="btn-primary">질문 살펴보기</Link>
-            <Link to="/blog" className="btn-secondary">에세이 읽기</Link>
+            <Link to="/blog" className="btn-primary">에세이 읽기</Link>
+            <Link to="/tests" className="btn-secondary">짧은 문답 해보기</Link>
           </div>
         </div>
       </div>
