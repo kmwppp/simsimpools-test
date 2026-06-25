@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const navLinks = [
-  { to: '/tests', label: '문답' },
   { to: '/blog', label: '에세이' },
+  { to: '/tests', label: '문답' },
   { to: '/about', label: '소개' },
 ];
 
@@ -40,10 +40,10 @@ export function Header() {
               </NavLink>
             ))}
             <Link
-              to="/tests"
+              to="/blog"
               className="ml-2 btn-primary py-2 px-4 text-sm"
             >
-              질문 살펴보기
+              에세이 읽기
             </Link>
           </nav>
 
@@ -86,11 +86,11 @@ export function Header() {
             ))}
             <div className="pt-2 px-4">
               <Link
-                to="/tests"
+                to="/blog"
                 onClick={() => setMenuOpen(false)}
                 className="btn-primary w-full justify-center py-2.5 text-sm"
               >
-                질문 살펴보기
+                에세이 읽기
               </Link>
             </div>
           </nav>

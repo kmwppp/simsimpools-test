@@ -31,19 +31,19 @@ export function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <Link to="/tests" className="btn-primary bg-white text-brand-700 hover:bg-brand-50 shadow-lg">
-              내 반응 살펴보기
-            </Link>
-            <Link to="/blog" className="btn-outline border-white/40 text-white hover:bg-white/10">
+            <Link to="/blog" className="btn-primary bg-white text-brand-700 hover:bg-brand-50 shadow-lg">
               에세이 읽기
+            </Link>
+            <Link to="/tests" className="btn-outline border-white/40 text-white hover:bg-white/10">
+              짧은 문답 해보기
             </Link>
           </div>
 
           {/* Stats */}
           <div className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-white/20">
             {[
-              { value: `${TEST_COUNT}가지`, label: '짧은 문답' },
               { value: `${ESSAY_COUNT}편`, label: '관찰 에세이' },
+              { value: `${TEST_COUNT}가지`, label: '짧은 문답' },
               { value: '개인 운영', label: '2025년부터' },
             ].map(({ value, label }) => (
               <div key={label}>

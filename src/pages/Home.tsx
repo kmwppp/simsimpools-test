@@ -50,8 +50,8 @@ export function Home() {
         })}</script>
       </Helmet>
       <Hero />
-      <PopularTests />
       <LatestPosts />
+      <PopularTests />
       <CategorySection />
       <AboutSummary />
     </>
