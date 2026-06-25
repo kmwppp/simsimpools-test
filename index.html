@@ -6,40 +6,14 @@
 
     <!-- ── 기본 메타 ──────────────────────────────────────────────────── -->
     <meta name="theme-color" content="#7c3aed" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="author" content="심심풀이 편집팀" />
     <meta name="language" content="ko" />
     <meta name="geo.region" content="KR" />
     <meta name="google-adsense-account" content="ca-pub-9038000959854266" />
 
-    <!-- ── 기본 타이틀 / 설명 (react-helmet-async가 페이지별로 덮어씀) ── -->
-    <title>심심풀이 — 설명하기 어려운 마음의 장면들</title>
-    <meta
-      name="description"
-      content="재밌게 놀고 돌아온 뒤의 피로, 거절하고 난 뒤의 불편함, 가까운 사람과 자꾸 엇갈리는 순간을 조용히 관찰해 적습니다."
-    />
-    <link rel="canonical" href="https://simsimpools.co.kr/" />
+    <!-- 페이지별 title / description / canonical / Open Graph / Twitter 태그는 -->
+    <!-- SEOMeta(react-helmet-async)가 담당하며, 사전 렌더링 시 아래 app-head 자리에 주입됩니다. -->
     <meta name="application-name" content="심심풀이" />
     <meta name="apple-mobile-web-app-title" content="심심풀이" />
-
-    <!-- ── Open Graph (사이트 기본값) ───────────────────────────────────── -->
-    <meta property="og:locale" content="ko_KR" />
-    <meta property="og:site_name" content="심심풀이" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="심심풀이 — 설명하기 어려운 마음의 장면들" />
-    <meta property="og:description" content="말로 잘 정리되지 않는 피로와 서운함, 관계의 어긋남을 생활 가까이에서 관찰해 적습니다." />
-    <meta property="og:url" content="https://simsimpools.co.kr/" />
-    <meta property="og:image" content="https://simsimpools.co.kr/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="심심풀이 — 마음의 장면을 기록하는 독립 콘텐츠 사이트" />
-
-    <!-- ── Twitter Card (사이트 기본값) ─────────────────────────────────── -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="심심풀이 — 설명하기 어려운 마음의 장면들" />
-    <meta name="twitter:description" content="말로 잘 정리되지 않는 피로와 서운함, 관계의 어긋남을 생활 가까이에서 관찰해 적습니다." />
-    <meta name="twitter:image" content="https://simsimpools.co.kr/og-image.png" />
-    <meta name="twitter:image:alt" content="심심풀이 — 마음의 장면을 기록하는 독립 콘텐츠 사이트" />
 
     <!-- ── 전역 구조화 데이터 (WebSite + Organization) ────────────────── -->
     <script type="application/ld+json">
@@ -123,9 +97,12 @@
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9038000959854266"
       crossorigin="anonymous"
     ></script>
+
+    <!-- ── 페이지별 SEO 메타 주입 지점 (사전 렌더링) ─────────────────── -->
+    <!--app-head-->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
