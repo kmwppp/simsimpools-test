@@ -6,8 +6,6 @@ import { TestDetail } from './pages/TestDetail';
 import { ResultPage } from './pages/ResultPage';
 import { BlogList } from './pages/BlogList';
 import { BlogDetail } from './pages/BlogDetail';
-import { CultureHub } from './pages/CultureHub';
-import { CultureMonth } from './pages/CultureMonth';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Privacy } from './pages/Privacy';
@@ -26,8 +24,6 @@ export function AppRoutes() {
         <Route path="results/:testId/:resultId" element={<ResultPage />} />
         <Route path="blog" element={<BlogList />} />
         <Route path="blog/:postId" element={<BlogDetail />} />
-        <Route path="culture" element={<CultureHub />} />
-        <Route path="culture/:month" element={<CultureMonth />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />

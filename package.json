@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/fetch-culture.mjs && node scripts/generate-sitemap.mjs && tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.mjs",
+    "build": "node scripts/generate-sitemap.mjs && tsc && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
-    "culture": "node scripts/fetch-culture.mjs",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy"
   },
