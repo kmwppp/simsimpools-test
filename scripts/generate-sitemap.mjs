@@ -66,11 +66,39 @@ function extractTests() {
   });
 }
 
+// ── culture(문화 행사) 월별 페이지 파싱 ─────────────────────────────────────
+// events.data.ts 의 startDate/endDate 가 걸치는 달(이번 달 이후)만 라우트로 생성
+function nextMonth(ym) {
+  let [y, m] = ym.split('-').map(Number);
+  m += 1;
+  if (m > 12) { y += 1; m = 1; }
+  return `${y}-${String(m).padStart(2, '0')}`;
+}
+function extractCultureMonths() {
+  const file = path.join(ROOT, 'src/data/culture/events.data.ts');
+  if (!fs.existsSync(file)) return [];
+  const src = fs.readFileSync(file, 'utf8');
+  const starts = [...src.matchAll(/"startDate":\s*"(\d{4}-\d{2})-\d{2}"/g)].map(m => m[1]);
+  const ends   = [...src.matchAll(/"endDate":\s*"(\d{4}-\d{2})-\d{2}"/g)].map(m => m[1]);
+  const todayMonth = TODAY.slice(0, 7);
+  // 노출 범위: 이번 달 ~ +5개월 (총 6개월). 데이터 헬퍼의 MONTH_HORIZON 과 일치
+  let horizon = todayMonth;
+  for (let i = 0; i < 5; i++) horizon = nextMonth(horizon);
+  const months = new Set();
+  for (let i = 0; i < starts.length; i++) {
+    const from = starts[i] < todayMonth ? todayMonth : starts[i];
+    const to = ends[i] ?? starts[i];
+    for (let m = from; m <= to && m <= horizon; m = nextMonth(m)) months.add(m);
+  }
+  return [...months].sort();
+}
+
 // ── 정적 페이지 ───────────────────────────────────────────────────────────
 const STATIC = [
   { loc: '/',           changefreq: 'weekly',  priority: 1.0 },
   { loc: '/tests',      changefreq: 'weekly',  priority: 0.9 },
   { loc: '/blog',       changefreq: 'weekly',  priority: 0.9 },
+  { loc: '/culture',    changefreq: 'daily',   priority: 0.8 },
   { loc: '/about',      changefreq: 'monthly', priority: 0.6 },
   { loc: '/contact',    changefreq: 'monthly', priority: 0.5 },
   { loc: '/privacy',    changefreq: 'yearly',  priority: 0.4 },
@@ -81,11 +109,13 @@ const STATIC = [
 // ── 생성 ──────────────────────────────────────────────────────────────────
 const tests  = extractTests();
 const posts  = extractBlogPosts();
+const cultureMonths = extractCultureMonths();
 
 const entries = [
   ...STATIC.map(p => urlEntry(p.loc, TODAY, p.changefreq, p.priority)),
   ...tests.map(t => urlEntry(`/tests/${t.id}`, t.lastmod, 'monthly', 0.8)),
   ...posts.map(p => urlEntry(`/blog/${p.id}`, p.lastmod, 'monthly', 0.7)),
+  ...cultureMonths.map(key => urlEntry(`/culture/${key}`, TODAY, 'daily', 0.7)),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

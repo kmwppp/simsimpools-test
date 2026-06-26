@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const navLinks = [
   { to: '/blog', label: '에세이' },
+  { to: '/culture', label: '전시·공연' },
   { to: '/tests', label: '문답' },
   { to: '/about', label: '소개' },
 ];
