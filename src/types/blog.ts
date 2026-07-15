@@ -9,6 +9,48 @@ export interface BlogAuthor {
   bio: string;
 }
 
+export type BlogInteractiveBlock =
+  | {
+      type: 'checklist';
+      id: string;
+      label: string;
+      items: string[];
+    }
+  | {
+      type: 'slider';
+      id: string;
+      label: string;
+      minLabel: string;
+      maxLabel: string;
+      min?: number;
+      max?: number;
+      defaultValue?: number;
+    }
+  | {
+      type: 'choice';
+      id: string;
+      label: string;
+      options: string[];
+    }
+  | {
+      type: 'memo';
+      id: string;
+      label: string;
+      placeholder: string;
+    }
+  | {
+      type: 'sentence';
+      id: string;
+      label: string;
+      options: string[];
+    };
+
+export interface BlogInteractive {
+  title: string;
+  description: string;
+  blocks: BlogInteractiveBlock[];
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -29,4 +71,5 @@ export interface BlogPost {
   author?: BlogAuthor;
   references?: string[];
   relatedPosts?: string[];
+  interactive?: BlogInteractive;
 }

@@ -10,6 +10,8 @@ import { BlogCard } from '../components/blog/BlogCard';
 import { TextWithLinks } from '../components/blog/InternalLinks';
 import { AuthorBox } from '../components/shared/AuthorBox';
 import { PostFeedback } from '../components/blog/PostFeedback';
+import { BlogInteractive } from '../components/blog/BlogInteractive';
+import { blogInteractiveById } from '../data/blogInteractive';
 
 /** lastModified(또는 publishedAt)으로부터 지난 일수 */
 function daysSince(dateStr: string): number {
@@ -40,6 +42,7 @@ export function BlogDetail() {
   const { postId = '' } = useParams<{ postId: string }>();
   const post = getBlogPostById(postId);
   const related = getRelatedPosts(postId, 3);
+  const interactive = post ? blogInteractiveById[post.id] : undefined;
 
   if (!post) {
     return (
@@ -209,6 +212,10 @@ export function BlogDetail() {
                 </div>
               ))}
             </div>
+          )}
+
+          {interactive && (
+            <BlogInteractive postId={post.id} data={interactive} />
           )}
 
           {/* ── 참고문헌 ── */}
