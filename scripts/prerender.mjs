@@ -18,8 +18,8 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const BASE_URL = 'https://simsimpools.co.kr';
 
-// ── 1. 라우트 목록: 빌드 시 생성된 sitemap.xml 에서 추출 ──────────────────
-function getRoutes() {
+// ── 1. 색인 라우트: 빌드 시 생성된 sitemap.xml 에서 추출 ─────────────────
+function getIndexableRoutes() {
   const xml = fs.readFileSync(path.join(DIST, 'sitemap.xml'), 'utf8');
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   return locs.map((loc) => loc.replace(BASE_URL, '') || '/');
@@ -34,7 +34,7 @@ if (!template.includes('<!--app-html-->') || !template.includes('<!--app-head-->
 }
 
 // ── 3. SSR 렌더 함수 로드 ─────────────────────────────────────────────────
-const { render } = await import(path.join(DIST, 'server/entry-server.js'));
+const { render, getResultRoutes } = await import(path.join(DIST, 'server/entry-server.js'));
 
 // ── 4. 라우트별 렌더링 & 저장 ─────────────────────────────────────────────
 function outFile(route) {
@@ -42,29 +42,44 @@ function outFile(route) {
   return path.join(DIST, route.replace(/^\//, ''), 'index.html');
 }
 
-const routes = getRoutes();
-let ok = 0;
-
-for (const route of routes) {
+function renderDocument(route, sourceTemplate = template) {
   const { html, helmet } = render(route);
-
   const head = [
     helmet.title.toString(),
     helmet.meta.toString(),
     helmet.link.toString(),
-    helmet.script.toString(), // 페이지별 JSON-LD 구조화 데이터
+    helmet.script.toString(),
   ]
     .filter(Boolean)
     .join('\n    ');
 
-  const page = template
+  return sourceTemplate
     .replace('<!--app-head-->', head)
     .replace('<!--app-html-->', html);
+}
 
+const indexableRoutes = getIndexableRoutes();
+const resultRoutes = getResultRoutes();
+const routes = [...indexableRoutes, ...resultRoutes];
+let ok = 0;
+
+for (const route of routes) {
   const file = outFile(route);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, page, 'utf8');
+  fs.writeFileSync(file, renderDocument(route), 'utf8');
   ok += 1;
 }
 
-console.log(`✓ 사전 렌더링 완료: ${ok}개 라우트 → dist/<route>/index.html`);
+// Cloudflare의 404-page 모드가 그대로 반환할 전용 문서. 광고 태그는 제거한다.
+const notFoundTemplate = template
+  .replace(/\s*<meta name="google-adsense-account"[^>]*>/i, '')
+  .replace(/\s*<!-- ── Google AdSense[\s\S]*?<\/script>/i, '');
+const notFoundPage = renderDocument('/__not-found__', notFoundTemplate);
+if (/google-adsense-account|pagead2\.googlesyndication\.com|adsbygoogle/i.test(notFoundPage)) {
+  throw new Error('404.html에서 AdSense 코드를 제거하지 못했습니다.');
+}
+fs.writeFileSync(path.join(DIST, '404.html'), notFoundPage, 'utf8');
+
+console.log(
+  `✓ 사전 렌더링 완료: 색인 ${indexableRoutes.length}개 + 결과 ${resultRoutes.length}개 = ${ok}개, 404.html 생성`,
+);

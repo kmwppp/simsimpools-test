@@ -232,10 +232,10 @@ test('개발용 빈 루트는 hydrate하지 않고 새로 렌더링한다', () =
   assert.ok(!source.includes('root.hasChildNodes()'));
 });
 
-test('프리렌더 대상이 아닌 결과 URL은 SPA fallback HTML을 hydrate하지 않는다', () => {
+test('결과 URL을 포함한 프리렌더 HTML은 그대로 hydrate한다', () => {
   const source = fs.readFileSync(path.join(ROOT, 'src/main.tsx'), 'utf8');
-  assert.ok(source.includes("window.location.pathname.startsWith('/results/')"));
-  assert.ok(source.includes('hasPrerenderedHtml && !isResultRoute'));
+  assert.ok(source.includes('if (hasPrerenderedHtml)'));
+  assert.ok(!source.includes("window.location.pathname.startsWith('/results/')"));
   assert.ok(source.includes('root.replaceChildren()'));
 });
 
@@ -548,4 +548,61 @@ test('에세이 공개 데이터는 가상 전문 체계와 직접 진단·치�
   ];
   for (const pattern of misleadingPatterns) assert.doesNotMatch(publicContent, pattern, String(pattern));
   assert.ok(blogPosts.every(post => !post.references || post.references.every(reference => /^https:\/\//.test(reference))), 'reference URL');
+});
+
+test('공용 OG 이미지는 실제 1200×630 PNG 파일이다', () => {
+  const png = fs.readFileSync(path.join(ROOT, 'public/og-image.png'));
+  assert.deepEqual([...png.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.equal(png.toString('ascii', 12, 16), 'IHDR');
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+});
+
+test('결과 라우트는 실제 데이터에서 추출되고 404-page와 noindex 문서를 사용한다', () => {
+  const entryServer = fs.readFileSync(path.join(ROOT, 'src/entry-server.tsx'), 'utf8');
+  const prerender = fs.readFileSync(path.join(ROOT, 'scripts/prerender.mjs'), 'utf8');
+  const wrangler = fs.readFileSync(path.join(ROOT, 'wrangler.jsonc'), 'utf8');
+  const robots = fs.readFileSync(path.join(ROOT, 'public/robots.txt'), 'utf8');
+  assert.ok(entryServer.includes('Object.keys(test.results)'));
+  assert.ok(prerender.includes('getResultRoutes'));
+  assert.ok(prerender.includes("path.join(DIST, '404.html')"));
+  assert.ok(wrangler.includes('"not_found_handling": "404-page"'));
+  assert.ok(!robots.includes('Disallow: /results/'));
+});
+
+test('실질적으로 보강한 에세이 10개의 수정일만 요청일과 일치한다', () => {
+  const updatedIds = [
+    'emotional-recovery-types', 'people-pleasing-signs', 'small-self-care-routine',
+    'relationship-red-flags', 'emotional-drain-patterns', 'solitude-recovery',
+    'perfectionism', 'high-empathy', 'self-efficacy-habits', 'mindfulness-habits',
+  ];
+  for (const id of updatedIds) {
+    assert.equal(blogPosts.find(post => post.id === id)?.lastModified, '2026-07-27', id);
+  }
+});
+
+test('소개 이력은 가장 이른 에세이 게시 기록과 현재 Git 이력을 구분한다', () => {
+  const about = fs.readFileSync(path.join(ROOT, 'src/pages/About.tsx'), 'utf8');
+  const footer = fs.readFileSync(path.join(ROOT, 'src/components/layout/Footer.tsx'), 'utf8');
+  const earliestPublishedAt = [...blogPosts].sort((a, b) => a.publishedAt.localeCompare(b.publishedAt))[0].publishedAt;
+  assert.equal(earliestPublishedAt.slice(0, 7), '2025-08');
+  assert.ok(about.includes('에세이 게시 기록 2025년 8월부터'));
+  assert.ok(about.includes('현재 Git 이력 2026년 5월 26일부터'));
+  assert.ok(footer.includes('에세이 게시 기록 2025년 8월부터'));
+  assert.ok(!footer.includes('2025년 시작'));
+  assert.ok(!about.includes('서비스 오픈, 에세이 1차 게시 (11편)'));
+  assert.ok(!about.includes("foundingDate: '2025'"));
+});
+
+test('stress-types는 회복 활동 분류 대신 자동 행동의 효과와 비용을 구별한다', () => {
+  const post = blogPosts.find(item => item.id === 'stress-types');
+  const body = post.sections.map(section => [section.heading, section.content].filter(Boolean).join(' ')).join(' ');
+  assert.ok(body.length >= 1200, body.length);
+  for (const term of ['과잉 행동', '회피', '반복 확인', '감정 억제', '짧은 이득', '이후 비용', '멈출 지점', '네 줄']) {
+    assert.ok(body.includes(term), term);
+  }
+  assert.doesNotMatch(body, /활동형|대화형|고독형|창작형/);
+  const interactive = blogInteractiveById['stress-types'];
+  assert.deepEqual(interactive.blocks.map(block => block.id), ['stress_release', 'stress_signs', 'stress_exit']);
+  assert.ok(JSON.stringify(interactive).includes('뒤에 남은 비용'));
 });

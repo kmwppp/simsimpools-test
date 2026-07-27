@@ -40,7 +40,7 @@ export function Footer() {
 
             {/* 운영 정보 */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600 mb-5">
-              <span>2025년 시작 · 개인 운영</span>
+              <span>에세이 게시 기록 2025년 8월부터 · 개인 운영</span>
               <span>·</span>
               <a
                 href="mailto:kmwppp@daum.net"

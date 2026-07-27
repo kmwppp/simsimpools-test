@@ -31,6 +31,8 @@ export interface SEOMetaProps {
   modifiedAt?: string;
   /** 작성자 이름 — article:author meta */
   articleAuthor?: string;
+  /** 작성자 프로필 URL — Open Graph article:author */
+  articleAuthorUrl?: string;
 
   /* ── 추가 메타 ───────────────────────────────────────── */
   /** 내부 호환용 키워드 배열. 검색용 meta keywords는 출력하지 않습니다. */
@@ -48,6 +50,7 @@ export function SEOMeta({
   publishedAt,
   modifiedAt,
   articleAuthor,
+  articleAuthorUrl,
   keywords,
 }: SEOMetaProps) {
   /* 제목 조합 */
@@ -99,8 +102,8 @@ export function SEOMeta({
       {ogType === 'article' && modifiedAt && (
         <meta property="article:modified_time" content={modifiedAt} />
       )}
-      {ogType === 'article' && articleAuthor && (
-        <meta property="article:author" content={articleAuthor} />
+      {ogType === 'article' && (articleAuthorUrl || articleAuthor) && (
+        <meta property="article:author" content={articleAuthorUrl || articleAuthor} />
       )}
 
       {/* ── Twitter Card ───────────────────────────────────── */}

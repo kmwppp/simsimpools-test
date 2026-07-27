@@ -26,6 +26,13 @@ const BASE_ORG = {
   url: 'https://simsimpools.co.kr',
 } as const;
 
+const BASE_AUTHOR = {
+  '@type': 'Person',
+  '@id': 'https://simsimpools.co.kr/#author',
+  name: '심심풀이 운영자',
+  url: 'https://simsimpools.co.kr/about',
+} as const;
+
 /** 본문 글자 수 기준으로 단어 수 추정 (한국어 기준 약 2자/단어) */
 function estimateWordCount(post: ReturnType<typeof getBlogPostById>): number {
   if (!post) return 0;
@@ -65,7 +72,8 @@ export function BlogDetail() {
         ogType="article"
         publishedAt={post.publishedAt}
         modifiedAt={post.lastModified ?? post.publishedAt}
-        articleAuthor="심심풀이"
+        articleAuthor="심심풀이 운영자"
+        articleAuthorUrl={`${BASE_URL}/#author`}
         keywords={post.tags}
       />
       <Helmet>
@@ -83,7 +91,7 @@ export function BlogDetail() {
               '@type': 'WebPage',
               '@id': `${BASE_URL}/blog/${post.id}`,
             },
-            author: BASE_ORG,
+            author: BASE_AUTHOR,
             publisher: {
               ...BASE_ORG,
               logo: {

@@ -5,10 +5,9 @@ import { SEOMeta } from '../components/seo/SEOMeta';
 const BASE_URL = 'https://simsimpools.co.kr';
 
 const CHANGELOG = [
-  { date: '2026년 5월', note: '에세이 21편 관찰 중심 문체 개편, 독자 피드백 기능 추가, 수정일 표시 적용' },
-  { date: '2026년 3월', note: '사이트 전체 UI 개편 및 에세이 카테고리 재편' },
-  { date: '2026년 1월', note: '짧은 문답 5종 추가 (관계·연애·스트레스·회복·감정)' },
-  { date: '2025년 11월', note: '심심풀이 서비스 오픈, 에세이 1차 게시 (11편)' },
+  { date: '2026년 7월 27일', note: '에세이 10편 본문 보강, 스트레스 자동 반응 글 개편' },
+  { date: '2026년 5월 26일', note: '현재 공개 저장소에서 확인되는 첫 Git 기록' },
+  { date: '2025년 8월', note: '현재 에세이 데이터에서 확인되는 가장 이른 최초 게시 기록' },
 ];
 
 export function About() {
@@ -16,7 +15,7 @@ export function About() {
     <>
       <SEOMeta
         title="심심풀이 소개"
-        description="심심풀이는 설명하기 어려운 나의 반응들을 조금 더 선명하게 관찰하는 독립 콘텐츠 사이트입니다. 2025년 시작, 개인이 운영합니다."
+        description="심심풀이는 설명하기 어려운 나의 반응들을 조금 더 선명하게 관찰하는 개인 운영 독립 콘텐츠 사이트입니다."
         canonical="/about"
       />
       <Helmet>
@@ -37,7 +36,6 @@ export function About() {
               name: '심심풀이',
               url: BASE_URL,
               email: 'kmwppp@daum.net',
-              foundingDate: '2025',
               description: '말로 잘 정리되지 않는 피로와 서운함, 관계의 어긋남을 생활 가까이에서 관찰해 적는 독립 콘텐츠 사이트',
               inLanguage: 'ko-KR',
               sameAs: [
@@ -104,8 +102,8 @@ export function About() {
           <p>
             처음에는 저 자신을 위해 적었습니다. 사람들 사이에서 돌아온 날의 피로, 별것 아닌
             말에 며칠을 걸려 있던 마음 같은 걸 메모해두다 보니, 같은 장면을 겪는 사람이
-            저만은 아니겠다는 생각이 들었어요. 그래서 2025년부터 그 기록을 조금 다듬어 이곳에
-            하나씩 공개하기 시작했습니다.
+            저만은 아니겠다는 생각이 들었어요. 현재 에세이별 최초 게시 기록은 2025년 8월부터
+            남아 있고, 현재 공개 저장소의 Git 이력은 2026년 5월 26일부터 확인됩니다.
           </p>
           <p>
             그래서 이 사이트의 글은 "이것이 정답"이라고 단정하지 않습니다. 제가 직접 겪고
@@ -135,7 +133,7 @@ export function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
             {[
               { label: '운영 형태', value: '개인이 운영하는 독립 콘텐츠 사이트' },
-              { label: '시작', value: '2025년 11월' },
+              { label: '확인 가능한 기록', value: '에세이 게시 기록 2025년 8월부터 · 현재 Git 이력 2026년 5월 26일부터' },
               {
                 label: '연락',
                 value: (

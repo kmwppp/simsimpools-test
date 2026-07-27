@@ -3,6 +3,13 @@ import { StaticRouter } from 'react-router-dom/server';
 import { HelmetProvider } from 'react-helmet-async';
 import type { HelmetServerState } from 'react-helmet-async';
 import { AppRoutes } from './AppRoutes';
+import { tests } from './data/tests';
+
+export function getResultRoutes(): string[] {
+  return tests.flatMap(test =>
+    Object.keys(test.results).map(resultId => `/results/${test.id}/${resultId}`),
+  );
+}
 
 /**
  * 빌드 시 각 라우트를 정적 HTML로 렌더링한다.
