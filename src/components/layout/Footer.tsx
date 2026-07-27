@@ -4,6 +4,7 @@ import { ESSAY_COUNT, TEST_COUNT } from '../../data/siteConfig';
 const NAV = {
   service: [
     { label: '짧은 문답', to: '/tests' },
+    { label: '문답 제작 원칙', to: '/test-methodology' },
     { label: '에세이', to: '/blog' },
     { label: '소개 (About)', to: '/about' },
     { label: '문의하기 (Contact)', to: '/contact' },

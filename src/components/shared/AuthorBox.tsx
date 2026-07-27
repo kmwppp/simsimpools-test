@@ -18,7 +18,7 @@ export function AuthorBox({ publishedAt, lastModified }: AuthorBoxProps) {
           심
         </div>
         <div>
-          <p className="font-semibold text-slate-700 text-xs leading-snug">심심풀이 편집팀</p>
+          <p className="font-semibold text-slate-700 text-xs leading-snug">심심풀이 운영자</p>
           <p className="text-[11px] text-slate-400 leading-snug">개인 운영 독립 콘텐츠</p>
         </div>
       </div>

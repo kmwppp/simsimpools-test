@@ -3,12 +3,6 @@ export interface BlogSection {
   content: string;
 }
 
-export interface BlogAuthor {
-  name: string;
-  role: string;
-  bio: string;
-}
-
 export type BlogInteractiveBlock =
   | {
       type: 'checklist';
@@ -68,7 +62,6 @@ export interface BlogPost {
   body?: string;
   /** 레거시 섹션 포맷 — body 없을 때 fallback */
   sections: BlogSection[];
-  author?: BlogAuthor;
   references?: string[];
   relatedPosts?: string[];
   interactive?: BlogInteractive;

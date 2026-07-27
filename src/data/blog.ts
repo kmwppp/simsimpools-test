@@ -621,11 +621,6 @@ export const blogPosts: BlogPost[] = [
           '힘든 순간에는 뭘 하면 좋을지 떠올리는 것조차 어렵습니다. 그런데 돌아보면 어떤 방법이 통했는지는 이미 알고 있는 경우가 많아요. 그냥 그때그때 느낌이 좋아서 했던 일들 안에, 나에게 맞는 회복의 방식이 이미 들어 있을 수 있습니다.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Porges, S. W. (2011). The Polyvagal Theory. W. W. Norton & Company.',
       'Neff, K. (2011). Self-Compassion: The Proven Power of Being Kind to Yourself. William Morrow.',
@@ -677,11 +672,6 @@ export const blogPosts: BlogPost[] = [
           '착한 사람으로 기억되고 싶은 마음이 없어진 건 아닌데, 어느 날 집에 오면서 "오늘도 내가 맞춰줬네"라는 생각이 먼저 드는 날이 있어요. 그 누적이 어느 순간 피로가 되고, 그 피로가 쌓이면 정작 내가 그 관계를 피하게 되는 경우가 생깁니다.',
       },
     ],
-    author: {
-      name: '이수현',
-      role: '성격 심리 전문 에디터',
-      bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다. 조용히 지나치기 쉬운 마음의 변화를 오래 바라봅니다.',
-    },
     references: [
       'Cloud, H., & Townsend, J. (1992). Boundaries: When to Say Yes, How to Say No. Zondervan.',
       'Lerner, H. G. (1985). The Dance of Anger. Harper & Row.',
@@ -733,11 +723,6 @@ export const blogPosts: BlogPost[] = [
           '관계 안의 대화가 어느 순간 논리 싸움이 되는 경우가 있어요. 말이 길어질수록 맞고 틀림을 따지게 되고, 결국 논리적으로는 이겼는데 관계가 더 멀어진 날이 있습니다. 그 날 집에 오면서 이긴 것 같지가 않은 이유가 있어요.',
       },
     ],
-    author: {
-      name: '박지민',
-      role: '심리학 전공 콘텐츠 큐레이터',
-      bio: '가까운 관계에서 반복되는 오해와 서운함을 일상의 언어로 기록합니다. 설명보다 장면을 먼저 붙잡는 글을 씁니다.',
-    },
     references: [
       'Gottman, J. M., & Silver, N. (1999). The Seven Principles for Making Marriage Work. Harmony.',
       'Rosenberg, M. B. (2003). Nonviolent Communication: A Language of Life. PuddleDancer Press.',
@@ -789,11 +774,6 @@ export const blogPosts: BlogPost[] = [
           '자기돌봄 루틴은 지키지 못했다고 자책하기 위한 목록이 아니에요. 힘든 날의 나를 덜 방치하기 위한 작은 손잡이에 가깝습니다. 오늘 못 했어도 내일 다시 하게 되는 날이 있고, 그냥 한 번 놓쳤다가 다시 돌아오는 경우도 많습니다.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Clear, J. (2018). Atomic Habits: An Easy & Proven Way to Build Good Habits. Avery.',
       'Neff, K. (2011). Self-Compassion: The Proven Power of Being Kind to Yourself. William Morrow.',
@@ -845,11 +825,6 @@ export const blogPosts: BlogPost[] = [
           '이걸 알아차렸다고 해서 바로 관계를 끝내야 한다는 뜻은 아닙니다. 다만 내 마음이 보내는 불편함을 계속 "별거 아닌 거겠지"로 넘기다 보면, 어느 순간 그 관계에서 내가 거의 사라져 있는 경우가 생깁니다.',
       },
     ],
-    author: {
-      name: '이수현',
-      role: '성격 심리 전문 에디터',
-      bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다. 조용히 지나치기 쉬운 마음의 변화를 오래 바라봅니다.',
-    },
     references: [
       'Cloud, H., & Townsend, J. (1992). Boundaries: When to Say Yes, How to Say No. Zondervan.',
       'Levine, A., & Heller, R. (2010). Attached: The New Science of Adult Attachment. Penguin.',
@@ -906,11 +881,6 @@ export const blogPosts: BlogPost[] = [
           '혼자 있고 싶다는 게 사람이 싫다는 뜻이 아닙니다. 사람들과의 시간을 진심으로 즐기기 때문에 그만큼 많이 쓰는 경우가 오히려 많아요. 다만 회복이 혼자 있을 때 이루어지는 방식이어서, 다음 만남을 위한 그 시간이 필요한 겁니다. 그 차이가 겉으로는 보이지 않아서, 설명을 안 하면 오해가 생기기도 해요. “다음에 또 보자”고 먼저 말하면서도 집에 와서는 혼자 있고 싶은 두 마음이 모순처럼 느껴지지만, 사실 둘 다 진심일 수 있습니다.',
       },
     ],
-    author: {
-      name: '이수현',
-      role: '성격 심리 전문 에디터',
-      bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다. 조용히 지나치기 쉬운 마음의 변화를 오래 바라봅니다.',
-    },
     references: [
       'Cain, S. (2012). Quiet: The Power of Introverts in a World That Can\'t Stop Talking. Crown Publishers.',
       'Grant, A. M., Gino, F., & Hofmann, D. A. (2011). Reversing the Extraverted Leadership Advantage. Academy of Management Journal, 54(3), 528-550.',
@@ -962,11 +932,6 @@ export const blogPosts: BlogPost[] = [
           '한편으로는 우리도 누군가에게 꽤 많은 마음의 에너지를 쓰게 만들고 있을 수 있어요. 같은 고민을 계속 반복하거나, 모든 불안을 상대에게만 맡기는 일이 쌓이면 가까운 사람도 지칠 수 있습니다. 좋은 관계는 한쪽만 버티는 관계가 아니라, 서로의 여유를 살피며 주고받는 관계에 가깝습니다.',
       },
     ],
-    author: {
-      name: '이수현',
-      role: '성격 심리 전문 에디터',
-      bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다. 조용히 지나치기 쉬운 마음의 변화를 오래 바라봅니다.',
-    },
     references: [
       'Aron, E. N. (1996). The Highly Sensitive Person. Broadway Books.',
       'Figley, C. R. (1995). Compassion Fatigue: Coping with Secondary Traumatic Stress Disorder. Brunner/Mazel.',
@@ -1023,11 +988,6 @@ export const blogPosts: BlogPost[] = [
           '반복되는 패턴에 이름을 붙이면 “그래서 그랬구나” 하는 안도감이 생깁니다. 그런데 그 이름이 이해의 끝이 될 때 관계가 좁아집니다. “너는 원래 그런 사람이잖아”가 설명으로 굳어지는 순간, 그다음 대화가 없어지거든요. 서로의 방식을 아는 것과, 그 방식을 어떻게 맞춰나갈지는 다른 일입니다. 결국 이름 이전에 먼저 있었던 것들, 쌓아둔 서운함과 설명 못 했던 답답함을 꺼낼 수 있어야 관계가 실제로 달라져요.',
       },
     ],
-    author: {
-      name: '박지민',
-      role: '심리학 전공 콘텐츠 큐레이터',
-      bio: '가까운 관계에서 반복되는 오해와 서운함을 일상의 언어로 기록합니다. 설명보다 장면을 먼저 붙잡는 글을 씁니다.',
-    },
     references: [
       'Myers, I. B., & Myers, P. B. (1980). Gifts Differing: Understanding Personality Type. Davies-Black Publishing.',
       'Keirsey, D. (1998). Please Understand Me II: Temperament, Character, Intelligence. Prometheus Nemesis.',
@@ -1074,11 +1034,6 @@ export const blogPosts: BlogPost[] = [
           '혼자만의 시간이 꼭 길 필요는 없습니다. 퇴근길에 한 정거장 걷기, 자기 전 10분 동안 휴대폰을 내려놓기, 주말 오전에 혼자 커피를 마시는 것만으로도 마음이 조금 정돈되는 사람이 있어요. 혼자 있고 난 뒤 조금 더 나다워진 것 같다면, 그 시간이 제 역할을 한 겁니다.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Buchholz, E. S. (1997). The Call of Solitude: Alonetime in a World of Attachment. Simon & Schuster.',
       'Raichle, M. E. et al. (2001). A Default Mode of Brain Function. Proceedings of the National Academy of Sciences, 98(2), 676-682.',
@@ -1130,11 +1085,6 @@ export const blogPosts: BlogPost[] = [
           '어떤 날은 뛰어야 풀릴 것 같은데 막상 뛰어도 그냥 피곤한 날이 있어요. 그리고 아무 기대 없이 이불 속에 들어갔다가 다음날 아침에 의외로 괜찮은 날도 있습니다. 효과가 있는 방법과 지금 필요한 방법이 매번 같지는 않아서, 어떤 날이 어떤 방식이었는지 나중에야 알게 되는 경우가 많습니다.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Selye, H. (1974). Stress Without Distress. J.B. Lippincott.',
       'McEwen, B. S. (1998). Stress, Adaptation, and Disease: Allostasis and Allostatic Load. Annals of the New York Academy of Sciences, 840, 33-44.',
@@ -1186,11 +1136,6 @@ export const blogPosts: BlogPost[] = [
           '친구가 발표를 망쳤다고 하면 "괜찮아, 그럴 수도 있지"라고 말할 수 있는데, 자신이 같은 일을 겪으면 밤새 그 장면을 다시 돌리고 있는 사람이 있어요. 기준은 같은데 나에게만 더 가혹하게 적용됩니다. 그게 동기 때문인지, 아니면 습관 때문인지 구분이 잘 안 될 때도 있어요. 자기 비판이 나를 더 잘하게 만든다는 생각이 있는데, 실제로는 비판을 받을까봐 아무것도 시작하지 않게 되는 경우도 많습니다. 자신에게 하는 말의 강도를 조금만 낮춰보는 게 어색하게 느껴진다면, 그만큼 오래 그 방식에 익숙해져 있다는 뜻이기도 합니다.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Brown, B. (2010). The Gifts of Imperfection: Let Go of Who You Think You\'re Supposed to Be. Hazelden Publishing.',
       'Neff, K. (2011). Self-Compassion: The Proven Power of Being Kind to Yourself. William Morrow.',
@@ -1237,11 +1182,6 @@ export const blogPosts: BlogPost[] = [
           '공감을 잘한다는 건 상대의 감정을 내가 전부 해결해야 한다는 뜻이 아닙니다. 옆에 있어주는 것, 들어주는 것, "많이 힘들었겠다"고 말하는 것으로 이미 충분한 경우가 많아요. 누군가의 고통을 덜어주고 싶은 마음이 강할수록 그 감정을 내가 떠안으려 하게 되는데, 그러다 보면 내 마음이 먼저 바닥납니다.',
       },
     ],
-    author: {
-      name: '이수현',
-      role: '성격 심리 전문 에디터',
-      bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다. 조용히 지나치기 쉬운 마음의 변화를 오래 바라봅니다.',
-    },
     references: [
       'Aron, E. N. (1996). The Highly Sensitive Person. Broadway Books.',
       'Figley, C. R. (1995). Compassion Fatigue: Coping with Secondary Traumatic Stress Disorder. Brunner/Mazel.',
@@ -1293,11 +1233,6 @@ export const blogPosts: BlogPost[] = [
           '연애 패턴이 계속 비슷하게 흘러간다는 느낌이 들 때, 사람을 잘못 고른다기보다 내 반응 방식이 먼저 작동하는 경우가 많습니다. 예를 들어 상대가 거리를 두면 나는 더 따라가고, 그럴수록 상대는 더 멀어지는 식이죠. 이 패턴을 아는 것 자체가 변화의 출발점이 됩니다. 완전히 다른 사람이 되어야 한다는 게 아니라, 지금 내 반응이 어떤 방향으로 움직이는지 알아차리는 것부터입니다.',
       },
     ],
-    author: {
-      name: '박지민',
-      role: '심리학 전공 콘텐츠 큐레이터',
-      bio: '가까운 관계에서 반복되는 오해와 서운함을 일상의 언어로 기록합니다. 설명보다 장면을 먼저 붙잡는 글을 씁니다.',
-    },
     references: [
       'Bowlby, J. (1969). Attachment and Loss, Vol. 1: Attachment. Basic Books.',
       'Ainsworth, M. D. S., Blehar, M. C., Waters, E., & Wall, S. (1978). Patterns of Attachment. Lawrence Erlbaum.',
@@ -1349,11 +1284,6 @@ export const blogPosts: BlogPost[] = [
           '경계선이 없는 관계는 처음엔 편해 보여도, 시간이 지나면 한쪽이 지치는 구조가 됩니다. 계속 맞춰주는 쪽은 말하지 못한 서운함이 쌓이고, 어느 순간 이유 없이 그 관계를 피하게 되는 경우가 생겨요. 경계선을 말하는 게 관계를 끊는 신호가 아닙니다. 오히려 "나는 이 관계를 오래 유지하고 싶어서 지금 이걸 말하는 거야"에 가깝습니다. 내 말이 불편하게 느껴지는지, 아니면 나를 더 잘 알게 되는 기회로 받아들이는지. 그 반응에서 관계의 방향이 보이기도 합니다.',
       },
     ],
-    author: {
-      name: '이수현',
-      role: '성격 심리 전문 에디터',
-      bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다. 조용히 지나치기 쉬운 마음의 변화를 오래 바라봅니다.',
-    },
     references: [
       'Cloud, H., & Townsend, J. (1992). Boundaries: When to Say Yes, How to Say No. Zondervan.',
       'Lerner, H. G. (1985). The Dance of Anger. Harper & Row.',
@@ -1400,11 +1330,6 @@ export const blogPosts: BlogPost[] = [
           '비슷한 싸움이 같은 관계에서 자꾸 반복된다면, 그때그때의 내용보다 언제 터지는지를 먼저 보는 게 좋습니다. 어떤 사람은 잠이 부족하거나 몸이 지쳤을 때 유독 참는 게 어려워지고, 어떤 사람은 무시당하는 느낌이 쌓일 때 폭발하고, 어떤 사람은 결론이 안 날 것 같다는 불안이 임계점에 닿을 때 목소리가 커집니다. 내가 어떤 조건에서 조절이 안 되는지를 알면, 그 상황이 오기 전에 한 발 물러설 수 있어요. 매번 사과를 반복하는 것보다, 어떤 순간이 나를 그렇게 만드는지 아는 게 관계를 더 오래 지킵니다.',
       },
     ],
-    author: {
-      name: '박지민',
-      role: '심리학 전공 콘텐츠 큐레이터',
-      bio: '가까운 관계에서 반복되는 오해와 서운함을 일상의 언어로 기록합니다. 설명보다 장면을 먼저 붙잡는 글을 씁니다.',
-    },
     references: [
       'Lerner, H. G. (1985). The Dance of Anger. Harper & Row.',
       'Goleman, D. (1995). Emotional Intelligence. Bantam Books.',
@@ -1456,11 +1381,6 @@ export const blogPosts: BlogPost[] = [
           '이런 차이를 해결하는 가장 현실적인 방법은 상대를 내 방식으로 바꾸려는 게 아니라, 잠깐 번역해보는 것입니다. “지금 네가 말하는 건 느낌을 설명하는 거지?” 혹은 “나는 사실관계를 먼저 알고 싶어서 물어본 거야”처럼요. 이 한 문장이 있으면 대화의 온도가 꽤 내려갑니다. 서로 다른 곳을 먼저 본다는 사실을 알면, 상대가 나를 답답하게 하려고 그러는 게 아니라는 것도 조금 보입니다.',
       },
     ],
-    author: {
-      name: '박지민',
-      role: '관계 관찰 에디터',
-      bio: '가까운 관계에서 반복되는 오해와 서운함을 일상의 언어로 기록합니다. 설명보다 장면을 먼저 붙잡는 글을 씁니다.',
-    },
     relatedPosts: ['mbti-relationships', 'perfectionism', 'introvert-strengths'],
   },
   {
@@ -1507,11 +1427,6 @@ export const blogPosts: BlogPost[] = [
           '"될 것 같아"라는 감각이 사라지는 건 생각이나 의지의 문제가 아닐 수 있어요. 잠이 부족하거나, 밥을 제때 못 먹거나, 오래 아프고 나서 회복이 덜 된 상태일 때 유독 아무것도 시작하기 어려운 날이 많습니다. 몸의 상태가 마음의 여유와 연결되어 있는 거죠. 도전할 에너지가 없을 때는 의지가 약해서가 아니라 그냥 지금 몸이 비어 있는 상태인 경우가 많습니다. 그럴 때 자신을 닦달하기보다, 먼저 몸에 조금 여유를 주는 게 오히려 더 빠른 길이 됩니다.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Bandura, A. (1997). Self-Efficacy: The Exercise of Control. W.H. Freeman.',
       'Clear, J. (2018). Atomic Habits: An Easy & Proven Way to Build Good Habits. Avery.',
@@ -1563,11 +1478,6 @@ export const blogPosts: BlogPost[] = [
           '마음챙김은 꼭 조용한 명상 시간에만 하는 게 아닙니다. 설거지할 때 물의 온도를 느끼고, 걸을 때 발바닥이 바닥에 닿는 감각을 알아차리고, 밥을 먹을 때 첫 숟가락의 맛을 천천히 느끼는 것도 충분합니다. 하루 전체를 바꾸지 않아도, 작은 순간 하나를 현재로 가져오는 것부터 시작할 수 있어요.',
       },
     ],
-    author: {
-      name: '김민서',
-      role: '자기계발·인간관계 칼럼니스트',
-      bio: '심리학과 철학을 접목해 일상의 감정과 관계를 탐구하는 칼럼니스트입니다. 고독, 회복, 자기 돌봄을 주제로 깊이 있는 글을 씁니다.',
-    },
     references: [
       'Kabat-Zinn, J. (1990). Full Catastrophe Living: Using the Wisdom of Your Body and Mind. Delacorte Press.',
       'Williams, M., & Penman, D. (2011). Mindfulness: An Eight-Week Plan for Finding Peace in a Frantic World. Rodale Press.',

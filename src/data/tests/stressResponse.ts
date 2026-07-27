@@ -5,26 +5,15 @@ export const stressResponseTest: Test = {
   title: '스트레스가 올라올 때 나는 어떻게 반응할까?',
   subtitle: '스트레스 상황에서 드러나는 나의 대처 방식',
   description:
-    '같은 스트레스를 받아도 사람마다 먼저 나오는 반응은 다릅니다. 8가지 질문으로 내게 자주 나타나는 장면을 살펴봅니다.',
+    '같은 스트레스를 받아도 사람마다 먼저 나오는 반응은 다릅니다. 내게 자주 나타나는 장면을 가볍게 살펴봅니다.',
   category: '심리 성향',
   categoryColor: 'amber',
   duration: '3~4분',
-  questionCount: 8,
   tags: ['스트레스', '심리', '감정', '건강'],
   thumbnail: '🌊',
   isNew: true,
-  author: {
-    name: '이수현',
-    role: '심리 콘텐츠 기획자',
-    bio: '일상에서 반복되는 반응과 회복의 장면을 쉬운 언어로 기록합니다.',
-  },
   publishedAt: '2025-08-10',
-  lastModified: '2026-02-28',
-  references: [
-    'Lazarus, R. S., & Folkman, S. (1984). Stress, Appraisal, and Coping. Springer.',
-    'Selye, H. (1956). The Stress of Life. McGraw-Hill.',
-    '홍창의 외 (2017). 스트레스와 정신건강. 학지사.',
-  ],
+  lastModified: '2026-07-27',
   questions: [
     {
       id: 1,

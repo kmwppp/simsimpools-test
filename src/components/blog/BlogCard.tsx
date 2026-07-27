@@ -75,7 +75,7 @@ export function BlogCard({ post, variant = 'default' }: Props) {
             <p className="text-slate-600 leading-relaxed line-clamp-3 text-sm">{post.excerpt}</p>
             <div className="flex items-center gap-3 mt-5">
               <div className="flex items-center gap-1.5">
-                <span className="text-xs text-slate-400">심심풀이 편집팀</span>
+                <span className="text-xs text-slate-400">심심풀이 운영자</span>
               </div>
               <span className="text-xs text-slate-300">·</span>
               <span className="text-xs text-slate-400">

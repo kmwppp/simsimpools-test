@@ -11,6 +11,7 @@ import { Contact } from './pages/Contact';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
 import { Disclaimer } from './pages/Disclaimer';
+import { TestMethodology } from './pages/TestMethodology';
 import { NotFound } from './pages/NotFound';
 
 /** 라우트 정의 — 클라이언트(BrowserRouter)와 서버 사전렌더(StaticRouter)가 공유 */
@@ -29,6 +30,7 @@ export function AppRoutes() {
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
         <Route path="disclaimer" element={<Disclaimer />} />
+        <Route path="test-methodology" element={<TestMethodology />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

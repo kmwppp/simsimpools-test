@@ -3,26 +3,35 @@ import { getTestById } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
 import { Breadcrumb } from '../components/seo/Breadcrumb';
 import { Badge } from '../components/ui/Badge';
+import { getTestResultContent } from '../data/testResultContent';
 
 export function ResultPage() {
   const { testId = '', resultId = '' } = useParams<{ testId: string; resultId: string }>();
   const test = getTestById(testId);
   const result = test?.results[resultId];
+  const content = getTestResultContent(testId, resultId);
 
-  if (!test || !result) {
+  if (!test || !result || !content) {
     return (
-      <div className="section-container py-24 text-center">
-        <p className="text-slate-500">결과를 찾을 수 없습니다.</p>
-        <Link to="/tests" className="btn-primary mt-4">테스트 목록으로</Link>
-      </div>
+      <>
+        <SEOMeta
+          title="결과를 찾을 수 없습니다"
+          description="요청하신 문답 결과를 찾을 수 없습니다."
+          noindex
+        />
+        <div className="section-container py-24 text-center">
+          <p className="text-slate-500">결과를 찾을 수 없습니다.</p>
+          <Link to="/tests" className="btn-primary mt-4">테스트 목록으로</Link>
+        </div>
+      </>
     );
   }
 
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `나는 ${result.title}!`,
-        text: result.shareText,
+        title: `${test.title} 결과: ${result.title}`,
+        text: content.summary[0],
         url: window.location.href,
       });
     } else {
@@ -44,8 +53,8 @@ export function ResultPage() {
           - 사이트맵 미포함 (유지)
       ────────────────────────────────────────────────────────────── */}
       <SEOMeta
-        title={`${result.emoji} 나는 ${result.title}!`}
-        description={`${test.title} 결과: ${result.subtitle}. ${result.description[0]}`}
+        title={`${result.emoji} ${test.title} 결과: ${result.title}`}
+        description={`${test.title} 결과: ${result.subtitle}. ${content.summary[0]}`}
         canonical={`/tests/${testId}`}
         ogType="article"
         noindex
@@ -75,82 +84,55 @@ export function ResultPage() {
 
           <div className="p-6">
             <div className="space-y-3 text-slate-600 leading-relaxed">
-              {result.description.map((para, i) => (
-                <p key={i}>{para}</p>
+              {content.summary.map(para => (
+                <p key={para}>{para}</p>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Traits */}
-        <div className="card p-6 mb-5">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">🔍 나의 주요 성향</h2>
-          <ul className="space-y-2">
-            {result.traits.map((trait, i) => (
-              <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
-                <span className="text-brand-500 mt-0.5 flex-shrink-0">✓</span>
-                <span>{trait}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {content.sections.map(section => (
+          <section key={section.heading} className="card p-6 mb-5">
+            <h2 className="text-lg font-bold text-slate-800 mb-4">{section.heading}</h2>
+            {section.paragraphs && (
+              <div className="space-y-3 text-slate-600 leading-relaxed text-sm">
+                {section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+            )}
+            {section.items && (
+              <ul className="space-y-2">
+                {section.items.map(item => (
+                  <li key={item} className="flex items-start gap-2 text-slate-600 text-sm leading-relaxed">
+                    <span className="text-brand-500 mt-0.5 flex-shrink-0">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))}
 
-        {/* Strengths & Weaknesses */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-          <div className="card p-6">
-            <h2 className="text-lg font-bold text-slate-800 mb-4">💪 강점</h2>
-            <ul className="space-y-2">
-              {result.strengths.map((s, i) => (
-                <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
-                  <span className="text-emerald-500 mt-0.5">●</span>
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="card p-6">
-            <h2 className="text-lg font-bold text-slate-800 mb-4">⚠️ 주의할 점</h2>
-            <ul className="space-y-2">
-              {result.weaknesses.map((w, i) => (
-                <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
-                  <span className="text-rose-400 mt-0.5">●</span>
-                  {w}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        {(content.reflectionQuestion || content.smallAction) && (
+          <section className="card p-6 bg-gradient-to-br from-brand-50 to-indigo-50 border-brand-100 mb-6">
+            {content.reflectionQuestion && (
+              <div className="mb-4">
+                <h2 className="text-lg font-bold text-slate-800 mb-2">돌아볼 질문</h2>
+                <p className="text-slate-600 leading-relaxed text-sm">{content.reflectionQuestion}</p>
+              </div>
+            )}
+            {content.smallAction && (
+              <div>
+                <h2 className="text-lg font-bold text-slate-800 mb-2">작게 해볼 행동</h2>
+                <p className="text-slate-600 leading-relaxed text-sm">{content.smallAction}</p>
+              </div>
+            )}
+          </section>
+        )}
 
-        {/* Relationships */}
-        <div className="card p-6 mb-5">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">👥 인간관계 특징</h2>
-          <p className="text-slate-600 leading-relaxed text-sm">{result.relationships}</p>
-        </div>
-
-        {/* Stress Pattern */}
-        <div className="card p-6 mb-5">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">🌊 스트레스 패턴</h2>
-          <p className="text-slate-600 leading-relaxed text-sm">{result.stressPattern}</p>
-        </div>
-
-        {/* Recommended Activities */}
-        <div className="card p-6 mb-5">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">✨ 추천 활동</h2>
-          <ul className="space-y-2">
-            {result.recommendedActivities.map((a, i) => (
-              <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
-                <span className="text-brand-500 mt-0.5 flex-shrink-0">→</span>
-                {a}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Self Guide */}
-        <div className="card p-6 bg-gradient-to-br from-brand-50 to-indigo-50 border-brand-100 mb-6">
-          <h2 className="text-lg font-bold text-slate-800 mb-3">💌 돌아볼 장면</h2>
-          <p className="text-slate-600 leading-relaxed text-sm">{result.selfGuide}</p>
-        </div>
+        <p className="text-xs text-slate-500 leading-relaxed mb-6 px-1">
+          결과는 이번 답변에서 상대적으로 많이 고른 방향입니다. 점수와 동점 처리 방식은{' '}
+          <Link to="/test-methodology" className="text-brand-600 underline">문답 제작 원칙</Link>에서 확인할 수 있습니다.
+        </p>
 
         {/* Share & Retry */}
         <div className="flex flex-wrap gap-3 mb-10">
@@ -180,7 +162,7 @@ export function ResultPage() {
                   <div>
                     <Badge color={t.categoryColor as 'violet'} className="mb-1">{t.category}</Badge>
                     <p className="font-semibold text-slate-800 text-sm">{t.title}</p>
-                    <p className="text-xs text-slate-500">{t.questionCount}문항 · {t.duration}</p>
+                    <p className="text-xs text-slate-500">{t.questions.length}문항 · {t.duration}</p>
                   </div>
                   <span className="ml-auto text-brand-500 text-sm">→</span>
                 </Link>

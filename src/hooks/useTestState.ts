@@ -1,38 +1,45 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import {
+  answerTestQuestion,
+  createInitialTestState,
+  normalizeTestState,
+  restartTestState,
+  startTestState,
+  type CalculateResult,
+  type TestState,
+} from '../utils/testFlow';
 
 const STORAGE_KEY = 'simsimpools_test';
 
-export interface TestState {
-  testId: string;
-  currentQuestion: number;
-  scores: Record<string, number>;
-  answers: number[];
-  completed: boolean;
-  resultId?: string;
-}
+export function useTestState(
+  testId: string,
+  questionCount: number,
+  resultIds: string[],
+  calculateResult: CalculateResult,
+) {
+  // SSR/프리렌더 HTML과 첫 클라이언트 렌더를 일치시킨 뒤 저장 상태를 복원한다.
+  const [state, setState] = useState<TestState>(() => createInitialTestState(testId));
+  const stateRef = useRef(state);
 
-function initState(testId: string): TestState {
-  return {
-    testId,
-    currentQuestion: 0,
-    scores: {},
-    answers: [],
-    completed: false,
-  };
-}
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
 
-export function useTestState(testId: string) {
-  const [state, setState] = useState<TestState>(() => {
+  useEffect(() => {
     try {
       const raw = localStorage.getItem(`${STORAGE_KEY}_${testId}`);
-      if (raw) return JSON.parse(raw) as TestState;
+      const next = normalizeTestState(raw ? JSON.parse(raw) : undefined, testId, questionCount, resultIds);
+      stateRef.current = next;
+      setState(next);
     } catch {
-      // ignore parse errors
+      const next = createInitialTestState(testId);
+      stateRef.current = next;
+      setState(next);
     }
-    return initState(testId);
-  });
+  }, [questionCount, resultIds, testId]);
 
   const saveState = useCallback((next: TestState) => {
+    stateRef.current = next;
     setState(next);
     try {
       localStorage.setItem(`${STORAGE_KEY}_${testId}`, JSON.stringify(next));
@@ -41,49 +48,23 @@ export function useTestState(testId: string) {
     }
   }, [testId]);
 
-  const answerQuestion = useCallback(
-    (optionScores: Record<string, number>) => {
-      setState(prev => {
-        const newScores = { ...prev.scores };
-        for (const [k, v] of Object.entries(optionScores)) {
-          newScores[k] = (newScores[k] ?? 0) + v;
-        }
-        const next: TestState = {
-          ...prev,
-          currentQuestion: prev.currentQuestion + 1,
-          scores: newScores,
-          answers: [...prev.answers, prev.currentQuestion],
-        };
-        try {
-          localStorage.setItem(`${STORAGE_KEY}_${testId}`, JSON.stringify(next));
-        } catch {
-          // ignore
-        }
-        return next;
-      });
-    },
-    [testId],
-  );
+  const startTest = useCallback(() => {
+    saveState(startTestState(stateRef.current));
+  }, [saveState]);
 
-  const completeTest = useCallback(
-    (resultId: string) => {
-      setState(prev => {
-        const next: TestState = { ...prev, completed: true, resultId };
-        try {
-          localStorage.setItem(`${STORAGE_KEY}_${testId}`, JSON.stringify(next));
-        } catch {
-          // ignore
-        }
-        return next;
-      });
-    },
-    [testId],
-  );
+  const answerQuestion = useCallback((optionScores: Record<string, number>) => {
+    const next = answerTestQuestion(stateRef.current, optionScores, questionCount, calculateResult);
+    saveState(next);
+    return next;
+  }, [calculateResult, questionCount, saveState]);
 
   const resetTest = useCallback(() => {
-    const next = initState(testId);
-    saveState(next);
+    saveState(createInitialTestState(testId));
   }, [testId, saveState]);
 
-  return { state, answerQuestion, completeTest, resetTest };
+  const restartTest = useCallback(() => {
+    saveState(restartTestState(testId));
+  }, [testId, saveState]);
+
+  return { state, startTest, answerQuestion, resetTest, restartTest };
 }

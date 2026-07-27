@@ -13,7 +13,10 @@ export const tests: Test[] = [
   emotionalRecoveryTest,
 ];
 
-export const testsMeta: TestMeta[] = tests.map(({ questions: _q, results: _r, calculateResult: _c, ...meta }) => meta);
+export const testsMeta: TestMeta[] = tests.map(({ questions, results: _r, calculateResult: _c, ...meta }) => ({
+  ...meta,
+  questionCount: questions.length,
+}));
 
 export function getTestById(id: string): Test | undefined {
   return tests.find(t => t.id === id);

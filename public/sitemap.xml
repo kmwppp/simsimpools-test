@@ -5,79 +5,85 @@
           https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://simsimpools.co.kr/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/tests</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/blog</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/about</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/contact</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/privacy</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/terms</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/disclaimer</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://simsimpools.co.kr/test-methodology</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://simsimpools.co.kr/tests/animal-personality</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/tests/emotional-recovery</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/tests/love-style</loc>
-    <lastmod>2026-03-20</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/tests/social-distance</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://simsimpools.co.kr/tests/stress-response</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

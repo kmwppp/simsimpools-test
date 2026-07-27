@@ -27,13 +27,7 @@ export interface TestResult {
   shareText: string;
 }
 
-export interface TestAuthor {
-  name: string;
-  role: string;
-  bio: string;
-}
-
-export interface TestMeta {
+export interface TestBaseMeta {
   id: string;
   title: string;
   subtitle: string;
@@ -41,13 +35,10 @@ export interface TestMeta {
   category: string;
   categoryColor: string;
   duration: string;
-  questionCount: number;
   tags: string[];
   thumbnail: string;
   popular?: boolean;
   isNew?: boolean;
-  /** 작성자 정보 */
-  author?: TestAuthor;
   /** 최초 게시일 (YYYY-MM-DD) */
   publishedAt?: string;
   /** 마지막 수정일 (YYYY-MM-DD) */
@@ -56,7 +47,12 @@ export interface TestMeta {
   references?: string[];
 }
 
-export interface Test extends TestMeta {
+export interface TestMeta extends TestBaseMeta {
+  /** questions.length에서 파생되는 목록 화면용 문항 수 */
+  questionCount: number;
+}
+
+export interface Test extends TestBaseMeta {
   questions: TestQuestion[];
   results: Record<string, TestResult>;
   calculateResult: (scores: Record<string, number>) => string;

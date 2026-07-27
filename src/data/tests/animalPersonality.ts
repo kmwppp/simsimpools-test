@@ -5,26 +5,15 @@ export const animalPersonalityTest: Test = {
   title: '내 반응은 어떤 동물과 닮았을까?',
   subtitle: '일상에서 자주 나오는 반응을 동물 이미지로 가볍게 떠올려보기',
   description:
-    '고양이, 강아지, 여우, 올빼미 중 내가 자주 보이는 반응과 가까운 이미지를 10가지 질문으로 살펴봅니다.',
+    '고양이, 강아지, 여우, 올빼미 중 내가 자주 보이는 반응과 가까운 이미지를 가볍게 살펴봅니다.',
   category: '반응 관찰',
   categoryColor: 'violet',
   duration: '3~5분',
-  questionCount: 10,
   tags: ['반응', '관계', '에너지', '관찰'],
   thumbnail: '🦊',
   popular: true,
-  author: {
-    name: '이수현',
-    role: '심리 콘텐츠 기획자',
-    bio: '일상에서 반복되는 반응과 관계의 장면을 쉬운 언어로 기록합니다.',
-  },
   publishedAt: '2025-08-01',
-  lastModified: '2026-03-10',
-  references: [
-    'Carl Jung (1921). Psychological Types. Princeton University Press.',
-    'McCrae, R. R., & Costa, P. T. (1987). Validation of the five-factor model of personality. Journal of Personality and Social Psychology.',
-    '한국심리학회 (2018). 성격심리학.',
-  ],
+  lastModified: '2026-07-27',
   questions: [
     {
       id: 1,

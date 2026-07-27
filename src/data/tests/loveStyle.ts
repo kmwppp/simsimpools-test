@@ -5,26 +5,15 @@ export const loveStyleTest: Test = {
   title: '나의 연애 성향은?',
   subtitle: '연애할 때 드러나는 나만의 사랑 방식 테스트',
   description:
-    '로맨틱형, 현실주의형, 자유주의형, 헌신형 중 당신의 연애 스타일은 무엇인가요? 10가지 질문으로 알아보는 나만의 사랑 방식 테스트입니다.',
+    '로맨틱형, 현실주의형, 자유주의형, 헌신형 중 연애 상황에서 자주 선택하는 반응 경향을 가볍게 살펴봅니다.',
   category: '연애 성향',
   categoryColor: 'rose',
   duration: '3~5분',
-  questionCount: 10,
   tags: ['연애', '사랑', '관계', '성향'],
   thumbnail: '💕',
   popular: true,
-  author: {
-    name: '박지민',
-    role: '상담심리 연구자',
-    bio: '상담심리학을 연구하며 관계와 애착 패턴을 다루는 콘텐츠를 작성합니다. 연애 심리와 대인관계에 관심이 많습니다.',
-  },
   publishedAt: '2025-08-05',
-  lastModified: '2026-03-20',
-  references: [
-    'Sternberg, R. J. (1986). A triangular theory of love. Psychological Review.',
-    'Bowlby, J. (1969). Attachment and Loss, Vol. 1. Basic Books.',
-    'Lee, J. A. (1973). The Colors of Love: An Exploration of the Ways of Loving. New Press.',
-  ],
+  lastModified: '2026-07-27',
   questions: [
     {
       id: 1,

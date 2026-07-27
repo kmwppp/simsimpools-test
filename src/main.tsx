@@ -12,7 +12,7 @@ const app = (
 );
 
 // 사전 렌더링된 HTML이 있으면 hydrate, 없으면(개발 등) 새로 렌더
-if (root.hasChildNodes()) {
+if (root.childElementCount > 0) {
   ReactDOM.hydrateRoot(root, app);
 } else {
   ReactDOM.createRoot(root).render(app);

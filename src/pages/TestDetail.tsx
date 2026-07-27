@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getTestById } from '../data/tests';
 import { SEOMeta } from '../components/seo/SEOMeta';
@@ -8,43 +8,46 @@ import { useTestState } from '../hooks/useTestState';
 import { TestSEOSection } from '../components/test/TestSEOSection';
 import { AuthorBox } from '../components/shared/AuthorBox';
 
+const NO_RESULTS: string[] = [];
+const NO_RESULT = () => '';
+const AUTHOR_NAME = '심심풀이 운영자';
+
 export function TestDetail() {
   const { testId = '' } = useParams<{ testId: string }>();
   const navigate = useNavigate();
   const test = getTestById(testId);
-  const { state, answerQuestion, resetTest } = useTestState(testId);
-
-  useEffect(() => {
-    if (!test) return;
-    if (state.completed && state.resultId) {
-      navigate(`/results/${testId}/${state.resultId}`, { replace: true });
-    }
-  }, [state.completed, state.resultId, testId, navigate, test]);
+  const resultIds = useMemo(() => test ? Object.keys(test.results) : NO_RESULTS, [test]);
+  const { state, startTest, answerQuestion, resetTest, restartTest } = useTestState(
+    testId,
+    test?.questions.length ?? 0,
+    resultIds,
+    test?.calculateResult ?? NO_RESULT,
+  );
 
   if (!test) {
     return (
-      <div className="section-container py-24 text-center">
-        <p className="text-slate-500">테스트를 찾을 수 없습니다.</p>
-        <Link to="/tests" className="btn-primary mt-4">테스트 목록으로</Link>
-      </div>
+      <>
+        <SEOMeta
+          title="문답을 찾을 수 없습니다"
+          description="요청하신 문답을 찾을 수 없습니다."
+          noindex
+        />
+        <div className="section-container py-24 text-center">
+          <p className="text-slate-500">테스트를 찾을 수 없습니다.</p>
+          <Link to="/tests" className="btn-primary mt-4">테스트 목록으로</Link>
+        </div>
+      </>
     );
   }
 
   const currentQ = test.questions[state.currentQuestion];
-  const progress = (state.currentQuestion / test.questions.length) * 100;
-  const isIntro = state.currentQuestion === 0 && state.answers.length === 0;
+  const progress = ((state.currentQuestion + 1) / test.questions.length) * 100;
+  const isIntro = !state.started && !state.completed;
 
   const handleOptionClick = (optionScores: Record<string, number>) => {
-    answerQuestion(optionScores);
-
-    const nextIndex = state.currentQuestion + 1;
-    if (nextIndex >= test.questions.length) {
-      const tempScores = { ...state.scores };
-      for (const [k, v] of Object.entries(optionScores)) {
-        tempScores[k] = (tempScores[k] ?? 0) + v;
-      }
-      const resultId = test.calculateResult(tempScores);
-      navigate(`/results/${testId}/${resultId}`);
+    const next = answerQuestion(optionScores);
+    if (next.completed && next.resultId) {
+      navigate(`/results/${testId}/${next.resultId}`);
     }
   };
 
@@ -58,7 +61,7 @@ export function TestDetail() {
           ogType="article"
           publishedAt={test.publishedAt}
           modifiedAt={test.lastModified ?? test.publishedAt}
-          articleAuthor={test.author?.name}
+          articleAuthor={AUTHOR_NAME}
           keywords={test.tags}
         />
         <div className="section-container py-16 max-w-2xl mx-auto">
@@ -81,7 +84,7 @@ export function TestDetail() {
 
             <div className="flex justify-center gap-6 text-sm text-slate-500 mb-8">
               <span>⏱ {test.duration}</span>
-              <span>📝 {test.questionCount}문항</span>
+              <span>📝 {test.questions.length}문항</span>
               <span>회원 가입 없음</span>
             </div>
 
@@ -102,7 +105,7 @@ export function TestDetail() {
               </ul>
             </div>
 
-            <button onClick={() => answerQuestion({})} className="btn-primary text-lg px-10 py-4 w-full sm:w-auto">
+            <button onClick={startTest} className="btn-primary text-lg px-10 py-4 w-full sm:w-auto">
               질문 시작하기
             </button>
           </div>
@@ -124,16 +127,69 @@ export function TestDetail() {
     );
   }
 
-  if (!currentQ) return null;
+  if (state.completed && state.resultId) {
+    const result = test.results[state.resultId];
+    return (
+      <>
+        <SEOMeta
+          title={test.title}
+          description={test.description}
+          canonical={`/tests/${test.id}`}
+          ogType="article"
+          publishedAt={test.publishedAt}
+          modifiedAt={test.lastModified ?? test.publishedAt}
+          articleAuthor={AUTHOR_NAME}
+          keywords={test.tags}
+        />
+        <div className="section-container py-20 max-w-xl mx-auto text-center">
+          <div className="card p-8">
+            <div className="text-6xl mb-4">{result?.emoji ?? test.thumbnail}</div>
+            <h1 className="text-2xl font-bold text-slate-800 mb-2">이 문답을 완료했어요</h1>
+            {result && <p className="text-slate-500 mb-7">지난 결과는 {result.title}입니다.</p>}
+            <div className="flex flex-col sm:flex-row justify-center gap-3">
+              {result && (
+                <Link to={`/results/${test.id}/${result.id}`} className="btn-primary">
+                  결과 다시 보기
+                </Link>
+              )}
+              <button onClick={restartTest} className="btn-secondary">다시 시작하기</button>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (!currentQ) {
+    return (
+      <>
+        <SEOMeta
+          title={test.title}
+          description={test.description}
+          canonical={`/tests/${test.id}`}
+          articleAuthor={AUTHOR_NAME}
+        />
+        <div className="section-container py-24 text-center max-w-lg mx-auto">
+          <p className="text-slate-600 mb-5">저장된 진행 정보를 불러올 수 없습니다.</p>
+          <button onClick={resetTest} className="btn-primary">처음 화면으로 돌아가기</button>
+        </div>
+      </>
+    );
+  }
 
   const questionIndex = state.answers.length;
 
   return (
     <>
       <SEOMeta
-        title={`${test.title} 진행 중`}
+        title={test.title}
         description={test.description}
-        noindex
+        canonical={`/tests/${test.id}`}
+        ogType="article"
+        publishedAt={test.publishedAt}
+        modifiedAt={test.lastModified ?? test.publishedAt}
+        articleAuthor={AUTHOR_NAME}
+        keywords={test.tags}
       />
       <div className="section-container py-10 max-w-2xl mx-auto">
         {/* Progress */}
@@ -141,10 +197,10 @@ export function TestDetail() {
           <div className="flex justify-between text-sm text-slate-500 mb-2">
             <span>{questionIndex + 1} / {test.questions.length}</span>
             <button
-              onClick={resetTest}
+              onClick={restartTest}
               className="text-slate-400 hover:text-slate-600 transition-colors text-xs"
             >
-              처음부터
+              다시 시작
             </button>
           </div>
           <div className="h-2 bg-slate-100 rounded-full overflow-hidden">

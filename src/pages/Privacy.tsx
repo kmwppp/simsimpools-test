@@ -215,7 +215,7 @@ export function Privacy() {
           아래와 같이 개인정보보호 책임자를 지정합니다.
         </p>
         <div className="info-box">
-          <strong>책임자:</strong> 심심풀이 운영팀<br />
+          <strong>책임자:</strong> 심심풀이 운영자<br />
           <strong>이메일:</strong>{' '}
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a><br />
           <strong>처리 기간:</strong> 영업일 기준 5일 이내

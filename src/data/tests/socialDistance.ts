@@ -5,25 +5,14 @@ export const socialDistanceTest: Test = {
   title: '나의 인간관계 거리감 테스트',
   subtitle: '사람들과의 거리를 어떻게 조율하는지 알아보는 테스트',
   description:
-    '사람마다 편안하게 느끼는 인간관계의 거리감이 다릅니다. 8가지 질문으로 알아보는 나만의 관계 거리 설정 방식을 확인해보세요.',
+    '사람마다 편안하게 느끼는 인간관계의 거리감이 다릅니다. 나에게 가까운 관계 거리 설정 방식을 가볍게 살펴봅니다.',
   category: '인간관계',
   categoryColor: 'teal',
   duration: '3~4분',
-  questionCount: 8,
   tags: ['인간관계', '거리감', '소통', '성향'],
   thumbnail: '🌿',
-  author: {
-    name: '김민서',
-    role: '심리 콘텐츠 에디터',
-    bio: '심리학 이론을 실생활에 접목한 콘텐츠를 편집합니다. 사람들의 다양한 관계 패턴과 경계 설정에 관심이 많습니다.',
-  },
   publishedAt: '2025-08-15',
-  lastModified: '2026-04-05',
-  references: [
-    'Hall, E. T. (1966). The Hidden Dimension. Anchor Books.',
-    'Eysenck, H. J. (1967). The Biological Basis of Personality. Thomas.',
-    '이훈진 (2019). 대인관계 심리학. 학지사.',
-  ],
+  lastModified: '2026-07-27',
   questions: [
     {
       id: 1,

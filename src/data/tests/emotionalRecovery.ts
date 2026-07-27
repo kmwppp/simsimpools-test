@@ -5,25 +5,14 @@ export const emotionalRecoveryTest: Test = {
   title: '나의 감정 회복 스타일은?',
   subtitle: '상처받거나 지쳤을 때 나를 다시 일으키는 방식',
   description:
-    '힘들고 지쳤을 때 어떻게 회복하나요? 8가지 질문으로 알아보는 나만의 감정 회복 스타일과 효과적인 자기 회복 방법을 확인해보세요.',
+    '힘들고 지쳤을 때 자주 선택하는 반응을 통해 나에게 가까운 감정 회복 스타일을 가볍게 살펴봅니다.',
   category: '심리 성향',
   categoryColor: 'emerald',
   duration: '3~4분',
-  questionCount: 8,
   tags: ['감정', '회복', '관찰', '쉼'],
   thumbnail: '🌱',
-  author: {
-    name: '김민서',
-    role: '심리 콘텐츠 에디터',
-    bio: '심리학 이론을 실생활에 접목한 콘텐츠를 편집합니다. 감정 회복과 심리적 탄력성 연구에 관심이 많습니다.',
-  },
   publishedAt: '2025-08-20',
-  lastModified: '2026-04-15',
-  references: [
-    'Seligman, M. E. P. (2011). Flourish: A Visionary New Understanding of Happiness and Well-Being. Free Press.',
-    'Gross, J. J. (1998). The emerging field of emotion regulation. Review of General Psychology.',
-    '권석만 (2015). 긍정심리학 — 행복의 과학적 탐구. 학지사.',
-  ],
+  lastModified: '2026-07-27',
   questions: [
     {
       id: 1,

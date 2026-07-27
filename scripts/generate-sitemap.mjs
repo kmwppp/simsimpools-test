@@ -76,6 +76,7 @@ const STATIC = [
   { loc: '/privacy',    changefreq: 'yearly',  priority: 0.4 },
   { loc: '/terms',      changefreq: 'yearly',  priority: 0.4 },
   { loc: '/disclaimer', changefreq: 'yearly',  priority: 0.4 },
+  { loc: '/test-methodology', changefreq: 'monthly', priority: 0.6 },
 ];
 
 // ── 생성 ──────────────────────────────────────────────────────────────────
