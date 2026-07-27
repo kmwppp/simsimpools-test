@@ -1,26 +1,23 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { BlogInteractive as BlogInteractiveData, BlogInteractiveBlock } from '../../types/blog';
+import {
+  clearBlogInteractiveValues,
+  createInitialBlogInteractiveValues,
+  readBlogInteractiveValues,
+  writeBlogInteractiveValues,
+  type BlogInteractiveValues,
+} from '../../utils/blogInteractiveStorage';
 
-type SavedValues = Record<string, string | number | boolean>;
+type SavedValues = BlogInteractiveValues;
 
 interface BlogInteractiveProps {
   postId: string;
   data: BlogInteractiveData;
 }
 
-function storageKey(postId: string) {
-  return `simsimpools:blog-interactive:${postId}`;
-}
-
 function readSavedValues(postId: string): SavedValues {
   if (typeof window === 'undefined') return {};
-
-  try {
-    const raw = window.localStorage.getItem(storageKey(postId));
-    return raw ? JSON.parse(raw) : {};
-  } catch {
-    return {};
-  }
+  return readBlogInteractiveValues(window.localStorage, postId);
 }
 
 function defaultSliderValue(block: Extract<BlogInteractiveBlock, { type: 'slider' }>) {
@@ -30,7 +27,7 @@ function defaultSliderValue(block: Extract<BlogInteractiveBlock, { type: 'slider
 }
 
 export function BlogInteractive({ postId, data }: BlogInteractiveProps) {
-  const [values, setValues] = useState<SavedValues>({});
+  const [values, setValues] = useState<SavedValues>(createInitialBlogInteractiveValues);
   const [loadedPostId, setLoadedPostId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -40,7 +37,7 @@ export function BlogInteractive({ postId, data }: BlogInteractiveProps) {
 
   useEffect(() => {
     if (typeof window === 'undefined' || loadedPostId !== postId) return;
-    window.localStorage.setItem(storageKey(postId), JSON.stringify(values));
+    writeBlogInteractiveValues(window.localStorage, postId, values);
   }, [loadedPostId, postId, values]);
 
   const checklistItems = useMemo(
@@ -63,7 +60,7 @@ export function BlogInteractive({ postId, data }: BlogInteractiveProps) {
   function reset() {
     setValues({});
     if (typeof window !== 'undefined') {
-      window.localStorage.removeItem(storageKey(postId));
+      clearBlogInteractiveValues(window.localStorage, postId);
     }
   }
 
@@ -102,7 +99,7 @@ export function BlogInteractive({ postId, data }: BlogInteractiveProps) {
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-slate-200/70 pt-5">
         <p className="text-xs text-slate-500 leading-relaxed">
-          입력한 내용은 이 브라우저에만 저장됩니다. 다른 곳으로 전송되지 않습니다.
+          입력한 내용은 현재 브라우저에만 저장되며 외부 서버로 전송되지 않습니다. 기록 지우기로 삭제할 수 있습니다.
         </p>
         <button
           type="button"

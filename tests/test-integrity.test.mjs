@@ -31,6 +31,19 @@ const tests = testDataModules.map(module => Object.values(module)[0]);
 const { testsMeta } = await loadTypeScript('src/data/tests.ts');
 const { testSeoContent } = await loadTypeScript('src/data/testSeoContent.ts');
 const { testResultContent } = await loadTypeScript('src/data/testResultContent.ts');
+const { blogPosts } = await loadTypeScript('src/data/blog.ts');
+const { blogInteractiveById } = await loadTypeScript('src/data/blogInteractive.ts');
+const interactiveStorage = await loadTypeScript('src/utils/blogInteractiveStorage.ts');
+
+const ORIGINAL_BLOG_IDS = [
+  'vacation-before-tired', 'cancelled-plan-relief', 'sunday-evening-blues', 'cant-ask-for-help',
+  'comparison-feeling-behind', 'cant-say-thank-you', 'reply-delay-emotions', 'pretending-okay-fatigue',
+  'people-tired-alone-empty', 'sensitive-day', 'contact-fatigue', 'emotional-recovery-types',
+  'people-pleasing-signs', 'communication-mistakes', 'small-self-care-routine', 'relationship-red-flags',
+  'introvert-strengths', 'emotional-drain-patterns', 'mbti-relationships', 'solitude-recovery',
+  'stress-types', 'perfectionism', 'high-empathy', 'attachment-styles', 'boundaries-setting',
+  'anger-recovery', 'intuitive-vs-sensing', 'self-efficacy-habits', 'mindfulness-habits',
+];
 
 const ORIGINAL_RESULT_KEYS = {
   'animal-personality': ['cat', 'dog', 'fox', 'owl'],
@@ -200,7 +213,7 @@ test('공개 경로에 가상 이름과 전문가 직함이 남아 있지 않다
   const forbidden = [
     '박지민', '이수현', '김민서', '상담심리 연구자', '심리 콘텐츠 기획자',
     '심리 콘텐츠 에디터', '성격 심리 전문 에디터', '심리학 전공 콘텐츠 큐레이터',
-    '자기계발·인간관계 칼럼니스트', '심심풀이 편집팀', '심심풀이 운영팀',
+    '자기계발·인간관계 칼럼니스트', '편집팀', '심심풀이 운영팀',
   ];
   for (const value of forbidden) assert.ok(!source.includes(value), value);
 });
@@ -417,4 +430,122 @@ test('방법론 페이지는 1인 운영과 전문 자격·진단·증상 대응
   ]) {
     assert.ok(source.includes(statement), statement);
   }
+});
+
+test('에세이 29개의 ID·순서·URL 정책과 필수 공개 필드를 유지한다', () => {
+  assert.deepEqual(blogPosts.map(post => post.id), ORIGINAL_BLOG_IDS);
+  assert.equal(new Set(blogPosts.map(post => `/blog/${post.id}`)).size, 29);
+
+  const uniqueFields = ['title', 'subtitle', 'excerpt'];
+  for (const field of uniqueFields) {
+    const values = blogPosts.map(post => post[field].trim());
+    assert.ok(values.every(Boolean), field);
+    assert.equal(new Set(values).size, 29, field);
+  }
+  for (const post of blogPosts) {
+    assert.ok(post.category.trim(), `${post.id}:category`);
+    assert.ok(post.tags.length > 0 && post.tags.every(tag => tag.trim()), `${post.id}:tags`);
+    assert.ok(post.sections.length > 0, `${post.id}:sections`);
+    assert.ok(post.sections.every(section => section.content.trim()), `${post.id}:section-content`);
+  }
+});
+
+test('관련 글은 존재하는 다음 단계 글만 중복·자기 참조 없이 연결한다', () => {
+  const ids = new Set(ORIGINAL_BLOG_IDS);
+  for (const post of blogPosts) {
+    assert.ok(Array.isArray(post.relatedPosts), `${post.id}:relatedPosts`);
+    assert.ok(post.relatedPosts.length > 0 && post.relatedPosts.length <= 3, post.id);
+    assert.equal(new Set(post.relatedPosts).size, post.relatedPosts.length, `${post.id}:duplicate`);
+    for (const relatedId of post.relatedPosts) {
+      assert.ok(ids.has(relatedId), `${post.id}:${relatedId}`);
+      assert.notEqual(relatedId, post.id, `${post.id}:self`);
+    }
+  }
+});
+
+test('에세이 29개 상호작용 도구는 키·필수 문구·전역 고유 block ID를 갖는다', () => {
+  assert.deepEqual(Object.keys(blogInteractiveById), ORIGINAL_BLOG_IDS);
+  const blockIds = [];
+  for (const post of blogPosts) {
+    const interactive = blogInteractiveById[post.id];
+    assert.ok(interactive.title.trim(), `${post.id}:interactive-title`);
+    assert.ok(interactive.description.trim(), `${post.id}:interactive-description`);
+    assert.equal(interactive.blocks.length, 3, `${post.id}:blocks`);
+    for (const block of interactive.blocks) {
+      assert.ok(block.id.trim() && block.label.trim(), `${post.id}:block`);
+      blockIds.push(block.id);
+      if ('items' in block) assert.ok(block.items.length > 0 && block.items.every(item => item.trim()), block.id);
+      if ('options' in block) assert.ok(block.options.length > 0 && block.options.every(option => option.trim()), block.id);
+      if ('placeholder' in block) assert.ok(block.placeholder.trim(), block.id);
+      if (block.type === 'slider') assert.ok(block.minLabel.trim() && block.maxLabel.trim(), block.id);
+    }
+  }
+  assert.equal(new Set(blockIds).size, blockIds.length, 'interactive block ID duplicate');
+});
+
+test('에세이 인터랙티브는 SSR 첫 HTML을 저장값과 분리하고 글별 기록만 지운다', () => {
+  class MemoryStorage {
+    values = new Map();
+    getItem(key) { return this.values.get(key) ?? null; }
+    setItem(key, value) { this.values.set(key, value); }
+    removeItem(key) { this.values.delete(key); }
+  }
+
+  const storage = new MemoryStorage();
+  const contactValues = {
+    contact_channel_priority: '긴급한 업무 확인만',
+    'contact_scope_checks.0': true,
+    contact_availability_phrase: '메시지 확인했어. 내일 점심에 다시 답할게.',
+  };
+  const recoveryValues = { recovery_experiment_note: '긴장은 그대로, 다음 행동은 쉬워짐' };
+  interactiveStorage.writeBlogInteractiveValues(storage, 'contact-fatigue', contactValues);
+  interactiveStorage.writeBlogInteractiveValues(storage, 'emotional-recovery-types', recoveryValues);
+
+  assert.deepEqual(interactiveStorage.readBlogInteractiveValues(storage, 'contact-fatigue'), contactValues);
+  assert.deepEqual(interactiveStorage.readBlogInteractiveValues(storage, 'emotional-recovery-types'), recoveryValues);
+
+  const serverInitialValues = interactiveStorage.createInitialBlogInteractiveValues();
+  const browserInitialValues = interactiveStorage.createInitialBlogInteractiveValues();
+  assert.deepEqual(browserInitialValues, serverInitialValues);
+  assert.deepEqual(browserInitialValues, {}, '저장값이 hydration 첫 렌더에 섞이지 않아야 함');
+
+  interactiveStorage.clearBlogInteractiveValues(storage, 'contact-fatigue');
+  assert.deepEqual(interactiveStorage.readBlogInteractiveValues(storage, 'contact-fatigue'), {});
+  assert.deepEqual(interactiveStorage.readBlogInteractiveValues(storage, 'emotional-recovery-types'), recoveryValues);
+  assert.equal(storage.values.size, 1, '다른 글 저장값은 유지');
+});
+
+test('개편 에세이는 서로 다른 사례·구별 기준·행동 도구를 실제 데이터에 유지한다', () => {
+  const evidenceById = {
+    'contact-fatigue': ['업무 메신저', '채널·시간·긴급도', '연락 가능 시간을 하나만'],
+    'emotional-recovery-types': ['15분', '몸의 긴장·생각의 반복·다음 행동', '실행 비용'],
+    'people-pleasing-signs': ['점심 메뉴', '세 가지 비용', '오후 세 시까지 답할게'],
+    'communication-mistakes': ['20분 늦었고', '사실과 해석', '다음에는 늦는 걸 알게 된 시점'],
+    'small-self-care-routine': ['양치 뒤에 물 세 모금', '30초', '연결 문장'],
+    'relationship-red-flags': ['외모를 농담', '기준을 말한 뒤', '세 줄로 적어'],
+    'emotional-drain-patterns': ['듣고, 어색해질 때마다', '역할을 맡은 시간', '역할 하나 줄이기'],
+    'solitude-recovery': ['시작과 종료 시각', '전후 변화를 확인', '시간을 줄이거나'],
+    perfectionism: ['표 간격', '반드시 들어가야 할 항목', '다음 버전'],
+    'high-empathy': ['월요일 오전 회의', '본 것과 해석', '세 칸'],
+    'attachment-styles': ['금요일 저녁', '실제로 일어난 사건', '관계 판정표가 아니다'],
+    'self-efficacy-habits': ['파일을 열었다가 두 문장', '중단 좌표', '5분 크기로'],
+    'mindfulness-habits': ['메일을 쓰다가', '60초', '다음 행동 하나'],
+  };
+  for (const [id, evidenceTerms] of Object.entries(evidenceById)) {
+    const post = blogPosts.find(item => item.id === id);
+    const publicContent = [post.title, post.subtitle, post.excerpt, ...post.sections.map(section => `${section.heading ?? ''} ${section.content}`)].join(' ');
+    for (const term of evidenceTerms) assert.ok(publicContent.includes(term), `${id}:${term}`);
+  }
+});
+
+test('에세이 공개 데이터는 가상 전문 체계와 직접 진단·치료·우월성 주장을 만들지 않는다', () => {
+  const publicContent = JSON.stringify({ blogPosts, blogInteractiveById });
+  const misleadingPatterns = [
+    /전문가 (?:감수|검수)/, /편집팀/, /임상심리사 (?:감수|검수)/,
+    /(?:우울증|불안장애|번아웃|애착 유형)을? (?:진단|판정)/,
+    /당신은 .*?(?:뛰어난|탁월한|특별한) .*?(?:사람|능력)/,
+    /감정을 치유/, /마음을 치료/, /성격을 가진 당신/,
+  ];
+  for (const pattern of misleadingPatterns) assert.doesNotMatch(publicContent, pattern, String(pattern));
+  assert.ok(blogPosts.every(post => !post.references || post.references.every(reference => /^https:\/\//.test(reference))), 'reference URL');
 });

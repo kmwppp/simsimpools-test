@@ -45,9 +45,19 @@ function assertContains(source, value, context) {
   assert.ok(source.includes(value), `${context}: ${value}`);
 }
 
-const [{ tests }, { testSeoContent }] = await Promise.all([
+function escapeHtmlAttribute(value) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
+const [{ tests }, { testSeoContent }, { blogPosts }, { blogInteractiveById }] = await Promise.all([
   loadTypeScript('src/data/tests.ts'),
   loadTypeScript('src/data/testSeoContent.ts'),
+  loadTypeScript('src/data/blog.ts'),
+  loadTypeScript('src/data/blogInteractive.ts'),
 ]);
 const { render } = await import(path.join(DIST, 'server/entry-server.js'));
 
@@ -76,6 +86,26 @@ for (const definition of tests) {
   for (const result of Object.values(definition.results)) assertContains(html, result.title, `${route}:result-title`);
   assertContains(html, 'href="/test-methodology"', `${route}:methodology-link`);
 }
+
+assert.equal(blogPosts.length, 29, '에세이 데이터 수');
+assert.equal(sitemapRoutes.filter(route => route.startsWith('/blog/')).length, 29, 'sitemap 에세이 URL 수');
+let verifiedBlogPages = 0;
+for (const post of blogPosts) {
+  const route = `/blog/${post.id}`;
+  const html = fs.readFileSync(outputFile(route), 'utf8');
+  assertContains(html, `<title data-rh="true">${escapeHtmlAttribute(post.title)} | 심심풀이</title>`, `${route}:title`);
+  assertContains(html, `name="description" content="${escapeHtmlAttribute(post.excerpt)}"`, `${route}:description`);
+  assertContains(html, `rel="canonical" href="${BASE_URL}${route}"`, `${route}:canonical`);
+  assertContains(html, 'name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"', `${route}:robots`);
+  assertContains(html, '"@type":"BlogPosting"', `${route}:structured-data`);
+  assertContains(html, escapeHtmlAttribute(post.subtitle), `${route}:subtitle`);
+  assertContains(html, escapeHtmlAttribute(post.sections[0].content.slice(0, 40)), `${route}:body`);
+  const interactive = blogInteractiveById[post.id];
+  assertContains(html, interactive.title, `${route}:interactive-title`);
+  for (const block of interactive.blocks) assertContains(html, block.label, `${route}:interactive-block`);
+  verifiedBlogPages += 1;
+}
+assert.equal(verifiedBlogPages, 29, '생성 에세이 HTML 수');
 
 const methodologyRoute = '/test-methodology';
 const methodologyHtml = fs.readFileSync(outputFile(methodologyRoute), 'utf8');
@@ -142,4 +172,4 @@ for (const definition of tests) {
 assert.equal(renderedResults, 20, 'SSR 결과 페이지 수');
 
 fs.rmSync(path.join(DIST, 'server'), { recursive: true, force: true });
-console.log(`✓ 빌드 검증 완료: sitemap ${sitemapRoutes.length}, 프리렌더 ${prerenderRoutes.length}, 내부 링크 오류 ${internalLinkErrors.length}, SSR 결과 ${renderedResults}`);
+console.log(`✓ 빌드 검증 완료: sitemap ${sitemapRoutes.length}, 프리렌더 ${prerenderRoutes.length}, 에세이 ${verifiedBlogPages}, 내부 링크 오류 ${internalLinkErrors.length}, SSR 결과 ${renderedResults}`);

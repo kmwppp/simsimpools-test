@@ -18,7 +18,7 @@ export function LatestPosts() {
         <div className="flex items-end justify-between mb-8">
           <div>
             <h2 className="section-title">최근 업데이트된 에세이</h2>
-            <p className="section-subtitle">편집팀이 최근 보완하고 다듬은 글들입니다</p>
+            <p className="section-subtitle">운영자가 최근 보완하고 다듬은 글들입니다</p>
           </div>
           <Link to="/blog" className="text-brand-600 text-sm font-medium hover:underline hidden sm:block">
             전체 보기 →
