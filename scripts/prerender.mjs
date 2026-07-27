@@ -67,7 +67,4 @@ for (const route of routes) {
   ok += 1;
 }
 
-// ── 5. SSR 번들 정리 (배포 산출물에서 제외) ───────────────────────────────
-fs.rmSync(path.join(DIST, 'server'), { recursive: true, force: true });
-
 console.log(`✓ 사전 렌더링 완료: ${ok}개 라우트 → dist/<route>/index.html`);

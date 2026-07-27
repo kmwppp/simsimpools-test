@@ -11,9 +11,13 @@ const app = (
   </React.StrictMode>
 );
 
-// 사전 렌더링된 HTML이 있으면 hydrate, 없으면(개발 등) 새로 렌더
-if (root.childElementCount > 0) {
+const hasPrerenderedHtml = root.childElementCount > 0;
+const isResultRoute = window.location.pathname.startsWith('/results/');
+
+// 결과 URL은 indexable 프리렌더 대상이 아니므로 SPA fallback HTML을 hydrate하지 않는다.
+if (hasPrerenderedHtml && !isResultRoute) {
   ReactDOM.hydrateRoot(root, app);
 } else {
+  root.replaceChildren();
   ReactDOM.createRoot(root).render(app);
 }

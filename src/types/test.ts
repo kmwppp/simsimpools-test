@@ -15,16 +15,7 @@ export interface TestResult {
   title: string;
   subtitle: string;
   emoji: string;
-  description: string[];
-  traits: string[];
-  strengths: string[];
-  weaknesses: string[];
-  relationships: string;
-  stressPattern: string;
-  recommendedActivities: string[];
-  selfGuide: string;
   relatedTests: string[];
-  shareText: string;
 }
 
 export interface TestBaseMeta {

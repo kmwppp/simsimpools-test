@@ -21,7 +21,7 @@ export function ResultPage() {
         />
         <div className="section-container py-24 text-center">
           <p className="text-slate-500">결과를 찾을 수 없습니다.</p>
-          <Link to="/tests" className="btn-primary mt-4">테스트 목록으로</Link>
+          <Link to="/tests" className="btn-primary mt-4">문답 목록으로</Link>
         </div>
       </>
     );
@@ -49,7 +49,7 @@ export function ResultPage() {
       {/* ──────────────────────────────────────────────────────────────
           결과 페이지 SEO 정책
           - noindex: 15개+ 유사 구조 중복, 자연 검색 유입 없음
-          - canonical: 테스트 인트로 페이지로 귀속 (검색 신호 집중)
+          - canonical: 문답 소개 페이지로 귀속 (검색 신호 집중)
           - 사이트맵 미포함 (유지)
       ────────────────────────────────────────────────────────────── */}
       <SEOMeta

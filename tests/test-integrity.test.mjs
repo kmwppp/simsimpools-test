@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
@@ -37,6 +38,22 @@ const ORIGINAL_RESULT_KEYS = {
   'stress-response': ['expressive', 'suppressive', 'avoidant', 'solver'],
   'social-distance': ['close', 'balanced', 'independent', 'adaptive'],
   'emotional-recovery': ['active', 'solitary', 'social', 'creative'],
+};
+
+const IMMUTABLE_DATA_HASHES = {
+  'animal-personality': 'c9eb7e3ef4d89ecaf16dce153d0e2d4a4522fabb8ce5eac3483722a4e781b44b',
+  'love-style': '657d6c0d79e764f6cc1e3737ec31706546b91232ffa1837b6f593f9b625f75fb',
+  'stress-response': '3eb71206de97f755bba4064b2bebed17144c0ea64708169d5d9046e58b0e47df',
+  'social-distance': '0cad131a0b545ecc1c03a88eeed07c2cc311a9ea0d0cc751ff9724c76ab0520a',
+  'emotional-recovery': 'd45be12351a8ff66e797e9311608d4f7ae3c6dea69c29cd3e1327e668709b70c',
+};
+
+const RESULT_EVIDENCE_TERMS = {
+  'animal-personality': { cat: '혼자', dog: '함께', fox: '판단', owl: '정보' },
+  'love-style': { romantic: '표현', pragmatic: '생활', independent: '시간', devoted: '약속' },
+  'stress-response': { expressive: '드러내', suppressive: '이어가', avoidant: '거리', solver: '원인' },
+  'social-distance': { close: '연락', balanced: '혼자', independent: '시간', adaptive: '거리' },
+  'emotional-recovery': { active: '움직', solitary: '혼자', social: '함께', creative: '그림' },
 };
 
 test('시작은 첫 번째 질문 인덱스를 유지하고 점수를 만들지 않는다', () => {
@@ -202,6 +219,13 @@ test('개발용 빈 루트는 hydrate하지 않고 새로 렌더링한다', () =
   assert.ok(!source.includes('root.hasChildNodes()'));
 });
 
+test('프리렌더 대상이 아닌 결과 URL은 SPA fallback HTML을 hydrate하지 않는다', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'src/main.tsx'), 'utf8');
+  assert.ok(source.includes("window.location.pathname.startsWith('/results/')"));
+  assert.ok(source.includes('hasPrerenderedHtml && !isResultRoute'));
+  assert.ok(source.includes('root.replaceChildren()'));
+});
+
 test('저장된 문답 상태는 첫 렌더 이후 복원해 프리렌더 HTML과 일치시킨다', () => {
   const source = fs.readFileSync(path.join(ROOT, 'src/hooks/useTestState.ts'), 'utf8');
   assert.ok(source.includes('useState<TestState>(() => createInitialTestState(testId))'));
@@ -289,4 +313,108 @@ test('방법론 페이지는 목적·문항·채점·동점·검토·출처·운
   assert.ok(source.includes('canonical="/test-methodology"'));
   assert.ok(!source.includes('FAQPage'));
   assert.ok(!source.includes('Quiz'));
+});
+
+test('결과 객체와 TestResult 타입에는 실제 사용 필드만 남는다', () => {
+  const expectedFields = ['emoji', 'id', 'relatedTests', 'subtitle', 'title'];
+  const removedFields = [
+    'description', 'traits', 'strengths', 'weaknesses', 'relationships',
+    'stressPattern', 'recommendedActivities', 'selfGuide', 'shareText',
+  ];
+  const typeSource = fs.readFileSync(path.join(ROOT, 'src/types/test.ts'), 'utf8');
+  const interfaceSource = typeSource.match(/export interface TestResult \{([\s\S]*?)\n\}/)?.[1] ?? '';
+
+  for (const field of removedFields) assert.ok(!interfaceSource.includes(`${field}:`), field);
+  for (const definition of tests) {
+    for (const [key, result] of Object.entries(definition.results)) {
+      assert.deepEqual(Object.keys(result).sort(), expectedFields, `${definition.id}:${key}`);
+    }
+  }
+});
+
+test('결과 20개의 키·순서·이름·관련 문답과 문항·선택지·점수는 기준 상태를 유지한다', () => {
+  assert.equal(tests.reduce((count, definition) => count + Object.keys(definition.results).length, 0), 20);
+
+  for (const definition of tests) {
+    assert.deepEqual(Object.keys(definition.results), ORIGINAL_RESULT_KEYS[definition.id], definition.id);
+    const immutableData = JSON.stringify({
+      questions: definition.questions,
+      resultKeys: Object.keys(definition.results),
+      resultTitles: Object.values(definition.results).map(result => result.title),
+      relatedTests: Object.values(definition.results).map(result => result.relatedTests),
+    });
+    const hash = createHash('sha256').update(immutableData).digest('hex');
+    assert.equal(hash, IMMUTABLE_DATA_HASHES[definition.id], definition.id);
+  }
+});
+
+test('결과 subtitle 20개는 존재하며 선택 경향만 중립적으로 요약한다', () => {
+  const forbiddenPattern = /(?:하는 당신|당신$|사랑의 달인|치유|최고|탁월|완벽|천재|우월|전문성|따뜻하|영리하|성격|기질|진단|애착|정신건강|번아웃)/;
+  const subtitles = [];
+
+  for (const definition of tests) {
+    for (const [key, result] of Object.entries(definition.results)) {
+      assert.equal(typeof result.subtitle, 'string', `${definition.id}:${key}`);
+      assert.ok(result.subtitle.trim().length >= 20, `${definition.id}:${key}`);
+      assert.doesNotMatch(result.subtitle, forbiddenPattern, `${definition.id}:${key}`);
+      subtitles.push(result.subtitle);
+    }
+  }
+
+  assert.equal(subtitles.length, 20);
+  assert.equal(new Set(subtitles).size, 20);
+});
+
+test('결과 subtitle과 새 결과 본문은 같은 응답 선택 근거를 공유한다', () => {
+  for (const definition of tests) {
+    for (const [key, result] of Object.entries(definition.results)) {
+      const evidence = RESULT_EVIDENCE_TERMS[definition.id][key];
+      const summary = testResultContent[definition.id][key].summary.join(' ');
+      assert.ok(result.subtitle.includes(evidence), `${definition.id}:${key}:subtitle:${evidence}`);
+      assert.ok(summary.includes(evidence), `${definition.id}:${key}:summary:${evidence}`);
+    }
+  }
+});
+
+test('공개 결과 데이터에서 구형 단정·우열·치유 문구가 제거된다', () => {
+  const publicResultData = [JSON.stringify(tests), JSON.stringify(testResultContent)].join('\n');
+  const stalePhrases = [
+    '사랑의 달인', '감정을 치유하는 당신', '성격을 가진 당신',
+    '독립적이고 신비로운 나만의 세계를 가진 당신',
+    '영리하고 유연하게 세상을 헤쳐나가는 당신',
+    '표현하고 만들어내며 감정을 치유',
+  ];
+  for (const phrase of stalePhrases) assert.ok(!publicResultData.includes(phrase), phrase);
+});
+
+test('문답 상단 공개 필드는 검사나 건강 판정으로 오인할 표현을 사용하지 않는다', () => {
+  for (const definition of tests) {
+    const publicMeta = [
+      definition.title, definition.subtitle, definition.description,
+      definition.category, ...definition.tags,
+    ].join(' ');
+    assert.doesNotMatch(publicMeta, /테스트|심리 성향|심리|건강/, definition.id);
+  }
+});
+
+test('결과 화면과 공유는 중립 subtitle과 새 결과 본문을 사용하고 결과 URL 정책을 유지한다', () => {
+  const resultPage = fs.readFileSync(path.join(ROOT, 'src/pages/ResultPage.tsx'), 'utf8');
+  const detailPage = fs.readFileSync(path.join(ROOT, 'src/pages/TestDetail.tsx'), 'utf8');
+  const sitemapGenerator = fs.readFileSync(path.join(ROOT, 'scripts/generate-sitemap.mjs'), 'utf8');
+  assert.ok(resultPage.includes('<p className="text-white/80 text-lg">{result.subtitle}</p>'));
+  assert.ok(resultPage.includes('description={`${test.title} 결과: ${result.subtitle}. ${content.summary[0]}`}'));
+  assert.ok(resultPage.includes('text: content.summary[0]'));
+  assert.ok(detailPage.includes('to={`/results/${test.id}/${result.id}`}'));
+  assert.ok(!sitemapGenerator.includes('/results/'));
+});
+
+test('방법론 페이지는 1인 운영과 전문 자격·진단·증상 대응의 한계를 명시한다', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'src/pages/TestMethodology.tsx'), 'utf8');
+  for (const statement of [
+    '심심풀이 운영자 1인이 운영', '전문 상담가', '임상심리사', '의료인이 아닙니다',
+    '전문 상담, 표준화 검사, 의료적 판단 또는 진단을 대신하지 않습니다',
+    '심각하거나 지속되는 증상', '전문가나 기관의 도움',
+  ]) {
+    assert.ok(source.includes(statement), statement);
+  }
 });

@@ -33,8 +33,8 @@ export function TestDetail() {
           noindex
         />
         <div className="section-container py-24 text-center">
-          <p className="text-slate-500">테스트를 찾을 수 없습니다.</p>
-          <Link to="/tests" className="btn-primary mt-4">테스트 목록으로</Link>
+          <p className="text-slate-500">문답을 찾을 수 없습니다.</p>
+          <Link to="/tests" className="btn-primary mt-4">문답 목록으로</Link>
         </div>
       </>
     );
